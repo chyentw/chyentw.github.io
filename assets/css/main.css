@@ -2667,9 +2667,8 @@ input, select, textarea {
 			display: inline-block;
 			padding-right: 2.5em;
 			vertical-align: middle;
+			width: 28%;
 			/* width: 48%; */
-			width: 30%;
-
 		}
 
 			.features article .image img {
@@ -2680,7 +2679,8 @@ input, select, textarea {
 		.features article .inner {
 			display: inline-block;
 			vertical-align: middle;
-			width: 50%;
+			width: 70%;
+			/* width: 50%; */
 		}
 
 			.features article .inner > :last-child {
