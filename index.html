@@ -1,526 +1,1706 @@
-<!DOCTYPE HTML>
-<!--
-	Read Only by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Chia-Heng Yen</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="icon" href="images/NTOU_logo.png">
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDA Lab - NTOU</title>
+	<link rel="icon" href="images/lab_logo.png">
+    <style>
+        /* 基本設定 */
+        :root {
+            --primary-blue: #1a4c7c;
+            --secondary-blue: #2d6da3;
+            --accent-blue: #5094d4;
+            --light-blue: #e6f3ff;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        /* 平滑滾動 */
+        html {
+            scroll-behavior: smooth;
+        }
 
-		<!-- Header -->
-			<section id="header">
-				<header>
-					<span class="image avatar"><img src="images/avatar_chyentw.jpg" alt="" /></span>
-					<h1 id="logo"><a href="#">Chia-Heng Yen</a></h1>
-					<p>Assistant Professor<br />
-					Dept. of Comp. Sci. & Eng. (CSE)<br />
-					National Taiwan Ocean University (NTOU)<br />
-					Email: chyen [at] ntou.edu.tw<br />
-					Office: ECG 703<br />
-					Office Tel: +886-2-24622192 #6679<br />
-					Intelligent Design and Application Lab: ECG810 <br />
-					Lab Tel: +886-2-24622192 #6633<br />
-					</p>
-				</header>
-				<nav id="nav">
-					<ul>
-						<li><a href="#one" class="active">About</a></li>
-						<li><a href="#two">Educational Background</a></li>
-						<li><a href="#three">Teaching</a></li>
-						<li><a href="#four">Intelligent Design and Application Lab</a></li>
-						<li><a href="#five">Projects and Publications</a></li>
-					</ul>
-				</nav>
-				<footer>
-					<ul class="icons">
-						<li><a href="#" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
-						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon brands fa-google"><span class="label">Google Scholar</span></a></li>
-						<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-						<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-				</footer>
-			</section>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+        body {
+            margin: 0;
+            font-family: "Microsoft JhengHei", sans-serif;
+            line-height: 1.6;
+            background-color: #f5f8fa;
+        }
 
-				<!-- Main -->
-					<div id="main">
+        section[id] {
+            scroll-margin-top: 70px;
+        }
 
-						<!-- One -->
-							<section id="one">
-								<div class="image main" data-position="center">
-									<img src="images/banner.jpg" alt="" />
-								</div>
-								<div class="container">
-									<header class="major">
-										<h2>Read Only</h2>
-										<p>Just an incredibly simple responsive site<br />
-										template freebie by <a href="http://html5up.net">HTML5 UP</a>.</p>
-									</header>
-									<p>Faucibus sed lobortis aliquam lorem blandit. Lorem eu nunc metus col. Commodo id in arcu ante lorem ipsum sed accumsan erat praesent faucibus commodo ac mi lacus. Adipiscing mi ac commodo. Vis aliquet tortor ultricies non ante erat nunc integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum.</p>
-								</div>
-							</section>
+        /* Logo 樣式 */
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-						<!-- Two -->
-							<section id="two">
-								<div class="container">
-									<h3>Educational Background</h3>
-									<!-- <p>Intege</p> -->
-									<div class="features">
-										<article>
-											<a href="#" class="image"><img src="images/NYCU_logo.png" alt="" /></a>
-											<div class="inner">
-												<h4>National Yang Ming Chiao Tung University (NYCU)</h4>
-												<p>Ph.D. in Computer Science and Engineering</p>
-												<h5>Advisor: Prof. Kai-Chiang Wu</h5>
-												<h5>Laboratory: Computer-Aided Design for GREAT Systems Lab.</h5>
-												<h5>Doctoral Dissertation: Machine Learning-Based IC Testing – Reliability and Security Perspectives</h5>
-											</div>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/NCTU_logo.png" alt="" /></a>
-											<div class="inner">
-												<h4>National Chiao Tung University (NCTU)</h4>
-												<p>M.S in Bioinformatics and Systems Biology</p>
-												<h5>Advisor: Distinguished Prof. Shinn-Ying Ho</h5>
-												<h5>Laboratory: Intelligent Computing Lab.</h5>
-												<h5>Master’s Thesis: Prediction of Recurrence Time after Therapeutic Surgery Using CT Images on Liver Tumor</h5>
-											</div>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/NTOU_logo.png" alt="" /></a>
-											<div class="inner">
-												<h4>National Taiwan Ocean University (NTOU)</h4>
-												<p>B.S in Computer Science and Engineering</p>
-											</div>
-										</article>
-									</div>
-								</div>
-							</section>
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
 
-						<!-- Three -->
-							<section id="three">
-								<div class="container">
-									
-									<ul class="feature-icons">
-										<li class="icon solid fa-code">Write all the code</li>
-										<li class="icon solid fa-cubes">Stack small boxes</li>
-										<li class="icon solid fa-book">Read books and stuff</li>
-										<li class="icon solid fa-coffee">Drink much coffee</li>
-										<li class="icon solid fa-bolt">Lightning bolt</li>
-										<li class="icon solid fa-users">Shadow clone technique</li>
-									</ul>
-									
-									<h3>A Few Accomplishments</h3>
-									<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
-									<div class="features">
-										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Possibly broke spacetime</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
-											</div>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Terraformed a small moon</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
-											</div>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Snapped dark matter in the wild</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
-											</div>
-										</article>
-									</div>
-								</div>
-							</section>
+        .logo img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
 
-						<!-- Four -->
-							<section id="four">
-								<div class="container">
-									<h3>Contact Me</h3>
-									<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
-									<form method="post" action="#">
-										<div class="row gtr-uniform">
-											<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
-											<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
-											<div class="col-12"><input type="text" name="subject" id="subject" placeholder="Subject" /></div>
-											<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="6"></textarea></div>
-											<div class="col-12">
-												<ul class="actions">
-													<li><input type="submit" class="primary" value="Send Message" /></li>
-													<li><input type="reset" value="Reset Form" /></li>
-												</ul>
-											</div>
-										</div>
-									</form>
-								</div>
-							</section>
+        .logo span {
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
 
-						<!-- Five -->
-							<section id="five">
-								<div class="container">
-									<h3>Elements</h3>
+        /* 頂部大圖 */
+        .hero-section {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
 
-									<section>
-										<h4>Text</h4>
-										<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-										This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-										This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-										<hr />
-										<header>
-											<h4>Heading with a Subtitle</h4>
-											<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-										</header>
-										<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-										<header>
-											<h5>Heading with a Subtitle</h5>
-											<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-										</header>
-										<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-										<hr />
-										<h2>Heading Level 2</h2>
-										<h3>Heading Level 3</h3>
-										<h4>Heading Level 4</h4>
-										<h5>Heading Level 5</h5>
-										<h6>Heading Level 6</h6>
-										<hr />
-										<h5>Blockquote</h5>
-										<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-										<h5>Preformatted</h5>
-										<pre><code>i = 0;
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
 
-while (!deck.isInOrder()) {
-    print 'Iteration ' + i;
-    deck.shuffle();
-    i++;
-}
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(26,76,124,0.9));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
 
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-									</section>
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: white;
+            padding: 10px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            object-fit: contain;
+        }
 
-									<section>
-										<h4>Lists</h4>
-										<div class="row">
-											<div class="col-6 col-12-xsmall">
-												<h5>Unordered</h5>
-												<ul>
-													<li>Dolor pulvinar etiam magna etiam.</li>
-													<li>Sagittis adipiscing lorem eleifend.</li>
-													<li>Felis enim feugiat dolore viverra.</li>
-												</ul>
-												<h5>Alternate</h5>
-												<ul class="alt">
-													<li>Dolor pulvinar etiam magna etiam.</li>
-													<li>Sagittis adipiscing lorem eleifend.</li>
-													<li>Felis enim feugiat dolore viverra.</li>
-												</ul>
-											</div>
-											<div class="col-6 col-12-xsmall">
-												<h5>Ordered</h5>
-												<ol>
-													<li>Dolor pulvinar etiam magna etiam.</li>
-													<li>Etiam vel felis at lorem sed viverra.</li>
-													<li>Felis enim feugiat dolore viverra.</li>
-													<li>Dolor pulvinar etiam magna etiam.</li>
-													<li>Etiam vel felis at lorem sed viverra.</li>
-													<li>Felis enim feugiat dolore viverra.</li>
-												</ol>
-												<h5>Icons</h5>
-												<ul class="icons">
-													<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-													<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-													<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-													<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-													<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-													<li><a href="#" class="icon brands fa-tumblr"><span class="label">Tumblr</span></a></li>
-												</ul>
-											</div>
-										</div>
-										<h5>Actions</h5>
-										<ul class="actions">
-											<li><a href="#" class="button primary">Default</a></li>
-											<li><a href="#" class="button">Default</a></li>
-											<li><a href="#" class="button alt">Default</a></li>
-										</ul>
-										<ul class="actions small">
-											<li><a href="#" class="button primary small">Small</a></li>
-											<li><a href="#" class="button small">Small</a></li>
-											<li><a href="#" class="button alt small">Small</a></li>
-										</ul>
-										<div class="row">
-											<div class="col-3 col-6-medium col-12-xsmall">
-												<ul class="actions stacked">
-													<li><a href="#" class="button primary">Default</a></li>
-													<li><a href="#" class="button">Default</a></li>
-													<li><a href="#" class="button alt">Default</a></li>
-												</ul>
-											</div>
-											<div class="col-3 col-6 col-12-xsmall">
-												<ul class="actions stacked">
-													<li><a href="#" class="button primary small">Small</a></li>
-													<li><a href="#" class="button small">Small</a></li>
-													<li><a href="#" class="button alt small">Small</a></li>
-												</ul>
-											</div>
-											<div class="col-3 col-6-medium col-12-xsmall">
-												<ul class="actions stacked">
-													<li><a href="#" class="button primary fit">Default</a></li>
-													<li><a href="#" class="button fit">Default</a></li>
-													<li><a href="#" class="button alt fit">Default</a></li>
-												</ul>
-											</div>
-											<div class="col-3 col-6-medium col-12-xsmall">
-												<ul class="actions stacked">
-													<li><a href="#" class="button primary small fit">Small</a></li>
-													<li><a href="#" class="button small fit">Small</a></li>
-													<li><a href="#" class="button alt small fit">Small</a></li>
-												</ul>
-											</div>
-										</div>
-									</section>
+        .lab-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
 
-									<section>
-										<h4>Table</h4>
-										<h5>Default</h5>
-										<div class="table-wrapper">
-											<table>
-												<thead>
-													<tr>
-														<th>Name</th>
-														<th>Description</th>
-														<th>Price</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>Item One</td>
-														<td>Ante turpis integer aliquet porttitor.</td>
-														<td>29.99</td>
-													</tr>
-													<tr>
-														<td>Item Two</td>
-														<td>Vis ac commodo adipiscing arcu aliquet.</td>
-														<td>19.99</td>
-													</tr>
-													<tr>
-														<td>Item Three</td>
-														<td> Morbi faucibus arcu accumsan lorem.</td>
-														<td>29.99</td>
-													</tr>
-													<tr>
-														<td>Item Four</td>
-														<td>Vitae integer tempus condimentum.</td>
-														<td>19.99</td>
-													</tr>
-													<tr>
-														<td>Item Five</td>
-														<td>Ante turpis integer aliquet porttitor.</td>
-														<td>29.99</td>
-													</tr>
-												</tbody>
-												<tfoot>
-													<tr>
-														<td colspan="2"></td>
-														<td>100.00</td>
-													</tr>
-												</tfoot>
-											</table>
-										</div>
+        .lab-subtitle {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
 
-										<h5>Alternate</h5>
-										<div class="table-wrapper">
-											<table class="alt">
-												<thead>
-													<tr>
-														<th>Name</th>
-														<th>Description</th>
-														<th>Price</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>Item One</td>
-														<td>Ante turpis integer aliquet porttitor.</td>
-														<td>29.99</td>
-													</tr>
-													<tr>
-														<td>Item Two</td>
-														<td>Vis ac commodo adipiscing arcu aliquet.</td>
-														<td>19.99</td>
-													</tr>
-													<tr>
-														<td>Item Three</td>
-														<td> Morbi faucibus arcu accumsan lorem.</td>
-														<td>29.99</td>
-													</tr>
-													<tr>
-														<td>Item Four</td>
-														<td>Vitae integer tempus condimentum.</td>
-														<td>19.99</td>
-													</tr>
-													<tr>
-														<td>Item Five</td>
-														<td>Ante turpis integer aliquet porttitor.</td>
-														<td>29.99</td>
-													</tr>
-												</tbody>
-												<tfoot>
-													<tr>
-														<td colspan="2"></td>
-														<td>100.00</td>
-													</tr>
-												</tfoot>
-											</table>
-										</div>
-									</section>
+        /* 導航欄 */
+        .nav {
+            background-color: rgba(255,255,255,0.95);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            box-shadow: var(--box-shadow);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
 
-									<section>
-										<h4>Buttons</h4>
-										<ul class="actions">
-											<li><a href="#" class="button primary">Primary</a></li>
-											<li><a href="#" class="button">Default</a></li>
-											<li><a href="#" class="button alt">Alternate</a></li>
-										</ul>
-										<ul class="actions">
-											<li><a href="#" class="button primary large">Large</a></li>
-											<li><a href="#" class="button">Default</a></li>
-											<li><a href="#" class="button alt small">Small</a></li>
-										</ul>
-										<ul class="actions fit">
-											<li><a href="#" class="button primary fit">Fit</a></li>
-											<li><a href="#" class="button fit">Fit</a></li>
-											<li><a href="#" class="button alt fit">Fit</a></li>
-										</ul>
-										<ul class="actions fit small">
-											<li><a href="#" class="button primary fit small">Fit + Small</a></li>
-											<li><a href="#" class="button fit small">Fit + Small</a></li>
-											<li><a href="#" class="button alt fit small">Fit + Small</a></li>
-										</ul>
-										<ul class="actions">
-											<li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
-											<li><a href="#" class="button icon solid fa-download">Icon</a></li>
-											<li><a href="#" class="button alt icon solid fa-check">Icon</a></li>
-										</ul>
-										<ul class="actions">
-											<li><span class="button primary disabled">Primary</span></li>
-											<li><span class="button disabled">Default</span></li>
-											<li><span class="button alt disabled">Alternate</span></li>
-										</ul>
-									</section>
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
 
-									<section>
-										<h4>Form</h4>
-										<form method="post" action="#">
-											<div class="row gtr-uniform">
-												<div class="col-6 col-12-xsmall">
-													<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
-												</div>
-												<div class="col-6 col-12-xsmall">
-													<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
-												</div>
-												<div class="col-12">
-													<select name="demo-category" id="demo-category">
-														<option value="">- Category -</option>
-														<option value="1">Manufacturing</option>
-														<option value="1">Shipping</option>
-														<option value="1">Administration</option>
-														<option value="1">Human Resources</option>
-													</select>
-												</div>
-												<div class="col-4 col-12-medium">
-													<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-													<label for="demo-priority-low">Low Priority</label>
-												</div>
-												<div class="col-4 col-12-medium">
-													<input type="radio" id="demo-priority-normal" name="demo-priority">
-													<label for="demo-priority-normal">Normal Priority</label>
-												</div>
-												<div class="col-4 col-12-medium">
-													<input type="radio" id="demo-priority-high" name="demo-priority">
-													<label for="demo-priority-high">High Priority</label>
-												</div>
-												<div class="col-6 col-12-medium">
-													<input type="checkbox" id="demo-copy" name="demo-copy">
-													<label for="demo-copy">Email me a copy of this message</label>
-												</div>
-												<div class="col-6 col-12-medium">
-													<input type="checkbox" id="demo-human" name="demo-human" checked>
-													<label for="demo-human">I am a human and not a robot</label>
-												</div>
-												<div class="col-12">
-													<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-												</div>
-												<div class="col-12">
-													<ul class="actions">
-														<li><input type="submit" value="Send Message" /></li>
-														<li><input type="reset" value="Reset" class="alt" /></li>
-													</ul>
-												</div>
-											</div>
-										</form>
-									</section>
+        .nav-links a {
+            display: block;
+            color: var(--primary-blue);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 20px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
 
-									<section>
-										<h4>Image</h4>
-										<h5>Fit</h5>
-										<span class="image fit"><img src="images/banner.jpg" alt="" /></span>
-										<div class="box alt">
-											<div class="row gtr-50 gtr-uniform">
-												<div class="col-4"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
-												<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-												<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-												<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-												<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-												<div class="col-4"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
-												<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-												<div class="col-4"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
-												<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-											</div>
-										</div>
-										<h5>Left &amp; Right</h5>
-										<p><span class="image left"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-										<p><span class="image right"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-									</section>
+        .nav-links a:hover {
+            background-color: var(--light-blue);
+            transform: translateY(-2px);
+        }
 
-								</div>
-							</section>
+        /* 主要容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
 
-					</div>
+        /* 區塊樣式 */
+        .section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
 
-				<!-- Footer -->
-					<section id="footer">
-						<div class="container">
-							<ul class="copyright">
-								<li>&copy; Chia-Heng Yen</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .section h2 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--accent-blue);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        /* 展開/收合按鈕樣式 */
+        .show-more-btn {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+
+        .show-more-btn:hover {
+            background-color: var(--primary-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* 隱藏額外的項目 */
+        .hidden-item {
+            display: none;
+        }
+
+        .hidden-item.show {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* 公告區域 */
+        .announcement {
+            background-color: var(--light-blue);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-blue);
+            transition: var(--transition);
+        }
+
+        .announcement:hover {
+            transform: translateX(5px);
+        }
+
+        /* PI 個人資料 */
+        .pi-profile {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background-color: var(--light-blue);
+            border-radius: 12px;
+            transition: var(--transition);
+			align-items: center;
+        }
+
+        .pi-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid white;
+            box-shadow: var(--box-shadow);
+            flex-shrink: 0;
+        }
+
+        .pi-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .pi-info {
+            flex: 1;
+        }
+
+        .pi-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .pi-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .pi-contact-item img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+		
+		/* 學術檔案連結樣式 */
+		.pi-academic-profiles {
+			display: flex;
+			gap: 1.5rem;
+			margin: 1rem 0;
+		}
+
+		.academic-profile-link {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			text-decoration: none;
+			color: var(--primary-blue);
+			background-color: white;
+			padding: 0.5rem 1rem;
+			border-radius: 20px;
+			box-shadow: var(--box-shadow);
+			transition: var(--transition);
+		}
+
+		.academic-profile-link:hover {
+			transform: translateY(-2px);
+			background-color: var(--light-blue);
+			box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+		}
+
+		.academic-icon {
+			width: 24px;
+			height: 24px;
+			object-fit: contain;
+		}
+
+		/* 響應式調整 */
+		@media (max-width: 768px) {
+			.pi-academic-profiles {
+				justify-content: center;
+			}
+		}		
+
+        /* 學歷區域 */
+        .education-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background-color: var(--light-blue);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .education-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--box-shadow);
+            background-color: white;
+        }
+
+        .school-logo {
+            width: 80px;
+            height: 80px;
+            margin-right: 1.5rem;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: white;
+            padding: 0.5rem;
+            box-shadow: var(--box-shadow);
+        }
+
+        .school-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+		
+		/* 實驗室連結區塊樣式 */
+		.lab-link {
+			display: block;
+			text-decoration: none;
+			color: inherit;
+			margin: 0.5rem 0;
+		}
+
+		.lab-info {
+			padding: 0.75rem;
+			border-radius: 6px;
+			background-color: rgba(255, 255, 255, 0.6);
+			transition: var(--transition);
+		}
+
+		.lab-link:hover .lab-info {
+			background-color: white;
+			box-shadow: var(--box-shadow);
+			transform: translateX(5px);
+		}
+
+		.lab-info p {
+			margin: 0;
+			color: var(--primary-blue);
+		}		
+
+        /* 研究主題 */
+        .research-topic {
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            background-color: var(--light-blue);
+            transition: var(--transition);
+        }
+
+        .research-topic:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow);
+            background-color: white;
+        }
+
+        .interest-icon img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .publications-list {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .publication-item {
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            background-color: white;
+            transition: var(--transition);
+        }
+
+        .publication-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .publication-year {
+            color: var(--primary-blue);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Publications 區塊樣式 */
+        .publications-filter {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--primary-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .publication-year-section {
+            margin-bottom: 2rem;
+        }
+
+        .publication-year-section h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-blue);
+        }
+
+        .publication-entry {
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background-color: var(--light-blue);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .publication-entry:hover {
+            transform: translateX(5px);
+            background-color: white;
+            box-shadow: var(--box-shadow);
+        }
+
+        .publication-title {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-authors {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-venue {
+            color: #666;
+        }
+
+        .publication-tags {
+            margin-top: 0.5rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .publication-tag {
+            padding: 0.25rem 0.75rem;
+            background-color: white;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: var(--primary-blue);
+        }
+		
+		/* DOI 連結樣式 */
+		.doi-link {
+			display: block;
+			margin-top: 0.5rem;
+			color: var(--accent-blue);
+			text-decoration: none;
+			font-size: 0.9rem;
+		}
+
+		.doi-link:hover {
+			text-decoration: underline;
+		}
+
+		/* 強調作者名字的樣式 */
+		.publication-authors strong {
+			font-weight: 700;
+			color: var(--primary-blue);
+		}
+
+        /* 課程區塊樣式 */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .course-card {
+            background-color: var(--light-blue);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .course-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            background-color: white;
+        }
+
+        .course-code {
+            background-color: var(--primary-blue);
+            color: white;
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-title {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .course-info span {
+            display: block;
+            margin-top: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        .course-description {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* 實驗室成員 */
+        .member-category {
+            margin-bottom: 3rem;
+        }
+
+        .member-category h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-blue);
+        }
+
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .member-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .member-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .member-photo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--light-blue);
+            border: 3px solid var(--accent-blue);
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-info h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+		
+		/* Undergraduate Students Card Styles */
+		.undergrad-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+			gap: 1.5rem;
+			margin-bottom: 2rem;
+		}
+
+		.undergrad-card {
+			background-color: var(--light-blue);
+			border-radius: 12px;
+			padding: 1.5rem;
+			box-shadow: var(--box-shadow);
+			transition: var(--transition);
+		}
+
+		.undergrad-card:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+			background-color: white;
+		}
+
+		.undergrad-info h4 {
+			color: var(--primary-blue);
+			margin-bottom: 0.5rem;
+			border-bottom: 1px solid var(--accent-blue);
+			padding-bottom: 0.5rem;
+		}
+
+		.undergrad-info p {
+			margin: 0.5rem 0;
+		}
+
+		@media (max-width: 768px) {
+			.undergrad-grid {
+				grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+			}
+		}		
+		
+		/* Alumni 區塊樣式 */
+		.alumni-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+			gap: 2rem;
+			margin-bottom: 2rem;
+		}
+
+		.alumni-card {
+			background-color: white;
+			border-radius: 12px;
+			padding: 1.5rem;
+			box-shadow: var(--box-shadow);
+			transition: var(--transition);
+		}
+
+		.alumni-card:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+		}
+
+		.alumni-card h4 {
+			color: var(--primary-blue);
+			border-bottom: 1px solid var(--accent-blue);
+			padding-bottom: 0.5rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.alumni-list {
+			list-style-type: none;
+			padding: 0;
+		}
+
+		.alumni-list li {
+			margin-bottom: 1.5rem;
+			padding-bottom: 1.5rem;
+			border-bottom: 1px dashed #eee;
+		}
+
+		.alumni-list li:last-child {
+			margin-bottom: 0;
+			padding-bottom: 0;
+			border-bottom: none;
+		}
+
+		.alumni-list strong {
+			display: block;
+			color: var(--primary-blue);
+			margin-bottom: 0.5rem;
+		}
+
+		.alumni-list p {
+			margin: 0.3rem 0;
+			font-size: 0.95rem;
+		}		
+
+		/* Footer 樣式 */
+		.footer {
+			background: var(--gradient-blue);
+			color: white;
+			padding: 2rem;
+			margin-top: 2rem;
+			text-align: center;
+		}
+
+		.footer-content {
+			max-width: 1200px;
+			margin: 0 auto;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 1rem;
+		}
+
+		.footer-logo {
+			width: 60px;
+			height: 60px;
+			background-color: white;
+			border-radius: 50%;
+			padding: 5px;
+			margin-bottom: 0.5rem;
+		}
+
+		.footer-text p {
+			margin: 0.3rem 0;
+			font-size: 1.1rem;
+			text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+		}
+
+		.footer-text p:last-child {
+			margin-top: 1rem;
+			font-size: 0.9rem;
+			opacity: 0.9;
+		}
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 400px;
+            }
+
+            .lab-title {
+                font-size: 2.5rem;
+            }
+
+            .lab-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .nav {
+                padding: 0.5rem;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.25rem;
+                width: 100%;
+            }
+
+            .nav-links a {
+                width: 100%;
+                text-align: center;
+                padding: 0.5rem;
+            }
+
+            .pi-profile {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .education-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .school-logo {
+                margin: 0 auto 1rem;
+            }
+
+            .publications-filter {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                height: 250px;
+            }
+
+            .lab-title {
+                font-size: 2rem;
+            }
+
+            .lab-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-logo {
+                width: 80px;
+                height: 80px;
+            }
+
+            .section {
+                padding: 1rem;
+            }
+
+            .member-photo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .container {
+                padding: 1rem 0.5rem;
+            }
+
+            .research-topic,
+            .member-card,
+            .publication-item {
+                padding: 1rem;
+            }
+        }
+
+        /* 動畫效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <section id="hero" class="hero-section">
+        <img src="images/back.jpg" alt="Marine Laboratory" class="hero-image"/>
+        <div class="hero-overlay">
+            <img src="images/lab_logo.png" alt="Lab Logo" class="hero-logo"/>
+            <h1 class="lab-title">Intelligent Design and Application Laboratory <br>(IDA Lab)</h1>
+            <p class="lab-subtitle">Multi-domain Innovation with AI at the Core:<br>Intelligent Solutions for VLSI Design, Hardware Security and Healthcare</p>
+        </div>
+    </section>
+
+    <nav class="nav">
+    <div class="nav-container">
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#announcements">Announcements</a></li>
+            <li><a href="#pi">Principal Investigator</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#teaching">Teaching</a></li>
+            <li><a href="#members">Lab Members</a></li>
+        </ul>
+    </div>
+	</nav>
+
+    <div class="container">
+        <!-- 公告區域 -->
+        <section id="announcements" class="section">
+            <h2>Latest Announcements</h2>
+            <div class="announcement">
+                <h3>Graduate Student Recruitment</h3>
+                <p>We are currently recruiting Master's students. If you are interested in Electronic Design Automation, Digital Design, Intelligent Application, and Intelligent Healthcare, please feel free to contact me.</p>
+                <small>2025/02/27</small>
+            </div>
+            <!--
+			<div class="announcement">
+                <h3>Paper Acceptance</h3>
+                <p>Congratulations! Our paper has been accepted by [Journal Name].</p>
+                <small>2025/02/15</small>
+            </div>
+			-->
+            
+            <!-- 額外的公告 -->
+            <!--
+			<div class="announcement hidden-item">
+                <h3>Workshop Announcement</h3>
+                <p>Join our upcoming workshop on Deep Learning in Marine Science.</p>
+                <small>2025/02/10</small>
+            </div>
+            <div class="announcement hidden-item">
+                <h3>Lab Achievement</h3>
+                <p>Our team won the Best Paper Award at [Conference Name].</p>
+                <small>2025/02/05</small>
+            </div>
+			-->
+            
+            <button class="show-more-btn" onclick="toggleAnnouncements(this)">Show More</button>
+        </section>
+
+		<!-- PI 個人資料區域 -->
+		<section id="pi" class="section">
+			<h2>Principal Investigator</h2>
+			<div class="pi-profile">
+				<div class="pi-photo">
+					<img src="images/chyentw.jpg" alt="Professor Photo"/>
+				</div>
+				<div class="pi-info">
+					<h3>Dr. Chia-Heng Yen</h3>
+					<p>Assistant Professor at Department of Computer Science and Engineering</p>
+					<p>National Taiwan Ocean University</p>
+					<div class="pi-contact">
+						<div class="pi-contact-item">
+							<img src="images/mail.png" alt="Email Icon"/>
+							<span>Email: chyen[at]mail.ntou.edu.tw</span>
 						</div>
-					</section>
-
+						<div class="pi-contact-item">
+							<img src="images/phone.png" alt="Phone Icon"/>
+							<span>Tel: +886-2-2462-2192 #6679</span>
+						</div>
+					</div>
+					<div class="pi-contact">
+						<div class="pi-contact-item">
+							<img src="images/office.png" alt="Office Icon"/>
+							<span>Office: ECG 703</span>
+						</div>
+						<div class="pi-contact-item">
+							<img src="images/lab.png" alt="Lab Icon"/>
+							<span>IDA Lab: ECG 810</span>
+						</div>
+					</div>
+					<div class="pi-academic-profiles">
+						<a href="https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" target="_blank" class="academic-profile-link">
+							<img src="images/google_scholar.png" alt="Google Scholar" class="academic-icon"/>
+							<span>Google Scholar</span>
+						</a>
+						<a href="https://orcid.org/0000-0002-6646-9253" target="_blank" class="academic-profile-link">
+							<img src="images/orcid.png" alt="ORCID" class="academic-icon"/>
+							<span>ORCID</span>
+						</a>
+					</div>
+				</div>
 			</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<h3>Education</h3>
+			<div class="education-item">
+				<div class="school-logo">
+					<img src="images/NYCU_logo.png" alt="NYCU Logo"/>
+				</div>
+				<div class="education-info">
+					<h4>Doctor of Philosophy (Ph.D.) in Computer Science and Engineering</h4>
+					<p>National Yang Ming Chiao Tung University (NYCU)</p>
+					<a href="https://people.cs.nycu.edu.tw/~kcw/" target="_blank" class="lab-link">
+						<div class="lab-info">
+							<p>Laboratory: Computer-Aided Design for G(reen)-RE(liable)-A(nd)-T(rustworthy) (GREAT) Systems Lab.</p>
+						</div>
+					</a>
+					<p>Advisor: Prof. Kai-Chiang Wu</p>
+					<p>Doctoral Dissertation: Machine Learning-Based IC Testing – Reliability and Security Perspectives</p>
+				</div>
+			</div>
+			<div class="education-item">
+				<div class="school-logo">
+					<img src="images/NCTU_logo.png" alt="NCTU Logo"/>
+				</div>
+				<div class="education-info">
+					<h4>Master of Science (M.S.) in Bioinformatics and Systems Biology</h4>
+					<p>National Chiao Tung University (NCTU) (currently National Yang Ming Chiao Tung University)</p>
+					<a href="https://bioinfoic.lab.nycu.edu.tw/" target="_blank" class="lab-link">
+						<div class="lab-info">
+							<p>Laboratory: Intelligent Computing Lab.</p>
+						</div>
+					</a>
+					<p>Advisor: Distinguished Prof. Shinn-Ying Ho</p>
+					<p>Master's Thesis: Prediction of Recurrence Time after Therapeutic Surgery Using CT Images on Liver Tumor</p>
+				</div>
+			</div>
+			<div class="education-item">
+				<div class="school-logo">
+					<img src="images/NTOU_logo.png" alt="NTOU Logo"/>
+				</div>
+				<div class="education-info">
+					<h4>Bachelor of Science (B.S.) in Computer Science and Engineering</h4>
+					<p>National Taiwan Ocean University (NTOU)</p>
+				</div>
+			</div>
+        </section>
 
-	</body>
+		<!-- 研究主題區域 -->
+		<section id="research" class="section">
+			<h2>Research Topics</h2>
+			
+			<div class="research-topic">
+				<h3>IC Testing and Yield Enhancement</h3>
+				<p>Our research in IC testing addresses two key challenges through AI techniques. First, we develop CNN-based stochastic regression methods for IDDQ outlier identification, effectively distinguishing leakage current variations from actual defects in IC testing. Second, we address the neighborhood effect problem in wafer testing through innovative methods to identify Good-Dice-in-Bad-Neighborhoods (GDBN), integrating wafer-level defect pattern information with advanced machine learning models ranging from CNNs to Transformer architectures. Both approaches significantly improve testing accuracy, yield rates, and cost efficiency.</p>
+				
+				<div class="publications-list">
+					<h4>Related Publications</h4>
+					<div class="publication-item">
+						<span class="publication-year">2024</span>
+						<span><strong>Chia-Heng Yen</strong>, Ting-Rui Wang, Ching-Min Liu, Cheng-Hao Yang, Chun-Teng Chen, <em>et al.</em>, "Identifying Good-Dice-in-Bad-Neighborhoods Using Artificial Neural Networks," <em>IEEE Transactions on Semiconductor Manufacturing</em> (TSM), vol. 37, no. 3, pp. 280—292</span>
+					</div>
+					<div class="publication-item">
+						<span class="publication-year">2023</span>
+						<span><strong>Chia-Heng Yen</strong>, Chun-Teng Chen, Cheng-Yen Wen, Ying-Yen Chen, Jih-Nung Lee, <em>et al.</em>, "CNN-based Stochastic Regression for IDDQ Outlier Identification," <em>IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems</em> (TCAD), vol. 42, no. 11, pp. 4282—4295</span>
+					</div>
+					
+					<!-- 額外的論文 -->
+					<div class="publication-item hidden-item">
+						<span class="publication-year">2024</span>
+						<span>Cheng-Che Lu, Chi-Chih Chang, <strong>Chia-Heng Yen</strong>, Shuo-Wen Chang, Ying-Hua Chu, <em>et al.</em>, "Transformer and Its Variants for Identifying Good Dice in Bad Neighborhoods," <em>IEEE VLSI Test Symposium</em> (VTS), pp. 1—7</span>
+					</div>
+					<div class="publication-item hidden-item">
+						<span class="publication-year">2023</span>
+						<span>Ching-Min Liu, <strong>Chia-Heng Yen</strong>, Shu-Wen Lee, Kai-Chiang Wu and Mango Chia-Tso Chao, "Enhancing Good-Die-in-Bad-Neighborhood Methodology with Wafer-Level Defect Pattern Information," <em>IEEE International Test Conference</em> (ITC), pp. 357—366</span>
+					</div>
+					<div class="publication-item hidden-item">
+						<span class="publication-year">2021</span>
+						<span>Cheng-Hao Yang, <strong>Chia-Heng Yen</strong>, Ting-Rui Wang, Chun-Teng Chen, Mason Chern, <em>et al.</em>, "Identifying Good-Dice-in-Bad-Neighborhoods Using Artificial Neural Networks," <em>IEEE VLSI Test Symposium</em> (VTS), pp. 1—6</span>
+					</div>
+					<div class="publication-item hidden-item">
+						<span class="publication-year">2020</span>
+						<span>Chun-Teng Chen, <strong>Chia-Heng Yen</strong>, Cheng-Hao Yang, Kai-Chiang Wu, Mason Chern, <em>et al.</em>, "CNN-Based Stochastic Regression for IDDQ Outlier Identification," <em>IEEE VLSI Test Symposium</em> (VTS), pp. 1—6</span>
+					</div>
+					
+					<button class="show-more-btn" onclick="togglePublications(this)">Show More</button>
+				</div>
+			</div>
+
+			<div class="research-topic">
+				<h3>Medical Image Analysis and Cancer Prediction</h3>
+				<p>Application of machine learning and deep learning techniques to medical image analysis, with particular focus on cancer prediction. This research demonstrates the perfect integration of technology and clinical applications, bridging the gap between advanced AI technologies and real-world medical challenges in cancer diagnosis and prognosis.</p>
+				
+				<div class="publications-list">
+					<h4>Related Publications</h4>
+					<div class="publication-item">
+						<span class="publication-year">2024</span>
+						<span>I-Cheng Lee, Yung-Ping Tsai, Yen-Cheng Lin, Ting-Chun Chen, <strong>Chia-Heng Yen</strong>, <em>et al.</em>, "A Hierarchical Fusion Strategy of Deep Learning Networks for Detection and Segmentation of Hepatocellular Carcinoma from Computed Tomography Images," <em>Cancer Imaging</em>, vol. 24, no. 1, Art. no. 43</span>
+					</div>
+					<div class="publication-item">
+						<span class="publication-year">2023</span>
+						<span>Tzu-Ting Huang, Yi-Chen Lin, <strong>Chia-Heng Yen</strong>, Jui Lan, Chiun-Chieh Yu, <em>et al.</em>, "Prediction of Extranodal Extension in Head and Neck Squamous Cell Carcinoma by CT Images Using an Evolutionary Learning Model," <em>Cancer Imaging</em>, vol. 23, no. 1, Art. no. 84</span>
+					</div>
+					
+					<!-- 額外的論文 -->
+					<div class="publication-item hidden-item">
+						<span class="publication-year">2021</span>
+						<span>I-Cheng Lee, Jo-Yu Huang, Ting-Chun Chen, <strong>Chia-Heng Yen</strong>, Nai-Chi Chiu, <em>et al.</em>, "Evolutionary Learning Derived Clinical-Radiomic Models for Predicting Early Recurrence of Hepatocellular Carcinoma After Resection," <em>Liver Cancer</em>, vol. 10, no. 6, pp. 572—582</span>
+					</div>
+					<div class="publication-item hidden-item">
+						<span class="publication-year">2018</span>
+						<span>Tzu-Yun Lo, Pei-Yin Wei, <strong>Chia-Heng Yen</strong>, Jiing-Feng Lirng, Muh-Hwa Yang and Pen-Yuan Chu, "Prediction of Metastasis in Head and Neck Cancer from Computed Tomography Images," <em>International Conference on Robotics and Artificial Intelligence</em> (ICRAI), pp. 18—23</span>
+					</div>
+					
+					<button class="show-more-btn" onclick="togglePublications(this)">Show More</button>
+				</div>
+			</div>
+
+			<div class="research-topic">
+				<h3>Hardware Security and Trojan Detection</h3>
+				<p>An emerging research direction focusing on using machine learning techniques to enhance chip security. We apply cutting-edge graph neural network technologies (GCN and GAT) to address critical security problems of hardware trojan detection and localization, providing comprehensive protection mechanisms for hardware security.</p>
+				
+				<div class="publications-list">
+					<h4>Related Publications</h4>
+					<div class="publication-item">
+						<span class="publication-year">2024</span>
+						<span>Yu-Chen Hsiao, <strong>Chia-Heng Yen</strong>, Bo-Yang Ke and Kai-Chiang Wu, "Synergizing GCN and GAT for Hardware Trojan Detection and Localization," <em>IEEE/IFIP International Conference on Dependable Systems and Networks - Supplemental Volume</em> (DSN-S), pp. 161—162</span>
+					</div>
+					<div class="publication-item">
+						<span class="publication-year">2023</span>
+						<span><strong>Chia-Heng Yen</strong>, Jung-Che Tsai and Kai-Chiang Wu, "Using Path Features for Hardware Trojan Detection Based on Machine Learning Techniques," <em>International Symposium on Quality Electronic Design</em> (ISQED), pp. 1—8</span>
+					</div>
+					
+					<button class="show-more-btn" onclick="togglePublications(this)">Show More</button>
+				</div>
+			</div>
+			
+			<div class="research-topic">
+				<h3>Arithmetic Design and Digital Circuits</h3>
+				<p>Focused on high-performance digital circuit design, particularly innovation and optimization of adder architectures. Our sum-prediction adder research targets the most commonly used basic computational units in modern processors, achieving a balance between speed, power consumption, and area through clever architectural optimization. This research not only focuses on theoretical performance improvements but also considers engineering constraints in practical application environments.</p>
+				
+				<div class="publications-list">
+					<h4>Related Publications</h4>
+					<div class="publication-item">
+						<span class="publication-year">2024</span>
+						<span><strong>Chia-Heng Yen</strong> and Jin-Tai Yan, "Design and Analysis of Sum-Prediction Adder," <em>Integration - the VLSI Journal</em>, vol. 96, Art. no. 102139</span>
+					</div>
+					
+					<button class="show-more-btn" onclick="togglePublications(this)">Show More</button>
+				</div>
+			</div>
+
+		<div class="research-topic">
+			<h3>Electronic Design Automation (EDA) and Circuit Optimization</h3>
+			<p>This research direction encompasses both routing techniques and power optimization for integrated circuits. For routing, we address challenges in emerging materials such as graphene nanoribbons (GNR) and complex 3D integrated circuits. Our power optimization work focuses on multi-bit flip-flop (MBFF) utilization strategies to reduce clock power consumption, an increasingly critical concern in modern low-power designs.</p>
+			
+			<div class="publications-list">
+				<h4>Related Publications</h4>
+				<div class="publication-item">
+					<span class="publication-year">2023</span>
+					<span><strong>Chia-Heng Yen</strong> and Jin-Tai Yan, "Layer-Minimization-Oriented GNR Area Routing," <em>IEEE International Conference on Electronics, Circuits and Systems</em> (ICECS), pp. 1—4</span>
+				</div>
+				<div class="publication-item">
+					<span class="publication-year">2016</span>
+					<span>Jin-Tai Yan, Meng-Tian Chen and <strong>Chia-Heng Yen</strong>, "Cell-Aware MBFF Utilization for Clock Power Reduction," <em>IEEE International Conference on Electronics, Circuits and Systems</em> (ICECS), pp. 648—651</span>
+				</div>
+				
+				<!-- 額外的論文 -->
+				<div class="publication-item hidden-item">
+					<span class="publication-year">2019</span>
+					<span>Jin-Tai Yan and <strong>Chia-Heng Yen</strong>, "Construction of Delay-Driven GNR Routing Tree," <em>IEEE International New Circuits and Systems Conference</em> (NEWCAS), pp. 1—4</span>
+				</div>
+				<div class="publication-item hidden-item">
+					<span class="publication-year">2018</span>
+					<span>Jin-Tai Yan and <strong>Chia-Heng Yen</strong>, "Feasible Assignment of Micro-Bumps in 3D ICs," <em>IEEE International New Circuits and Systems Conference</em> (NEWCAS), pp. 296—299</span>
+				</div>
+				<div class="publication-item hidden-item">
+					<span class="publication-year">2014</span>
+					<span>Jin-Tai Yan, Yu-Jen Tseng and <strong>Chia-Heng Yen</strong>, "Feasible Region Assignment of Routing Nets in Single-Layer Routing," <em>IEEE International Symposium on Circuits and Systems</em> (ISCAS), pp. 393—396</span>
+				</div>
+				<div class="publication-item hidden-item">
+					<span class="publication-year">2014</span>
+					<span>Jin-Tai Yan, Yu-Jen Tseng and <strong>Chia-Heng Yen</strong>, "Efficient Micro-Bump Assignment for RDL Routing in 3DICs," <em>IEEE International Conference on Electronics, Circuits and Systems</em> (ICECS), pp. 195—198</span>
+				</div>
+				
+				<button class="show-more-btn" onclick="togglePublications(this)">Show More</button>
+			</div>
+		</div>
+				
+		</section>
+		<!-- Publications 區塊 -->
+		<section id="publications" class="section">
+			<h2>Publications</h2>
+			
+			<div class="publications-filter">
+				<button class="filter-btn active" onclick="filterPublications('all')">All</button>
+				<button class="filter-btn" onclick="filterPublications('journal')">Journal Papers</button>
+				<button class="filter-btn" onclick="filterPublications('conference')">Conference Papers</button>
+				<button class="filter-btn" onclick="filterPublications('book')">Book Chapters</button>
+			</div>
+
+			<div class="publication-year-section">
+				<h3>2024</h3>
+				<div class="publication-entry" data-type="journal">
+					<div class="publication-title">A Hierarchical Fusion Strategy of Deep Learning Networks for Detection and Segmentation of Hepatocellular Carcinoma from Computed Tomography Images</div>
+					<div class="publication-authors">I-Cheng Lee, Yung-Ping Tsai, Yen-Cheng Lin, Ting-Chun Chen, <strong>Chia-Heng Yen</strong>, Nai-Chi Chiu, Hsuen-En Hwang, Chien-An Liu, Jia-Guan Huang, Rheun-Chuan Lee, Yee Chao, Shinn-Ying Ho and Yi-Hsiang Huang</div>
+					<div class="publication-venue">Cancer Imaging, vol. 24, no. 1, Art. no. 43, Mar. 2024</div>
+					<div class="publication-tags">
+						<span class="publication-tag">SCI</span>
+						<span class="publication-tag">Deep Learning</span>
+						<span class="publication-tag">Medical Imaging</span>
+					</div>
+					<a href="https://doi.org/10.1186/s40644-024-00686-8" target="_blank" class="doi-link">https://doi.org/10.1186/s40644-024-00686-8</a>
+				</div>
+				<div class="publication-entry" data-type="journal">
+					<div class="publication-title">Design and Analysis of Sum-Prediction Adder</div>
+					<div class="publication-authors"><strong>Chia-Heng Yen</strong> and Jin-Tai Yan</div>
+					<div class="publication-venue">Integration - the VLSI Journal, vol. 96, Art. no. 102139, May 2024</div>
+					<div class="publication-tags">
+						<span class="publication-tag">SCI</span>
+						<span class="publication-tag">VLSI</span>
+						<span class="publication-tag">Adder Design</span>
+					</div>
+					<a href="https://doi.org/10.1016/j.vlsi.2024.102139" target="_blank" class="doi-link">https://doi.org/10.1016/j.vlsi.2024.102139</a>
+				</div>
+				<div class="publication-entry" data-type="journal">
+					<div class="publication-title">Identifying Good-Dice-in-Bad-Neighborhoods Using Artificial Neural Networks</div>
+					<div class="publication-authors"><strong>Chia-Heng Yen</strong>, Ting-Rui Wang, Ching-Min Liu, Cheng-Hao Yang, Chun-Teng Chen, Ying-Yen Chen, Jih-Nung Lee, Shu-Yi Kao, Kai-Chiang Wu and Mango Chia-Tso Chao</div>
+					<div class="publication-venue">IEEE Transactions on Semiconductor Manufacturing (TSM), vol. 37, no. 3, pp. 280—292, Aug. 2024</div>
+					<div class="publication-tags">
+						<span class="publication-tag">SCI</span>
+						<span class="publication-tag">Neural Networks</span>
+						<span class="publication-tag">Semiconductor</span>
+					</div>
+					<a href="https://doi.org/10.1109/TSM.2024.3406395" target="_blank" class="doi-link">https://doi.org/10.1109/TSM.2024.3406395</a>
+				</div>
+				
+				<!-- 2024年會議論文 -->
+				<div class="publication-entry" data-type="conference">
+					<div class="publication-title">Transformer and Its Variants for Identifying Good Dice in Bad Neighborhoods</div>
+					<div class="publication-authors">Cheng-Che Lu, Chi-Chih Chang, <strong>Chia-Heng Yen</strong>, Shuo-Wen Chang, Ying-Hua Chu, Kai-Chiang Wu and Mango Chia-Tso Chao</div>
+					<div class="publication-venue">In Proc. of IEEE VLSI Test Symposium (VTS), pp. 1—7, Apr. 2024</div>
+					<div class="publication-tags">
+						<span class="publication-tag">VLSI</span>
+						<span class="publication-tag">Transformer</span>
+						<span class="publication-tag">Testing</span>
+					</div>
+					<a href="https://doi.org/10.1109/VTS60656.2024.10538654" target="_blank" class="doi-link">https://doi.org/10.1109/VTS60656.2024.10538654</a>
+				</div>
+				
+				<div class="publication-entry" data-type="conference">
+					<div class="publication-title">Synergizing GCN and GAT for Hardware Trojan Detection and Localization</div>
+					<div class="publication-authors">Yu-Chen Hsiao, <strong>Chia-Heng Yen</strong>, Bo-Yang Ke and Kai-Chiang Wu</div>
+					<div class="publication-venue">In Proc. of IEEE/IFIP International Conference on Dependable Systems and Networks - Supplemental Volume (DSN-S), pp. 161—162, Jun. 2024</div>
+					<div class="publication-tags">
+						<span class="publication-tag">Hardware Security</span>
+						<span class="publication-tag">Graph Neural Networks</span>
+					</div>
+					<a href="https://doi.org/10.1109/DSN-S60304.2024.00047" target="_blank" class="doi-link">https://doi.org/10.1109/DSN-S60304.2024.00047</a>
+				</div>
+				
+				<div class="publication-entry" data-type="conference">
+					<div class="publication-title">Wafer-View Defect-Pattern-Prominent GDBN Method Using MetaFormer Variant</div>
+					<div class="publication-authors">Shu-Wen Li, <strong>Chia-Heng Yen</strong>, Shuo-Wen Chang, Ying-Hua Chu, Kai-Chiang Wu and Mango Chia-Tso Chao</div>
+					<div class="publication-venue">In Proc. of IEEE International Test Conference (ITC), pp. 76—80, Oct. 2024</div>
+					<div class="publication-tags">
+						<span class="publication-tag">MetaFormer</span>
+						<span class="publication-tag">Defect Pattern</span>
+						<span class="publication-tag">Testing</span>
+					</div>
+					<a href="https://doi.org/10.1109/ITC51657.2024.00023" target="_blank" class="doi-link">https://doi.org/10.1109/ITC51657.2024.00023</a>
+				</div>
+			</div>
+
+			<div class="publication-year-section">
+				<h3>2023</h3>
+				<div class="publication-entry" data-type="journal">
+					<div class="publication-title">Prediction of Extranodal Extension in Head and Neck Squamous Cell Carcinoma by CT Images Using an Evolutionary Learning Model</div>
+					<div class="publication-authors">Tzu-Ting Huang, Yi-Chen Lin, <strong>Chia-Heng Yen</strong>, Jui Lan, Chiun-Chieh Yu, Wei-Che Lin, Yueh-Shng Chen, Cheng-Kang Wang, Eng-Yen Huang and Shinn-Ying Ho</div>
+					<div class="publication-venue">Cancer Imaging, vol. 23, no. 1, Art. no. 84, Sep. 2023</div>
+					<div class="publication-tags">
+						<span class="publication-tag">SCI</span>
+						<span class="publication-tag">Medical Imaging</span>
+						<span class="publication-tag">Evolutionary Learning</span>
+					</div>
+					<a href="https://doi.org/10.1186/s40644-023-00601-7" target="_blank" class="doi-link">https://doi.org/10.1186/s40644-023-00601-7</a>
+				</div>
+				<div class="publication-entry" data-type="journal">
+					<div class="publication-title">CNN-based Stochastic Regression for IDDQ Outlier Identification</div>
+					<div class="publication-authors"><strong>Chia-Heng Yen</strong>, Chun-Teng Chen, Cheng-Yen Wen, Ying-Yen Chen, Jih-Nung Lee, Shu-Yi Kao, Kai-Chiang Wu and Mango Chia-Tso Chao</div>
+					<div class="publication-venue">IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), vol. 42, no. 11, pp. 4282—4295, Nov. 2023</div>
+					<div class="publication-tags">
+						<span class="publication-tag">SCI</span>
+						<span class="publication-tag">CNN</span>
+						<span class="publication-tag">Integrated Circuits</span>
+					</div>
+					<a href="https://doi.org/10.1109/TCAD.2023.3253043" target="_blank" class="doi-link">https://doi.org/10.1109/TCAD.2023.3253043</a>
+				</div>
+				
+				<!-- 2023年會議論文 -->
+				<div class="publication-entry" data-type="conference">
+					<div class="publication-title">Using Path Features for Hardware Trojan Detection Based on Machine Learning Techniques</div>
+					<div class="publication-authors"><strong>Chia-Heng Yen</strong>, Jung-Che Tsai and Kai-Chiang Wu</div>
+					<div class="publication-venue">In Proc. of International Symposium on Quality Electronic Design (ISQED), pp. 1—8, Apr. 2023</div>
+					<div class="publication-tags">
+						<span class="publication-tag">Hardware Security</span>
+						<span class="publication-tag">Machine Learning</span>
+					</div>
+					<a href="https://doi.org/10.1109/ISQED57927.2023.10129300" target="_blank" class="doi-link">https://doi.org/10.1109/ISQED57927.2023.10129300</a>
+				</div>
+				
+				<div class="publication-entry" data-type="conference">
+					<div class="publication-title">Enhancing Good-Die-in-Bad-Neighborhood Methodology with Wafer-Level Defect Pattern Information</div>
+					<div class="publication-authors">Ching-Min Liu, <strong>Chia-Heng Yen</strong>, Shu-Wen Lee, Kai-Chiang Wu and Mango Chia-Tso Chao</div>
+					<div class="publication-venue">In Proc. of IEEE International Test Conference (ITC), pp. 357—366, Oct. 2023</div>
+					<div class="publication-tags">
+						<span class="publication-tag">Defect Pattern</span>
+						<span class="publication-tag">Testing</span>
+					</div>
+					<a href="https://doi.org/10.1109/ITC51656.2023.00053" target="_blank" class="doi-link">https://doi.org/10.1109/ITC51656.2023.00053</a>
+				</div>
+				
+				<div class="publication-entry" data-type="conference">
+					<div class="publication-title">Layer-Minimization-Oriented GNR Area Routing</div>
+					<div class="publication-authors"><strong>Chia-Heng Yen</strong> and Jin-Tai Yan</div>
+					<div class="publication-venue">In Proc. of IEEE International Conference on Electronics, Circuits and Systems (ICECS), pp. 1—4, Dec. 2023</div>
+					<div class="publication-tags">
+						<span class="publication-tag">Routing</span>
+						<span class="publication-tag">GNR</span>
+					</div>
+					<a href="https://doi.org/10.1109/ICECS58634.2023.10382834" target="_blank" class="doi-link">https://doi.org/10.1109/ICECS58634.2023.10382834</a>
+				</div>
+			</div>
+
+			<div class="publication-year-section">
+				<h3>2021</h3>
+				<div class="publication-entry" data-type="journal">
+					<div class="publication-title">Evolutionary Learning Derived Clinical-Radiomic Models for Predicting Early Recurrence of Hepatocellular Carcinoma After Resection</div>
+					<div class="publication-authors">I-Cheng Lee, Jo-Yu Huang, Ting-Chun Chen, <strong>Chia-Heng Yen</strong>, Nai-Chi Chiu, Hsuen-En Hwang, Jia-Guan Huang, Chien-An Liu, Gar-Yang Chau, Rheun-Chuan Lee, Yi-Ping Hung, Yee Chao, Shinn-Ying Ho and Yi-Hsiang Huang</div>
+					<div class="publication-venue">Liver Cancer, vol. 10, no. 6, pp. 572—582, Sep. 2021</div>
+					<div class="publication-tags">
+						<span class="publication-tag">SCI</span>
+						<span class="publication-tag">Evolutionary Learning</span>
+						<span class="publication-tag">Medical Imaging</span>
+					</div>
+					<a href="https://doi.org/10.1159/000518728" target="_blank" class="doi-link">https://doi.org/10.1159/000518728</a>
+				</div>
+				
+				<!-- 2021年會議論文 -->
+				<div class="publication-entry" data-type="conference">
+					<div class="publication-title">Identifying Good-Dice-in-Bad-Neighborhoods Using Artificial Neural Networks</div>
+					<div class="publication-authors">Cheng-Hao Yang, <strong>Chia-Heng Yen</strong>, Ting-Rui Wang, Chun-Teng Chen, Mason Chern, Ying-Yen Chen, Jih-Nung Lee, Shu-Yi Kao, Kai-Chiang Wu and Mango Chia-Tso Chao</div>
+					<div class="publication-venue">In Proc. of IEEE VLSI Test Symposium (VTS), pp. 1—6, Apr. 2021</div>
+					<div class="publication-tags">
+						<span class="publication-tag">Neural Networks</span>
+						<span class="publication-tag">VLSI</span>
+						<span class="publication-tag">Testing</span>
+					</div>
+					<a href="https://doi.org/10.1109/VTS50974.2021.9441055" target="_blank" class="doi-link">https://doi.org/10.1109/VTS50974.2021.9441055</a>
+				</div>
+			</div>
+
+			<!-- 隱藏區塊開始 -->
+			<div class="publication-year-section hidden-item" data-year="2020">
+				<h3>2020</h3>
+				<div class="publication-entry" data-type="conference">
+					<div class="publication-title">CNN-Based Stochastic Regression for IDDQ Outlier Identification</div>
+					<div class="publication-authors">Chun-Teng Chen, <strong>Chia-Heng Yen</strong>, Cheng-Hao Yang, Kai-Chiang Wu, Mason Chern, Ying-Yen Chen, Chun-Yi Kuo, Jih-Nung Lee, Shu-Yi Kao and Mango Chia-Tso Chao</div>
+					<div class="publication-venue">In Proc. of IEEE VLSI Test Symposium (VTS), pp. 1—6, Apr. 2020</div>
+					<div class="publication-tags">
+						<span class="publication-tag">CNN</span>
+						<span class="publication-tag">VLSI</span>
+						<span class="publication-tag">Testing</span>
+					</div>
+					<a href="https://doi.org/10.1109/VTS48691.2020.9107570" target="_blank" class="doi-link">https://doi.org/10.1109/VTS48691.2020.9107570</a>
+				</div>
+			</div>
+
+			<div class="publication-year-section hidden-item" data-year="2019">
+				<h3>2019</h3>
+				<div class="publication-entry" data-type="conference">
+					<div class="publication-title">Construction of Delay-Driven GNR Routing Tree</div>
+					<div class="publication-authors">Jin-Tai Yan and <strong>Chia-Heng Yen</strong></div>
+					<div class="publication-venue">In Proc. of IEEE International New Circuits and Systems Conference (NEWCAS), pp. 1—4, Jun. 2019</div>
+					<div class="publication-tags">
+						<span class="publication-tag">Routing</span>
+						<span class="publication-tag">GNR</span>
+					</div>
+					<a href="https://doi.org/10.1109/NEWCAS44328.2019.8961288" target="_blank" class="doi-link">https://doi.org/10.1109/NEWCAS44328.2019.8961288</a>
+				</div>
+			</div>
+
+			<div class="publication-year-section hidden-item" data-year="2018">
+				<h3>2018</h3>
+				<div class="publication-entry" data-type="conference">
+					<div class="publication-title">Feasible Assignment of Micro-Bumps in 3D ICs</div>
+					<div class="publication-authors">Jin-Tai Yan and <strong>Chia-Heng Yen</strong></div>
+					<div class="publication-venue">In Proc. of IEEE International New Circuits and Systems Conference (NEWCAS), pp. 296—299, Jun. 2018</div>
+					<div class="publication-tags">
+						<span class="publication-tag">3D IC</span>
+						<span class="publication-tag">Micro-Bump</span>
+					</div>
+					<a href="https://doi.org/10.1109/NEWCAS.2018.8585566" target="_blank" class="doi-link">https://doi.org/10.1109/NEWCAS.2018.8585566</a>
+				</div>
+				
+				<div class="publication-entry" data-type="conference">
+					<div class="publication-title">Prediction of Metastasis in Head and Neck Cancer from Computed Tomography Images</div>
+					<div class="publication-authors">Tzu-Yun Lo, Pei-Yin Wei, <strong>Chia-Heng Yen</strong>, Jiing-Feng Lirng, Muh-Hwa Yang, Pen-Yuan Chu and Shinn-Ying Ho</div>
+					<div class="publication-venue">In Proc. of International Conference on Robotics and Artificial Intelligence (ICRAI), pp. 18—23, Nov. 2018</div>
+					<div class="publication-tags">
+						<span class="publication-tag">Medical Imaging</span>
+						<span class="publication-tag">Machine Learning</span>
+					</div>
+					<a href="https://doi.org/10.1145/3297097.3297108" target="_blank" class="doi-link">https://doi.org/10.1145/3297097.3297108</a>
+				</div>
+			</div>
+
+			<div class="publication-year-section hidden-item" data-year="2016">
+				<h3>2016</h3>
+				<div class="publication-entry" data-type="conference">
+					<div class="publication-title">Cell-Aware MBFF Utilization for Clock Power Reduction</div>
+					<div class="publication-authors">Jin-Tai Yan, Meng-Tian Chen and <strong>Chia-Heng Yen</strong></div>
+					<div class="publication-venue">In Proc. of IEEE International Conference on Electronics, Circuits and Systems (ICECS), pp. 648—651, Dec. 2016</div>
+					<div class="publication-tags">
+						<span class="publication-tag">Clock Power</span>
+						<span class="publication-tag">MBFF</span>
+					</div>
+					<a href="https://doi.org/10.1109/ICECS.2016.7841285" target="_blank" class="doi-link">https://doi.org/10.1109/ICECS.2016.7841285</a>
+				</div>
+			</div>
+
+			<div class="publication-year-section hidden-item" data-year="2014">
+				<h3>2014</h3>
+				<div class="publication-entry" data-type="conference">
+					<div class="publication-title">Feasible Region Assignment of Routing Nets in Single-Layer Routing</div>
+					<div class="publication-authors">Jin-Tai Yan, Yu-Jen Tseng and <strong>Chia-Heng Yen</strong></div>
+					<div class="publication-venue">In Proc. of IEEE International Symposium on Circuits and Systems (ISCAS), pp. 393—396, Jun. 2014</div>
+					<div class="publication-tags">
+						<span class="publication-tag">Routing</span>
+						<span class="publication-tag">Single-Layer</span>
+					</div>
+					<a href="https://doi.org/10.1109/ISCAS.2014.6865148" target="_blank" class="doi-link">https://doi.org/10.1109/ISCAS.2014.6865148</a>
+				</div>
+				
+				<div class="publication-entry" data-type="conference">
+					<div class="publication-title">Efficient Micro-Bump Assignment for RDL Routing in 3DICs</div>
+					<div class="publication-authors">Jin-Tai Yan, Yu-Jen Tseng and <strong>Chia-Heng Yen</strong></div>
+					<div class="publication-venue">In Proc. of IEEE International Conference on Electronics, Circuits and Systems (ICECS), pp. 195—198, Dec. 2014</div>
+					<div class="publication-tags">
+						<span class="publication-tag">3D IC</span>
+						<span class="publication-tag">RDL Routing</span>
+					</div>
+					<a href="https://doi.org/10.1109/ICECS.2014.7049955" target="_blank" class="doi-link">https://doi.org/10.1109/ICECS.2014.7049955</a>
+				</div>
+			</div>
+			<!-- 隱藏區塊結束 -->
+
+			<button class="show-more-btn" onclick="toggleAllPublications(this)">Show More</button>
+		</section>
+
+		<!-- 授課區域 -->
+		<section id="teaching" class="section">
+			<h2>Teaching</h2>
+			
+			<div class="course-grid">
+				<div class="course-card">
+					<div class="course-code">B5701R9E</div>
+					<div class="course-title">Digital Logic</div>
+					<div class="course-info">
+						<span><strong>Semester:</strong> Spring 2025</span>
+						<span><strong>Time:</strong> Tuesday 13:10-16:00</span>
+						<span><strong>Location:</strong> ECG B107</span>
+					</div>
+					<div class="course-description">
+						<p>This course covers the fundamental concepts of digital logic design, including Boolean algebra, logic gates, combinational and sequential circuits, optimization techniques, and introduction to digital systems.</p>
+					</div>
+				</div>
+				
+				<div class="course-card">
+					<div class="course-code">B5701R9F</div>
+					<div class="course-title">Laboratory of Digital Design</div>
+					<div class="course-info">
+						<span><strong>Semester:</strong> Spring 2025</span>
+						<span><strong>Time:</strong> Wednesday 13:10-16:00</span>
+						<span><strong>Location:</strong> ECG 610</span>
+					</div>
+					<div class="course-description">
+						<p>A hands-on laboratory course focuses on digital logic design using breadboards and Computer-Aided Design (CAD) tools. The course emphasizes practical skills in digital logic design, including circuit construction and debugging, and design verification.</p>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 隱藏的課程區塊 - 您可以保留這部分用於未來的課程 -->
+			<!--
+			<div class="hidden-item">
+				<div class="course-grid">
+					<div class="course-card">
+						<div class="course-code">CSIE2005</div>
+						<div class="course-title">VLSI Design</div>
+						<div class="course-info">
+							<span><strong>Semester:</strong> Spring 2026</span>
+							<span><strong>Time:</strong> Tuesday 13:00-16:00</span>
+							<span><strong>Location:</strong> Engineering Building Room 301</span>
+						</div>
+						<div class="course-description">
+							<p>Introduction to VLSI design principles, transistor-level design, fabrication processes, and design automation tools.</p>
+						</div>
+					</div>
+					
+					<div class="course-card">
+						<div class="course-code">CSIE3023</div>
+						<div class="course-title">Hardware Security</div>
+						<div class="course-info">
+							<span><strong>Semester:</strong> Spring 2026</span>
+							<span><strong>Time:</strong> Friday 9:00-12:00</span>
+							<span><strong>Location:</strong> Engineering Building Room 405</span>
+						</div>
+						<div class="course-description">
+							<p>This course covers security aspects of hardware design, including hardware trojans, side-channel attacks, and countermeasures.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			-->
+			
+			<button class="show-more-btn" onclick="toggleCourses(this)">Show More</button>
+		</section>
+
+		<!-- 實驗室成員區域 -->
+		<section id="members" class="section">
+			<h2>Lab Members</h2>
+			
+			<!-- 博士生 -->
+			<div class="member-category">
+				<h3>Ph.D. Students</h3>
+				<div class="member-grid">
+					<!-- 
+					<div class="member-card">
+						<div class="member-photo">
+							<img src="/api/placeholder/120/120" alt="Ph.D. Student Photo"/>
+						</div>
+						<div class="member-info">
+							<h4>Xiao-Ming Wang</h4>
+							<p>Research: Deep Learning Applications</p>
+							<p>Year: 2nd Year Ph.D.</p>
+							<p>Email: student@ntou.edu.tw</p>
+						</div>
+					</div>
+					-->
+				</div>
+			</div>
+
+			<!-- 碩士生 -->
+			<div class="member-category">
+				<h3>Master Students</h3>
+				<div class="member-grid">
+					<!--
+					<div class="member-card">
+						<div class="member-photo">
+							<img src="/api/placeholder/120/120" alt="Master Student Photo"/>
+						</div>
+						<div class="member-info">
+							<h4>Xiao-Hua Li</h4>
+							<p>Research: Marine Data Analytics</p>
+							<p>Year: 1st Year M.S.</p>
+							<p>Email: student@ntou.edu.tw</p>
+						</div>
+					</div>
+					-->
+				</div>
+			</div>
+
+			<!-- Undergraduate Students -->
+			<div class="member-category">
+				<h3>Undergraduate Students</h3>
+				<div class="undergrad-grid">
+					<!-- 
+					<div class="undergrad-card">
+						<div class="undergrad-info">
+							<h4>Ming-Hua Chen</h4>
+							<p>Research: Image Processing</p>
+							<p>Year: Senior</p>
+							<p>Email: student@ntou.edu.tw</p>
+						</div>
+					</div>
+					<div class="undergrad-card">
+						<div class="undergrad-info">
+							<h4>Chih-Ming Lin</h4>
+							<p>Research: Artificial Intelligence</p>
+							<p>Year: Senior</p>
+							<p>Email: student2@ntou.edu.tw</p>
+						</div>
+					</div>
+					<div class="undergrad-card">
+						<div class="undergrad-info">
+							<h4>Xiao-Hua Wang</h4>
+							<p>Research: Digital Circuit Design</p>
+							<p>Year: Junior</p>
+							<p>Email: student3@ntou.edu.tw</p>
+						</div>
+					</div>
+					-->
+				</div>
+			</div>
+			
+			<!-- 校友 -->
+			<div class="member-category alumni-section hidden-item">
+				<h3>Alumni</h3>
+				<div class="alumni-grid">
+					<!-- 
+					<div class="alumni-card">
+						<h4>Ph.D. Graduates</h4>
+						<ul class="alumni-list">
+							<li>
+								<strong>Dr. Wei-Ling Chang</strong> (2023)
+								<p>Thesis: Advanced Machine Learning Techniques for VLSI Design</p>
+								<p>Current Position: Assistant Professor, National Taiwan University</p>
+							</li>
+							<li>
+								<strong>Dr. Yu-Hsin Chen</strong> (2022)
+								<p>Thesis: Hardware Security for IoT Devices</p>
+								<p>Current Position: Research Scientist, TSMC</p>
+							</li>
+						</ul>
+					</div>
+					
+					<div class="alumni-card">
+						<h4>Master Graduates</h4>
+						<ul class="alumni-list">
+							<li>
+								<strong>Tzu-Chien Lin</strong> (2024)
+								<p>Thesis: CNN-Based Approaches for IC Testing</p>
+								<p>Current Position: Engineer, MediaTek</p>
+							</li>
+							<li>
+								<strong>Mei-Ling Wu</strong> (2023)
+								<p>Thesis: Efficient Algorithms for 3D IC Design</p>
+								<p>Current Position: Engineer, Intel</p>
+							</li>
+							<li>
+								<strong>Chun-Yi Huang</strong> (2022)
+								<p>Thesis: Deep Learning for Hardware Trojan Detection</p>
+								<p>Current Position: Ph.D. Student, NYCU</p>
+							</li>
+						</ul>
+					</div>
+					-->
+				</div>
+			</div>
+			
+			<button class="show-more-btn" onclick="toggleAlumni(this)">Show Alumni</button>
+		</section>
+    </div>
+
+	<!-- 頁腳 -->
+	<footer class="footer">
+		<div class="footer-content">
+			<img src="images/NTOU_logo.png" alt="NTOU Logo" class="footer-logo"/>
+			<div class="footer-text">
+				<p>Intelligent Design and Application Laboratory</p>
+				<p>National Taiwan Ocean University</p>
+				<p>Intelligent Design and Application Laboratory &copy; 2025</p>
+			</div>
+		</div>
+	</footer>
+
+    <script>
+        // 監聽視窗大小變化
+        window.addEventListener('resize', function() {
+            const nav = document.querySelector('.nav');
+            document.documentElement.style.setProperty('--nav-height', nav.offsetHeight + 'px');
+        });
+
+        // 初始化
+        window.dispatchEvent(new Event('resize'));
+
+        // 展開/收合公告
+        function toggleAnnouncements(button) {
+            const announcements = document.querySelectorAll('#announcements .announcement.hidden-item');
+            announcements.forEach(item => item.classList.toggle('show'));
+            button.textContent = button.textContent === 'Show More' ? 'Show Less' : 'Show More';
+        }
+
+        // 展開/收合論文
+        function togglePublications(button) {
+            const publications = button.parentElement.querySelectorAll('.publication-item.hidden-item');
+            publications.forEach(item => item.classList.toggle('show'));
+            button.textContent = button.textContent === 'Show More' ? 'Show Less' : 'Show More';
+        }
+
+        // 展開/收合所有論文
+        function toggleAllPublications(button) {
+            const publications = document.querySelectorAll('#publications .publication-year-section.hidden-item');
+            publications.forEach(item => item.classList.toggle('show'));
+            button.textContent = button.textContent === 'Show More' ? 'Show Less' : 'Show More';
+        }
+
+        // 篩選論文
+        function filterPublications(type) {
+            // 更新按鈕狀態
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // 過濾論文
+            const publications = document.querySelectorAll('.publication-entry');
+            publications.forEach(pub => {
+                if (type === 'all' || pub.dataset.type === type) {
+                    pub.style.display = 'block';
+                } else {
+                    pub.style.display = 'none';
+                }
+            });
+        }
+		
+		// 展開/收合課程
+		function toggleCourses(button) {
+			const coursesHidden = document.querySelector('#teaching .hidden-item');
+			coursesHidden.classList.toggle('show');
+			button.textContent = button.textContent === 'Show More' ? 'Show Less' : 'Show More';
+		}
+
+		// 展開/收合校友
+		function toggleAlumni(button) {
+			const alumni = document.querySelectorAll('.alumni-section');
+			alumni.forEach(item => item.classList.toggle('show'));
+			button.textContent = button.textContent === 'Show Alumni' ? 'Hide Alumni' : 'Show Alumni';
+		}
+    </script>
+</body>
 </html>
