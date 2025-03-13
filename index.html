@@ -242,6 +242,16 @@
             position: relative;
         }
 
+        /* 頁面部分的顯示控制 */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
         /* 展開/收合按鈕樣式 */
         .show-more-btn {
             display: inline-block;
@@ -442,6 +452,12 @@
                 padding: 0.8rem 1rem;
                 border-radius: 8px;
             }
+
+            /* 導航項目的活躍狀態樣式 */
+            .nav-links a.active {
+                background-color: var(--primary-blue);
+                color: white;
+            }
             
             /* 漢堡選單動畫 - 新增 */
             .menu-toggle.active .bar:nth-child(1) {
@@ -572,7 +588,164 @@
 		.lab-info p {
 			margin: 0;
 			color: var(--primary-blue);
-		}		
+		}	
+        
+        /* 實驗室概述樣式 */
+        .lab-overview {
+            line-height: 1.7;
+        }
+
+        .lab-overview p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+
+
+        /* 實驗室概述容器 */
+        .overview-container {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            align-items: center;
+        }
+
+        /* 右側圖標樣式 */
+        .lab-side-logo {
+            flex-shrink: 0;
+            width: 200px;
+        }
+
+        .lab-side-logo img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .lab-side-logo img:hover {
+            transform: scale(1.05);
+        }
+
+        /* 左側內容 */
+        .overview-content {
+            flex: 1;
+        }
+
+        .overview-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 響應式調整 */
+        @media (max-width: 768px) {
+            .overview-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .lab-side-logo {
+                width: 150px;
+                margin-top: 1.5rem;
+                order: 2; /* 在手機版上，圖標放在文字下方 */
+            }
+            
+            .overview-content {
+                order: 1; /* 在手機版上，文字放在圖標上方 */
+            }
+            
+            .overview-content p {
+                text-align: left;
+            }
+        }
+
+        .lab-highlights {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: var(--light-blue);
+            border-radius: var(--card-border-radius);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .lab-highlights:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            background-color: white;
+        }
+
+        .lab-highlights h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-blue);
+            text-align: center;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .highlight-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--card-border-radius);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .highlight-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            background-color: var(--light-blue);
+        }
+
+        .highlight-icon {
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            background-color: rgba(26, 76, 124, 0.1);
+            border-radius: 50%;
+            padding: 12px;
+        }
+
+        .highlight-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .highlight-item h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .highlight-item p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        /* 響應式調整 */
+        @media (max-width: 768px) {
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .lab-highlights {
+                padding: 1.5rem;
+            }
+        }
+
 
         /* 研究主題 */
         .research-topic {
@@ -1066,31 +1239,31 @@
 </head>
 <body>
     <section id="hero" class="hero-section">
-        <img src="images/back.jpg" alt="Marine Laboratory" class="hero-image"/>
+        <img src="images/back.jpg" alt="Marine Laboratory" class="hero-image" loading="eager"/>
         <div class="hero-overlay">
-            <img src="images/lab_logo.png" alt="Lab Logo" class="hero-logo"/>
+            <img src="images/lab_logo.png" alt="Lab Logo" class="hero-logo" loading="eager"/>
             <h1 class="lab-title">Intelligent Design and Application Laboratory <br>(IDA Lab)</h1>
-            <p class="lab-subtitle">Multi-domain Innovation with AI at the Core:<br>Intelligent Solutions for IC Design, Hardware Security, and Healthcare</p>
+            <p class="lab-subtitle">Multi-domain Innovation with AI at the Core:<br>Intelligent Solutions for VLSI Design, Hardware Security, and Healthcare</p>
         </div>
     </section>
 
-<nav class="nav">
+    <nav class="nav">
         <div class="nav-container">
-            <!-- 漢堡選單按鈕 - 新增 -->
+            <!-- 漢堡選單按鈕 -->
             <div class="menu-toggle" id="menu-toggle">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
             
-            <!-- 導航列Logo - 新增 -->
+            <!-- 導航列Logo -->
             <div class="nav-logo">
                 <img src="images/lab_logo.png" alt="IDA Lab Logo" width="40">
             </div>
             
-            <!-- 導航列連結 - 保留原有連結 -->
+            <!-- 導航列連結 -->
             <ul class="nav-links" id="nav-links">
-                <li><a href="#hero">Home</a></li>
+                <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#announcements">Announcements</a></li>
                 <li><a href="#pi">Principal Investigator</a></li>
                 <li><a href="#research">Research</a></li>
@@ -1102,8 +1275,67 @@
     </nav>
 
     <div class="container">
+        <!-- 實驗室簡介 (新增) -->
+        <section id="home" class="section fade-on-scroll page-section active">
+            <h2>Laboratory Overview</h2>
+            <div class="lab-overview">
+                <div class="overview-container">
+                    <!-- 左側內文 -->
+                    <div class="overview-content">
+                        <p>The Intelligent Design and Application Laboratory (IDA Lab) at National Taiwan Ocean University is dedicated to advancing research in the intersection of artificial intelligence and various application domains including VLSI design, hardware security, and healthcare.</p>
+                        
+                        <p>Our mission is to develop innovative solutions through the application of cutting-edge AI technologies to solve complex problems across multiple domains. We focus on translating theoretical advancements into practical applications with real-world impact.</p>
+                        
+                        <p>Led by Dr. Chia-Heng Yen, our team consists of talented researchers and students from diverse backgrounds, working collaboratively on interdisciplinary projects that bridge the gap between technology and application domains.</p>
+                    </div>
+                    
+                    <!-- 右側圖標 -->
+                    <div class="lab-side-logo">
+                        <img src="images/lab_icon.png" alt="IDA Lab Logo">
+                    </div>
+                </div>
+                
+                <div class="lab-highlights">
+                    <h3>Research Highlights</h3>
+                    <div class="highlights-grid">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <img src="images/ai-icon.png" alt="AI Icon" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2248%22 height%3D%2248%22 viewBox%3D%220 0 24 24%22%3E%3Cpath fill%3D%22%231a4c7c%22 d%3D%22M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z%22%2F%3E%3C%2Fsvg%3E'">
+                            </div>
+                            <h4>AI-driven VLSI Design</h4>
+                            <p>Optimizing integrated circuit testing and design processes through advanced machine learning techniques.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <img src="images/security-icon.png" alt="Security Icon" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2248%22 height%3D%2248%22 viewBox%3D%220 0 24 24%22%3E%3Cpath fill%3D%22%231a4c7c%22 d%3D%22M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z%22%2F%3E%3C%2Fsvg%3E'">
+                            </div>
+                            <h4>Hardware Security</h4>
+                            <p>Enhancing chip security through innovative detection and protection mechanisms for hardware trojans.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <img src="images/medical-icon.png" alt="Medical Icon" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2248%22 height%3D%2248%22 viewBox%3D%220 0 24 24%22%3E%3Cpath fill%3D%22%231a4c7c%22 d%3D%22M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z%22%2F%3E%3C%2Fsvg%3E'">
+                            </div>
+                            <h4>Medical Imaging</h4>
+                            <p>Developing advanced algorithms for cancer prediction and diagnosis using medical image analysis.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <img src="images/circuit-icon.png" alt="Circuit Icon" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2248%22 height%3D%2248%22 viewBox%3D%220 0 24 24%22%3E%3Cpath fill%3D%22%231a4c7c%22 d%3D%22M20 7h-4V5c0-.55-.45-1-1-1h-6c-.55 0-1 .45-1 1v2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM10 5h4v2h-4V5zm1 13.5l-1-1 3-3-3-3 1-1 4 4-4 4z%22%2F%3E%3C%2Fsvg%3E'">
+                            </div>
+                            <h4>Digital Circuit Design</h4>
+                            <p>Creating optimized circuit designs with innovative architectures for better performance and power efficiency.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        
+        
         <!-- 公告區域 -->
-        <section id="announcements" class="section">
+        <section id="announcements" class="section fade-on-scroll page-section">
             <h2>Latest Announcements</h2>
             <div class="announcement">
                 <h3>Graduate Student Recruitment</h3>
@@ -1136,7 +1368,7 @@
         </section>
 
 		<!-- PI 個人資料區域 -->
-		<section id="pi" class="section">
+		<section id="pi" class="section fade-on-scroll page-section active">
 			<h2>Principal Investigator</h2>
 			<div class="pi-profile">
 				<div class="pi-photo">
@@ -1224,7 +1456,7 @@
         </section>
 
 		<!-- 研究主題區域 -->
-		<section id="research" class="section">
+		<section id="research" class="section fade-on-scroll page-section active">
 			<h2>Research Topics</h2>
 			
 			<div class="research-topic">
@@ -1366,7 +1598,7 @@
 				
 		</section>
 		<!-- Publications 區塊 -->
-		<section id="publications" class="section">
+		<section id="publications" class="section fade-on-scroll page-section active">
 			<h2>Publications</h2>
 			
 			<div class="publications-filter">
@@ -1636,7 +1868,7 @@
 		</section>
 
 		<!-- 授課區域 -->
-		<section id="teaching" class="section">
+		<section id="teaching" class="section fade-on-scroll page-section active">
 			<h2>Teaching Courses</h2>
 			
 			<div class="course-grid">
@@ -1704,7 +1936,7 @@
 		</section>
 
 		<!-- 實驗室成員區域 -->
-		<section id="members" class="section">
+		<section id="members" class="section fade-on-scroll page-section active">
 			<h2>Lab Members</h2>
 			
 			<!-- 博士生 -->
@@ -1851,6 +2083,63 @@
         // 初始化
         window.dispatchEvent(new Event('resize'));
 
+        
+        // 頁面切換功能
+        function switchPage(pageId) {
+            // 隱藏所有頁面
+            document.querySelectorAll('.page-section').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // 顯示選中的頁面
+            const activePage = document.getElementById(pageId);
+            if (activePage) {
+                activePage.classList.add('active');
+                
+                // 滾動到頁面頂部
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+            
+            // 更新導航項目狀態
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + pageId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // 更新URL
+            history.pushState(null, null, '#' + pageId);
+        }
+
+        // 修改導航連結的點擊事件
+        document.addEventListener('DOMContentLoaded', function() {
+            // 獲取所有導航連結
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            // 為每個連結添加點擊事件
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('href').substring(1);
+                    switchPage(pageId);
+                    
+                    // 如果導航菜單是開啟的，關閉它（對移動端）
+                    const navMenu = document.getElementById('nav-links');
+                    if (navMenu.classList.contains('active')) {
+                        document.getElementById('menu-toggle').click();
+                    }
+                });
+            });
+            
+            // 頁面載入時檢查URL片段
+            const pageId = window.location.hash.substring(1) || 'home';
+            switchPage(pageId);
+        });
+        
         // 展開/收合公告
         function toggleAnnouncements(button) {
             const announcements = document.querySelectorAll('#announcements .announcement.hidden-item');
