@@ -6,352 +6,344 @@
     <title>Intelligent Design and Application Laboratory (IDA Lab)</title>
 	<link rel="icon" href="images/lab_logo.png">
     <style>
-        /* 基本設定 */
-        :root {
-            --primary-blue: #1a4c7c;
-            --secondary-blue: #2d6da3;
-            --accent-blue: #5094d4;
-            --light-blue: #e6f3ff;
-            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-        
-        /* 平滑滾動 */
-        html {
-            scroll-behavior: smooth;
-        }
+		/* 基本設定 */
+		:root {
+			--primary-blue: #1a4c7c;
+			--secondary-blue: #2d6da3;
+			--accent-blue: #5094d4;
+			--light-blue: #e6f3ff;
+			--gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+			--box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			--transition: all 0.3s ease;
+		}
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+		html {
+			scroll-behavior: smooth;
+		}
 
-        body {
-            margin: 0;
-            font-family: "Microsoft JhengHei", sans-serif;
-            line-height: 1.6;
-            background-color: #f5f8fa;
-        }
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
 
-        section[id] {
-            scroll-margin-top: 70px;
-        }
+		body {
+			font-family: "Microsoft JhengHei", sans-serif;
+			line-height: 1.6;
+			background-color: #f5f8fa;
+			margin: 0;
+		}
 
-		/* Logo 樣式 */
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            position: relative;
-        }
+		section[id] {
+			scroll-margin-top: 70px;
+		}
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-        }
-
-        .logo span {
-            color: var(--primary-blue);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* 頂部大圖 */
-        .hero-section {
-            position: relative;
-            height: 500px;
-            overflow: hidden;
-        }
-
-        .hero-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(26,76,124,0.9));
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .hero-logo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background-color: white;
-            padding: 10px;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            object-fit: contain;
-        }
-
-        .lab-title {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .lab-subtitle {
-            font-size: 1.5rem;
-            max-width: 800px;
-            margin: 0 auto;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        /* 導航欄 */
-        .nav {
-            background-color: rgba(255,255,255,0.95);
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            box-shadow: var(--box-shadow);
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-        }
-
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            list-style: none;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            display: block;
-            color: var(--primary-blue);
-            text-decoration: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 20px;
-            transition: var(--transition);
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            background-color: var(--light-blue);
-            transform: translateY(-2px);
-        }
-
-        /* 漢堡選單按鈕樣式 - 新增 */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 21px;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .bar {
-            height: 3px;
-            width: 100%;
-            background-color: var(--primary-blue);
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-
-        /* 導航列Logo - 新增 */
-        .nav-logo {
-            display: none;
-        }
-
-        /* 背景遮罩 - 新增 */
-        .menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            z-index: 999;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .menu-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
-        /* 禁止選單開啟時背景滾動 - 新增 */
-        body.menu-open {
-            overflow: hidden;
-        }
-
-        /* 滑入動畫 - 新增 */
-        @keyframes slideIn {
-            from { transform: translateX(-100%); }
-            to { transform: translateX(0); }
-        }
-
-        /* 主要容器 */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-
-        /* 區塊樣式 */
-        .section {
-            background-color: white;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        .section h2 {
-            color: var(--primary-blue);
-            border-bottom: 2px solid var(--accent-blue);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        /* 頁面部分的顯示控制 */
-        .page-section {
-            display: none;
-        }
-
-        .page-section.active {
-            display: block;
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        /* 展開/收合按鈕樣式 */
-        .show-more-btn {
-            display: inline-block;
-            padding: 0.5rem 1.5rem;
-            background-color: var(--light-blue);
-            color: var(--primary-blue);
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
-            margin-top: 1rem;
-        }
-
-        .show-more-btn:hover {
-            background-color: var(--primary-blue);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* 隱藏額外的項目 */
-        .hidden-item {
-            display: none;
-        }
-
-        .hidden-item.show {
-            display: block;
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        /* 公告區域 */
-        .announcement {
-            background-color: var(--light-blue);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid var(--accent-blue);
-            transition: var(--transition);
-        }
-
-        .announcement:hover {
-            transform: translateX(5px);
-        }
-
-        /* PI 個人資料 */
-        .pi-profile {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            padding: 2rem;
-            background-color: var(--light-blue);
-            border-radius: 12px;
-            transition: var(--transition);
+		/* 頂部大圖與導航 */
+		.nav-container {
+			display: flex;
+			justify-content: space-between;
 			align-items: center;
-        }
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 1rem;
+			position: relative;
+		}
 
-        .pi-photo {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid white;
-            box-shadow: var(--box-shadow);
-            flex-shrink: 0;
-        }
+		.logo {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}
 
-        .pi-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+		.logo img {
+			width: 50px;
+			height: 50px;
+			object-fit: contain;
+		}
 
-        .pi-info {
-            flex: 1;
-        }
+		.logo span {
+			color: var(--primary-blue);
+			font-weight: bold;
+			font-size: 1.2rem;
+		}
 
-        .pi-contact {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
+		.hero-section {
+			position: relative;
+			height: 500px;
+			overflow: hidden;
+		}
 
-        .pi-contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background-color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            box-shadow: var(--box-shadow);
-        }
+		.hero-image {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
 
-        .pi-contact-item img {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-        }
-		
-		/* 學術檔案連結樣式 */
+		.hero-overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(rgba(0,0,0,0.3), rgba(26,76,124,0.9));
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			color: white;
+			text-align: center;
+			padding: 2rem;
+		}
+
+		.hero-logo {
+			width: 120px;
+			height: 120px;
+			border-radius: 50%;
+			background-color: white;
+			padding: 10px;
+			margin-bottom: 1.5rem;
+			box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+			object-fit: contain;
+		}
+
+		.lab-title {
+			font-size: 3rem;
+			margin-bottom: 1rem;
+			text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+		}
+
+		.lab-subtitle {
+			font-size: 1.5rem;
+			max-width: 800px;
+			margin: 0 auto;
+			text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+		}
+
+		/* 導航欄 */
+		.nav {
+			background-color: rgba(255,255,255,0.95);
+			padding: 1rem;
+			position: sticky;
+			top: 0;
+			box-shadow: var(--box-shadow);
+			z-index: 1000;
+			backdrop-filter: blur(5px);
+		}
+
+		.nav-links {
+			display: flex;
+			justify-content: center;
+			gap: 1.5rem;
+			list-style: none;
+			flex-wrap: wrap;
+		}
+
+		.nav-links a {
+			display: block;
+			color: var(--primary-blue);
+			text-decoration: none;
+			padding: 0.75rem 1.5rem;
+			border-radius: 20px;
+			transition: var(--transition);
+			font-weight: 500;
+		}
+
+		.nav-links a:hover {
+			background-color: var(--light-blue);
+			transform: translateY(-2px);
+		}
+
+		/* 漢堡選單按鈕 */
+		.menu-toggle {
+			display: none;
+			flex-direction: column;
+			justify-content: space-between;
+			width: 30px;
+			height: 21px;
+			cursor: pointer;
+			z-index: 1001;
+		}
+
+		.bar {
+			height: 3px;
+			width: 100%;
+			background-color: var(--primary-blue);
+			border-radius: 3px;
+			transition: all 0.3s ease;
+		}
+
+		.nav-logo {
+			display: none;
+		}
+
+		.menu-overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,0.5);
+			z-index: 999;
+			display: none;
+			opacity: 0;
+			transition: opacity 0.3s ease;
+		}
+
+		.menu-overlay.active {
+			display: block;
+			opacity: 1;
+		}
+
+		body.menu-open {
+			overflow: hidden;
+		}
+
+		@keyframes slideIn {
+			from { transform: translateX(-100%); }
+			to { transform: translateX(0); }
+		}
+
+		/* 主要容器與區塊 */
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 2rem 1rem;
+		}
+
+		.section {
+			background-color: white;
+			border-radius: 12px;
+			padding: 2rem;
+			margin-bottom: 2rem;
+			box-shadow: var(--box-shadow);
+			transition: var(--transition);
+			animation: fadeIn 0.5s ease-out;
+		}
+
+		.section:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+		}
+
+		.section h2 {
+			color: var(--primary-blue);
+			border-bottom: 2px solid var(--accent-blue);
+			padding-bottom: 0.5rem;
+			margin-bottom: 1.5rem;
+			position: relative;
+		}
+
+		/* 頁面顯示控制 */
+		.page-section {
+			display: none;
+		}
+
+		.page-section.active {
+			display: block;
+			animation: fadeIn 0.5s ease-out;
+		}
+
+		.hidden-item {
+			display: none;
+		}
+
+		.hidden-item.show {
+			display: block;
+			animation: fadeIn 0.5s ease-out;
+		}
+
+		/* 各區塊樣式 */
+		.show-more-btn {
+			display: inline-block;
+			padding: 0.5rem 1.5rem;
+			background-color: var(--light-blue);
+			color: var(--primary-blue);
+			border: none;
+			border-radius: 20px;
+			cursor: pointer;
+			transition: var(--transition);
+			font-weight: 500;
+			margin-top: 1rem;
+		}
+
+		.show-more-btn:hover {
+			background-color: var(--primary-blue);
+			color: white;
+			transform: translateY(-2px);
+		}
+
+		/* 公告區域 */
+		.announcement {
+			background-color: var(--light-blue);
+			padding: 1.5rem;
+			border-radius: 8px;
+			margin-bottom: 1.5rem;
+			border-left: 4px solid var(--accent-blue);
+			transition: var(--transition);
+		}
+
+		.announcement:hover {
+			transform: translateX(5px);
+		}
+
+		/* PI 個人資料 */
+		.pi-profile {
+			display: flex;
+			gap: 2rem;
+			margin-bottom: 2rem;
+			padding: 2rem;
+			background-color: var(--light-blue);
+			border-radius: 12px;
+			transition: var(--transition);
+			align-items: center;
+		}
+
+		.pi-photo {
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			overflow: hidden;
+			border: 4px solid white;
+			box-shadow: var(--box-shadow);
+			flex-shrink: 0;
+		}
+
+		.pi-photo img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.pi-info {
+			flex: 1;
+		}
+
+		.pi-contact {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1rem;
+			margin-top: 1rem;
+		}
+
+		.pi-contact-item {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			background-color: white;
+			padding: 0.5rem 1rem;
+			border-radius: 20px;
+			box-shadow: var(--box-shadow);
+		}
+
+		.pi-contact-item img {
+			width: 24px;
+			height: 24px;
+			object-fit: contain;
+		}
+
 		.pi-academic-profiles {
 			display: flex;
 			gap: 1.5rem;
@@ -383,188 +375,175 @@
 			object-fit: contain;
 		}
 
-		/* 響應式設計 */
-        @media (max-width: 768px) {
-            .hero-section {
-                height: 400px;
-            }
+		/* 學歷區域 */
+		.education-item {
+			display: flex;
+			align-items: center;
+			margin-bottom: 1.5rem;
+			padding: 1.5rem;
+			background-color: var(--light-blue);
+			border-radius: 8px;
+			transition: var(--transition);
+		}
 
-            .lab-title {
-                font-size: 2.5rem;
-            }
+		.education-item:hover {
+			transform: translateX(5px);
+			box-shadow: var(--box-shadow);
+			background-color: white;
+		}
 
-            .lab-subtitle {
-                font-size: 1.2rem;
-            }
+		.school-logo {
+			width: 80px;
+			height: 80px;
+			margin-right: 1.5rem;
+			border-radius: 50%;
+			overflow: hidden;
+			background-color: white;
+			padding: 0.5rem;
+			box-shadow: var(--box-shadow);
+		}
 
-            .nav {
-                padding: 0.5rem;
-            }
+		.school-logo img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
 
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
+		/* 歷史沿革 */
+		.lab-history {
+			margin: 3rem 0;
+			padding: 2rem;
+			background-color: var(--light-blue);
+			border-radius: 12px;
+			box-shadow: var(--box-shadow);
+			transition: var(--transition);
+		}
 
-            /* 顯示漢堡選單按鈕 - 新增 */
-            .menu-toggle {
-                display: flex;
-            }
-            
-            /* 顯示導航Logo - 新增 */
-            .nav-logo {
-                display: block;
-            }
-            
-            /* 改變導航列樣式為垂直顯示 - 修改 */
-            .nav-links {
-                position: fixed;
-                left: -100%;
-                top: 0;
-                width: 80%;
-                max-width: 300px;
-                height: 100%;
-                flex-direction: column;
-                background-color: white;
-                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-                transition: left 0.3s ease;
-                padding: 80px 20px 20px;
-                z-index: 1000;
-                overflow-y: auto;
-                justify-content: flex-start;
-            }
-            
-            /* 活躍狀態 - 顯示選單 - 新增 */
-            .nav-links.active {
-                left: 0;
-                animation: slideIn 0.3s ease-out;
-            }
-            
-            /* 選單項目樣式 - 修改 */
-            .nav-links li {
-                margin: 0.5rem 0;
-                width: 100%;
-            }
-            
-            .nav-links a {
-                width: 100%;
-                text-align: left;
-                padding: 0.8rem 1rem;
-                border-radius: 8px;
-            }
+		.lab-history:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+			background-color: white;
+		}
 
-            /* 導航項目的活躍狀態樣式 */
-            .nav-links a.active {
-                background-color: var(--primary-blue);
-                color: white;
-            }
-            
-            /* 漢堡選單動畫 - 新增 */
-            .menu-toggle.active .bar:nth-child(1) {
-                transform: translateY(9px) rotate(45deg);
-            }
-            
-            .menu-toggle.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-            
-            .menu-toggle.active .bar:nth-child(3) {
-                transform: translateY(-9px) rotate(-45deg);
-            }
+		.lab-history h3 {
+			color: var(--primary-blue);
+			margin-bottom: 2rem;
+			padding-bottom: 0.5rem;
+			border-bottom: 2px solid var(--accent-blue);
+			text-align: center;
+		}
 
-            .pi-profile {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
+		/* 時間軸 */
+		.timeline {
+			position: relative;
+			padding-left: 2rem;
+		}
 
-            .education-item {
-                flex-direction: column;
-                text-align: center;
-            }
+		.timeline::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 4px;
+			height: 100%;
+			background-color: var(--accent-blue);
+			border-radius: 2px;
+		}
 
-            .school-logo {
-                margin: 0 auto 1rem;
-            }
+		.timeline-item {
+			position: relative;
+			padding-bottom: 2.5rem;
+		}
 
-            .publications-filter {
-                justify-content: center;
-            }
-        }
+		.timeline-item:last-child {
+			padding-bottom: 0;
+		}
 
-        @media (max-width: 480px) {
-            .hero-section {
-                height: 250px;
-            }
+		.timeline-dot {
+			position: absolute;
+			left: -2.4rem;
+			top: 0.3rem;
+			width: 20px;
+			height: 20px;
+			background-color: var(--primary-blue);
+			border: 4px solid white;
+			border-radius: 50%;
+			z-index: 1;
+		}
 
-            .lab-title {
-                font-size: 2rem;
-            }
+		.timeline-date {
+			display: inline-block;
+			padding: 0.3rem 0.8rem;
+			background-color: var(--primary-blue);
+			color: white;
+			border-radius: 20px;
+			font-weight: 600;
+			margin-bottom: 0.5rem;
+		}
 
-            .lab-subtitle {
-                font-size: 1rem;
-            }
+		.timeline-content {
+			background-color: white;
+			padding: 1.5rem;
+			border-radius: 12px;
+			box-shadow: var(--box-shadow);
+		}
 
-            .hero-logo {
-                width: 80px;
-                height: 80px;
-            }
+		.timeline-content h4 {
+			color: var(--primary-blue);
+			margin-bottom: 0.75rem;
+		}
 
-            .section {
-                padding: 1rem;
-            }
+		.timeline-content p {
+			margin: 0;
+		}
 
-            .member-photo {
-                width: 100px;
-                height: 100px;
-            }
+		/* 經歷與計畫 */
+		.experience-item, .project-item {
+			display: flex;
+			margin-bottom: 1.5rem;
+			padding: 1.5rem;
+			background-color: var(--light-blue);
+			border-radius: 12px;
+			transition: var(--transition);
+		}
 
-            .container {
-                padding: 1rem 0.5rem;
-            }
+		.experience-item:hover, .project-item:hover {
+			transform: translateX(5px);
+			box-shadow: var(--box-shadow);
+			background-color: white;
+		}
 
-            .research-topic,
-            .member-card,
-            .publication-item {
-                padding: 1rem;
-            }
-        }
-		
-        /* 學歷區域 */
-        .education-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding: 1.5rem;
-            background-color: var(--light-blue);
-            border-radius: 8px;
-            transition: var(--transition);
-        }
+		.experience-dates, .project-dates {
+			flex: 0 0 120px;
+			font-weight: 600;
+			color: var(--primary-blue);
+			padding-right: 1rem;
+			border-right: 2px solid var(--accent-blue);
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+		}
 
-        .education-item:hover {
-            transform: translateX(5px);
-            box-shadow: var(--box-shadow);
-            background-color: white;
-        }
+		.experience-info, .project-info {
+			flex: 1;
+			padding-left: 1.5rem;
+		}
 
-        .school-logo {
-            width: 80px;
-            height: 80px;
-            margin-right: 1.5rem;
-            border-radius: 50%;
-            overflow: hidden;
-            background-color: white;
-            padding: 0.5rem;
-            box-shadow: var(--box-shadow);
-        }
+		.experience-info h4, .project-info h4 {
+			color: var(--primary-blue);
+			margin-bottom: 0.5rem;
+		}
 
-        .school-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-		
-		/* 實驗室連結區塊樣式 */
+		.experience-details {
+			margin-top: 0.75rem;
+			padding-left: 1.5rem;
+		}
+
+		.experience-details li {
+			margin-bottom: 0.5rem;
+		}
+
+		/* 實驗室連結 */
 		.lab-link {
 			display: block;
 			text-decoration: none;
@@ -588,293 +567,253 @@
 		.lab-info p {
 			margin: 0;
 			color: var(--primary-blue);
-		}	
-        
-        /* 實驗室概述樣式 */
-        .lab-overview {
-            line-height: 1.7;
-        }
+		}
 
-        .lab-overview p {
-            margin-bottom: 1.2rem;
-            text-align: justify;
-        }
+		/* 實驗室概述 */
+		.lab-overview {
+			line-height: 1.7;
+		}
 
+		.lab-overview p {
+			margin-bottom: 1.2rem;
+			text-align: justify;
+		}
 
+		.overview-container {
+			display: flex;
+			gap: 2rem;
+			margin-bottom: 2rem;
+			align-items: center;
+		}
 
-        /* 實驗室概述容器 */
-        .overview-container {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            align-items: center;
-        }
+		.lab-side-logo {
+			flex-shrink: 0;
+			width: 200px;
+		}
 
-        /* 右側圖標樣式 */
-        .lab-side-logo {
-            flex-shrink: 0;
-            width: 200px;
-        }
+		.lab-side-logo img {
+			width: 100%;
+			height: auto;
+			transition: transform 0.3s ease;
+		}
 
-        .lab-side-logo img {
-            width: 100%;
-            height: auto;
-            transition: transform 0.3s ease;
-        }
+		.lab-side-logo img:hover {
+			transform: scale(1.05);
+		}
 
-        .lab-side-logo img:hover {
-            transform: scale(1.05);
-        }
+		.overview-content {
+			flex: 1;
+		}
 
-        /* 左側內容 */
-        .overview-content {
-            flex: 1;
-        }
+		.overview-content p:last-child {
+			margin-bottom: 0;
+		}
 
-        .overview-content p:last-child {
-            margin-bottom: 0;
-        }
+		/* 特色區塊 */
+		.lab-highlights {
+			margin-top: 2rem;
+			padding: 2rem;
+			background-color: var(--light-blue);
+			border-radius: 12px;
+			box-shadow: var(--box-shadow);
+			transition: var(--transition);
+		}
 
-        /* 響應式調整 */
-        @media (max-width: 768px) {
-            .overview-container {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            
-            .lab-side-logo {
-                width: 150px;
-                margin-top: 1.5rem;
-                order: 2; /* 在手機版上，圖標放在文字下方 */
-            }
-            
-            .overview-content {
-                order: 1; /* 在手機版上，文字放在圖標上方 */
-            }
-            
-            .overview-content p {
-                text-align: left;
-            }
-        }
+		.lab-highlights:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+			background-color: white;
+		}
 
-        .lab-highlights {
-            margin-top: 2rem;
-            padding: 2rem;
-            background-color: var(--light-blue);
-            border-radius: var(--card-border-radius);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-        }
+		.lab-highlights h3 {
+			color: var(--primary-blue);
+			margin-bottom: 1.5rem;
+			padding-bottom: 0.5rem;
+			border-bottom: 2px solid var(--accent-blue);
+			text-align: center;
+		}
 
-        .lab-highlights:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-            background-color: white;
-        }
+		.highlights-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 1.5rem;
+		}
 
-        .lab-highlights h3 {
-            color: var(--primary-blue);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--accent-blue);
-            text-align: center;
-        }
+		.highlight-item {
+			background: white;
+			padding: 1.5rem;
+			border-radius: 12px;
+			box-shadow: var(--box-shadow);
+			transition: var(--transition);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+		}
 
-        .highlights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
+		.highlight-item:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+			background-color: var(--light-blue);
+		}
 
-        .highlight-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: var(--card-border-radius);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
+		.highlight-icon {
+			width: 64px;
+			height: 64px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 1rem;
+			background-color: rgba(26, 76, 124, 0.1);
+			border-radius: 50%;
+			padding: 12px;
+		}
 
-        .highlight-item:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-            background-color: var(--light-blue);
-        }
+		.highlight-icon img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
 
-        .highlight-icon {
-            width: 64px;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            background-color: rgba(26, 76, 124, 0.1);
-            border-radius: 50%;
-            padding: 12px;
-        }
+		.highlight-item h4 {
+			color: var(--primary-blue);
+			margin-bottom: 0.75rem;
+			font-size: 1.1rem;
+		}
 
-        .highlight-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+		.highlight-item p {
+			margin: 0;
+			font-size: 0.95rem;
+			color: #444;
+		}
 
-        .highlight-item h4 {
-            color: var(--primary-blue);
-            margin-bottom: 0.75rem;
-            font-size: 1.1rem;
-        }
+		/* 研究主題 */
+		.research-topic {
+			padding: 2rem;
+			margin-bottom: 2rem;
+			border-radius: 12px;
+			background-color: var(--light-blue);
+			transition: var(--transition);
+		}
 
-        .highlight-item p {
-            margin: 0;
-            font-size: 0.95rem;
-            color: #444;
-        }
+		.research-topic:hover {
+			transform: translateY(-3px);
+			box-shadow: var(--box-shadow);
+			background-color: white;
+		}
 
-        /* 響應式調整 */
-        @media (max-width: 768px) {
-            .highlights-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .lab-highlights {
-                padding: 1.5rem;
-            }
-        }
+		.interest-icon img {
+			width: 48px;
+			height: 48px;
+			object-fit: contain;
+		}
 
+		.publications-list {
+			margin-top: 1rem;
+			padding-top: 1rem;
+			border-top: 1px solid rgba(0,0,0,0.1);
+		}
 
-        /* 研究主題 */
-        .research-topic {
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 12px;
-            background-color: var(--light-blue);
-            transition: var(--transition);
-        }
+		.publication-item {
+			padding: 1rem;
+			margin-bottom: 0.5rem;
+			border-radius: 8px;
+			background-color: white;
+			transition: var(--transition);
+		}
 
-        .research-topic:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--box-shadow);
-            background-color: white;
-        }
+		.publication-item:hover {
+			transform: translateX(5px);
+			box-shadow: var(--box-shadow);
+		}
 
-        .interest-icon img {
-            width: 48px;
-            height: 48px;
-            object-fit: contain;
-        }
+		.publication-year {
+			color: var(--primary-blue);
+			font-weight: bold;
+			margin-right: 0.5rem;
+		}
 
-        .publications-list {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(0,0,0,0.1);
-        }
+		/* Publications 區塊 */
+		.publications-filter {
+			display: flex;
+			gap: 1rem;
+			margin-bottom: 2rem;
+			flex-wrap: wrap;
+		}
 
-        .publication-item {
-            padding: 1rem;
-            margin-bottom: 0.5rem;
-            border-radius: 8px;
-            background-color: white;
-            transition: var(--transition);
-        }
+		.filter-btn {
+			padding: 0.5rem 1.5rem;
+			background-color: var(--light-blue);
+			color: var(--primary-blue);
+			border: none;
+			border-radius: 20px;
+			cursor: pointer;
+			transition: var(--transition);
+			font-weight: 500;
+		}
 
-        .publication-item:hover {
-            transform: translateX(5px);
-            box-shadow: var(--box-shadow);
-        }
+		.filter-btn:hover,
+		.filter-btn.active {
+			background-color: var(--primary-blue);
+			color: white;
+			transform: translateY(-2px);
+		}
 
-        .publication-year {
-            color: var(--primary-blue);
-            font-weight: bold;
-            margin-right: 0.5rem;
-        }
+		.publication-year-section {
+			margin-bottom: 2rem;
+		}
 
-        /* Publications 區塊樣式 */
-        .publications-filter {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
+		.publication-year-section h3 {
+			color: var(--primary-blue);
+			margin-bottom: 1rem;
+			padding-bottom: 0.5rem;
+			border-bottom: 2px solid var(--accent-blue);
+		}
 
-        .filter-btn {
-            padding: 0.5rem 1.5rem;
-            background-color: var(--light-blue);
-            color: var(--primary-blue);
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
-        }
+		.publication-entry {
+			padding: 1.5rem;
+			margin-bottom: 1rem;
+			background-color: var(--light-blue);
+			border-radius: 8px;
+			transition: var(--transition);
+		}
 
-        .filter-btn:hover,
-        .filter-btn.active {
-            background-color: var(--primary-blue);
-            color: white;
-            transform: translateY(-2px);
-        }
+		.publication-entry:hover {
+			transform: translateX(5px);
+			background-color: white;
+			box-shadow: var(--box-shadow);
+		}
 
-        .publication-year-section {
-            margin-bottom: 2rem;
-        }
+		.publication-title {
+			color: var(--primary-blue);
+			font-weight: 600;
+			margin-bottom: 0.5rem;
+		}
 
-        .publication-year-section h3 {
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--accent-blue);
-        }
+		.publication-authors {
+			font-style: italic;
+			margin-bottom: 0.5rem;
+		}
 
-        .publication-entry {
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            background-color: var(--light-blue);
-            border-radius: 8px;
-            transition: var(--transition);
-        }
+		.publication-venue {
+			color: #666;
+		}
 
-        .publication-entry:hover {
-            transform: translateX(5px);
-            background-color: white;
-            box-shadow: var(--box-shadow);
-        }
+		.publication-tags {
+			margin-top: 0.5rem;
+			display: flex;
+			gap: 0.5rem;
+			flex-wrap: wrap;
+		}
 
-        .publication-title {
-            color: var(--primary-blue);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
+		.publication-tag {
+			padding: 0.25rem 0.75rem;
+			background-color: white;
+			border-radius: 15px;
+			font-size: 0.9em;
+			color: var(--primary-blue);
+		}
 
-        .publication-authors {
-            font-style: italic;
-            margin-bottom: 0.5rem;
-        }
-
-        .publication-venue {
-            color: #666;
-        }
-
-        .publication-tags {
-            margin-top: 0.5rem;
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .publication-tag {
-            padding: 0.25rem 0.75rem;
-            background-color: white;
-            border-radius: 15px;
-            font-size: 0.9em;
-            color: var(--primary-blue);
-        }
-		
-		/* DOI 連結樣式 */
 		.doi-link {
 			display: block;
 			margin-top: 0.5rem;
@@ -887,118 +826,117 @@
 			text-decoration: underline;
 		}
 
-		/* 強調作者名字的樣式 */
 		.publication-authors strong {
 			font-weight: 700;
 			color: var(--primary-blue);
 		}
 
-        /* 課程區塊樣式 */
-        .course-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
+		/* 課程區塊 */
+		.course-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+			gap: 2rem;
+			margin-bottom: 2rem;
+		}
 
-        .course-card {
-            background-color: var(--light-blue);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
+		.course-card {
+			background-color: var(--light-blue);
+			border-radius: 12px;
+			padding: 1.5rem;
+			box-shadow: var(--box-shadow);
+			transition: var(--transition);
+		}
 
-        .course-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-            background-color: white;
-        }
+		.course-card:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+			background-color: white;
+		}
 
-        .course-code {
-            background-color: var(--primary-blue);
-            color: white;
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
+		.course-code {
+			background-color: var(--primary-blue);
+			color: white;
+			display: inline-block;
+			padding: 0.3rem 0.8rem;
+			border-radius: 20px;
+			font-size: 0.9rem;
+			margin-bottom: 0.5rem;
+		}
 
-        .course-title {
-            color: var(--primary-blue);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
+		.course-title {
+			color: var(--primary-blue);
+			font-weight: 600;
+			margin-bottom: 0.5rem;
+			font-size: 1.2rem;
+		}
 
-        .course-info span {
-            display: block;
-            margin-top: 0.3rem;
-            font-size: 0.95rem;
-        }
+		.course-info span {
+			display: block;
+			margin-top: 0.3rem;
+			font-size: 0.95rem;
+		}
 
-        .course-description {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(0,0,0,0.1);
-        }
+		.course-description {
+			margin-top: 1rem;
+			padding-top: 1rem;
+			border-top: 1px solid rgba(0,0,0,0.1);
+		}
 
-        /* 實驗室成員 */
-        .member-category {
-            margin-bottom: 3rem;
-        }
+		/* 實驗室成員 */
+		.member-category {
+			margin-bottom: 3rem;
+		}
 
-        .member-category h3 {
-            color: var(--primary-blue);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--accent-blue);
-        }
+		.member-category h3 {
+			color: var(--primary-blue);
+			margin-bottom: 1.5rem;
+			padding-bottom: 0.5rem;
+			border-bottom: 2px solid var(--accent-blue);
+		}
 
-        .member-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
+		.member-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+			gap: 2rem;
+			margin-bottom: 2rem;
+		}
 
-        .member-card {
-            background-color: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-            text-align: center;
-        }
+		.member-card {
+			background-color: white;
+			border-radius: 12px;
+			padding: 1.5rem;
+			box-shadow: var(--box-shadow);
+			transition: var(--transition);
+			text-align: center;
+		}
 
-        .member-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
+		.member-card:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+		}
 
-        .member-photo {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 1rem;
-            border-radius: 50%;
-            overflow: hidden;
-            background-color: var(--light-blue);
-            border: 3px solid var(--accent-blue);
-        }
+		.member-photo {
+			width: 120px;
+			height: 120px;
+			margin: 0 auto 1rem;
+			border-radius: 50%;
+			overflow: hidden;
+			background-color: var(--light-blue);
+			border: 3px solid var(--accent-blue);
+		}
 
-        .member-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+		.member-photo img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
 
-        .member-info h4 {
-            color: var(--primary-blue);
-            margin-bottom: 0.5rem;
-        }
-		
-		/* Undergraduate Students Card Styles */
+		.member-info h4 {
+			color: var(--primary-blue);
+			margin-bottom: 0.5rem;
+		}
+
+		/* Undergraduate Students */
 		.undergrad-grid {
 			display: grid;
 			grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -1031,13 +969,7 @@
 			margin: 0.5rem 0;
 		}
 
-		@media (max-width: 768px) {
-			.undergrad-grid {
-				grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-			}
-		}		
-		
-		/* Alumni 區塊樣式 */
+		/* Alumni */
 		.alumni-grid {
 			display: grid;
 			grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -1091,9 +1023,9 @@
 		.alumni-list p {
 			margin: 0.3rem 0;
 			font-size: 0.95rem;
-		}		
+		}
 
-		/* Footer 樣式 */
+		/* Footer */
 		.footer {
 			background: var(--gradient-blue);
 			color: white;
@@ -1132,109 +1064,172 @@
 			opacity: 0.9;
 		}
 
-        /* 響應式設計 */
-        @media (max-width: 768px) {
-            .hero-section {
-                height: 400px;
-            }
+		/* 動畫效果 */
+		@keyframes fadeIn {
+			from { opacity: 0; transform: translateY(20px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
 
-            .lab-title {
-                font-size: 2.5rem;
-            }
+		/* 響應式設計 */
+		@media (max-width: 768px) {
+			.hero-section {
+				height: 400px;
+			}
 
-            .lab-subtitle {
-                font-size: 1.2rem;
-            }
+			.lab-title {
+				font-size: 2.5rem;
+			}
 
-            .nav {
-                padding: 0.5rem;
-            }
+			.lab-subtitle {
+				font-size: 1.2rem;
+			}
 
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
+			.nav {
+				padding: 0.5rem;
+			}
 
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.25rem;
-                width: 100%;
-            }
+			.nav-container {
+				flex-direction: column;
+				gap: 1rem;
+			}
 
-            .nav-links a {
-                width: 100%;
-                text-align: center;
-                padding: 0.5rem;
-            }
+			/* 手機版導航列（直接顯示，無滑動） */
+			.menu-toggle {
+				display: none; /* 隱藏漢堡選單按鈕 */
+			}
+			
+			.nav-logo {
+				display: none; /* 隱藏手機版 logo */
+			}
+			
+			.nav-links {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				background-color: white;
+				padding: 0.5rem;
+				position: static;
+				box-shadow: none;
+				max-width: none;
+				height: auto;
+				overflow-y: visible;
+			}
+			
+			.nav-links li {
+				margin: 0.5rem 0;
+				width: 100%;
+			}
+			
+			.nav-links a {
+				width: 100%;
+				text-align: left;
+				padding: 0.8rem 1rem;
+				border-radius: 8px;
+			}
 
-            .pi-profile {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
+			.nav-links a.active {
+				background-color: var(--primary-blue);
+				color: white;
+			}
+			
+			.menu-toggle.active .bar:nth-child(1) {
+				transform: translateY(9px) rotate(45deg);
+			}
+			
+			.menu-toggle.active .bar:nth-child(2) {
+				opacity: 0;
+			}
+			
+			.menu-toggle.active .bar:nth-child(3) {
+				transform: translateY(-9px) rotate(-45deg);
+			}
 
-            .education-item {
-                flex-direction: column;
-                text-align: center;
-            }
+			.pi-profile {
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+			}
 
-            .school-logo {
-                margin: 0 auto 1rem;
-            }
+			.education-item {
+				flex-direction: column;
+				text-align: center;
+			}
 
-            .publications-filter {
-                justify-content: center;
-            }
-        }
+			.school-logo {
+				margin: 0 auto 1rem;
+			}
 
-        @media (max-width: 480px) {
-            .hero-section {
-                height: 250px;
-            }
-
-            .lab-title {
-                font-size: 2rem;
-            }
-
-            .lab-subtitle {
-                font-size: 1rem;
-            }
-
-            .hero-logo {
-                width: 80px;
-                height: 80px;
-            }
-
-            .section {
-                padding: 1rem;
-            }
-
-            .member-photo {
-                width: 100px;
-                height: 100px;
-            }
-
-            .container {
-                padding: 1rem 0.5rem;
-            }
-
-            .research-topic,
-            .member-card,
-            .publication-item {
-                padding: 1rem;
-            }
-        }
-
-        /* 動畫效果 */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section {
-            animation: fadeIn 0.5s ease-out;
-        }
+			.publications-filter {
+				justify-content: center;
+			}
+			
+			.lab-history {
+				padding: 1.5rem;
+			}
+			
+			.timeline {
+				padding-left: 1.5rem;
+			}
+			
+			.timeline-dot {
+				left: -1.9rem;
+				width: 16px;
+				height: 16px;
+			}
+			
+			.timeline-content {
+				padding: 1rem;
+			}
+			
+			.experience-item, .project-item {
+				flex-direction: column;
+			}
+			
+			.experience-dates, .project-dates {
+				flex: none;
+				padding-right: 0;
+				padding-bottom: 0.75rem;
+				margin-bottom: 0.75rem;
+				border-right: none;
+				border-bottom: 2px solid var(--accent-blue);
+			}
+			
+			.experience-info, .project-info {
+				padding-left: 0;
+			}
+			
+			.overview-container {
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+			}
+			
+			.lab-side-logo {
+				width: 150px;
+				margin-top: 1.5rem;
+				order: 2; /* 在手機版上，圖標放在文字下方 */
+			}
+			
+			.overview-content {
+				order: 1; /* 在手機版上，文字放在圖標上方 */
+			}
+			
+			.overview-content p {
+				text-align: left;
+			}
+			
+			.highlights-grid {
+				grid-template-columns: 1fr;
+			}
+			
+			.lab-highlights {
+				padding: 1.5rem;
+			}
+			
+			.undergrad-grid {
+				grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+			}
     </style>
 </head>
 <body>
@@ -1294,6 +1289,49 @@
                         <img src="images/lab_icon.png" alt="IDA Lab Logo">
                     </div>
                 </div>
+
+                <!-- 歷史沿革 -->
+                <div class="lab-history">
+                    <h3>Laboratory History</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2025.02</div>
+                            <div class="timeline-content">
+                                <h4>Laboratory Establishment</h4>
+                                <p>The Intelligent Design and Application Laboratory (IDA Lab) was officially established at the Department of Computer Science and Engineering, National Taiwan Ocean University (NTOU), under the leadership of Dr. Chia-Heng Yen.</p>
+                            </div>
+                        </div>
+                        <!--
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2023</div>
+                            <div class="timeline-content">
+                                <h4>Research Focus Expansion</h4>
+                                <p>Expanded research areas to include hardware security applications, particularly focusing on hardware trojan detection using graph neural networks. Commenced collaboration with industry partners on VLSI testing optimization.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2024</div>
+                            <div class="timeline-content">
+                                <h4>Milestone Achievements</h4>
+                                <p>Published key findings in prestigious journals including IEEE Transactions on Semiconductor Manufacturing and Integration - the VLSI Journal. Initiated collaborative research with medical institutions on healthcare applications of AI.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2025</div>
+                            <div class="timeline-content">
+                                <h4>Future Directions</h4>
+                                <p>Focusing on interdisciplinary research combining AI techniques with domain-specific knowledge in VLSI design, hardware security, and healthcare. Expanding laboratory facilities and research team to accommodate growing projects.</p>
+                            </div>
+                        </div>
+                        -->
+                    </div>
+                </div>
                 
                 <div class="lab-highlights">
                     <h3>Research Highlights</h3>
@@ -1329,6 +1367,7 @@
                     </div>
                 </div>
             </div>
+            
         </section>
         
         
@@ -1453,6 +1492,68 @@
 					<p>National Taiwan Ocean University (NTOU)</p>
 				</div>
 			</div>
+
+            <!-- 在教育背景區塊後添加經歷與計畫部分 -->
+            <h3>Work Experience</h3>
+            <div class="experience-item">
+                <div class="experience-dates">
+                    <span>2025.02 - Present</span>
+                </div>
+                <div class="experience-info">
+                    <h4>Assistant Professor</h4>
+                    <p>Department of Computer Science and Engineering, National Taiwan Ocean University (NTOU), Keelung City, Taiwan</p>
+                    <!--
+                    <ul class="experience-details">
+                        <li>Leading research in intelligent solutions for VLSI design and hardware security</li>
+                        <li>Teaching courses in digital logic design and related subjects</li>
+                        <li>Supervising graduate and undergraduate students on research projects</li>
+                    </ul>
+                    -->
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-dates">
+                    <span>2023.02 - 2024.01</span>
+                </div>
+                <div class="experience-info">
+                    <h4>Part-time Lecturer</h4>
+                    <p>Department of Computer Science and Information Engineering, Chung Hua University (CHU), Hsinchu City, Taiwan</p>
+                    <!--
+                    <ul class="experience-details">
+                        <li>Developed machine learning techniques for IC testing and hardware security</li>
+                        <li>Collaborated with industry partners on applied research projects</li>
+                        <li>Published research in top-tier conferences and journals</li>
+                    </ul>
+                    -->
+                </div>
+            </div>
+
+            <!--
+            <h3>Research Projects</h3>
+            <div class="project-item">
+                <div class="project-dates">
+                    <span>2023 - 2026</span>
+                </div>
+                <div class="project-info">
+                    <h4>AI-Enhanced Hardware Security for IoT Devices</h4>
+                    <p><strong>Funding:</strong> Ministry of Science and Technology, Taiwan</p>
+                    <p>Developing novel machine learning approaches for hardware trojan detection and mitigation in resource-constrained IoT environments.</p>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-dates">
+                    <span>2022 - 2025</span>
+                </div>
+                <div class="project-info">
+                    <h4>Advanced VLSI Testing Optimization through Deep Learning</h4>
+                    <p><strong>Funding:</strong> Industrial Collaboration Program</p>
+                    <p>Creating innovative deep learning models to improve VLSI testing accuracy and efficiency, reducing testing costs while maintaining high reliability.</p>
+                </div>
+            </div>
+            -->
+
         </section>
 
 		<!-- 研究主題區域 -->
@@ -2075,189 +2176,167 @@
 
 	<script>
         // 監聽視窗大小變化
-        window.addEventListener('resize', function() {
-            const nav = document.querySelector('.nav');
-            document.documentElement.style.setProperty('--nav-height', nav.offsetHeight + 'px');
-        });
+		window.addEventListener('resize', function() {
+			const nav = document.querySelector('.nav');
+			document.documentElement.style.setProperty('--nav-height', nav.offsetHeight + 'px');
+		});
 
-        // 初始化
-        window.dispatchEvent(new Event('resize'));
+		// 初始化
+		window.dispatchEvent(new Event('resize'));
 
-        
-        // 頁面切換功能
-        function switchPage(pageId) {
-            // 隱藏所有頁面
-            document.querySelectorAll('.page-section').forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            // 顯示選中的頁面
-            const activePage = document.getElementById(pageId);
-            if (activePage) {
-                activePage.classList.add('active');
-                
-                // 滾動到頁面頂部
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            }
-            
-            // 更新導航項目狀態
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + pageId) {
-                    link.classList.add('active');
-                }
-            });
-            
-            // 更新URL
-            history.pushState(null, null, '#' + pageId);
-        }
+		// 頁面切換功能
+		function switchPage(pageId) {
+			// 隱藏所有頁面
+			document.querySelectorAll('.page-section').forEach(page => {
+				page.classList.remove('active');
+			});
+			
+			// 顯示選中的頁面
+			const activePage = document.getElementById(pageId);
+			if (activePage) {
+				activePage.classList.add('active');
+				
+				// 滾動到頁面頂部
+				window.scrollTo({
+					top: 0,
+					behavior: 'smooth'
+				});
+			}
+			
+			// 更新導航項目狀態
+			document.querySelectorAll('.nav-links a').forEach(link => {
+				link.classList.remove('active');
+				if (link.getAttribute('href') === '#' + pageId) {
+					link.classList.add('active');
+				}
+			});
+			
+			// 更新URL
+			history.pushState(null, null, '#' + pageId);
+		}
 
-        // 修改導航連結的點擊事件
-        document.addEventListener('DOMContentLoaded', function() {
-            // 獲取所有導航連結
-            const navLinks = document.querySelectorAll('.nav-links a');
-            
-            // 為每個連結添加點擊事件
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const pageId = this.getAttribute('href').substring(1);
-                    switchPage(pageId);
-                    
-                    // 如果導航菜單是開啟的，關閉它（對移動端）
-                    const navMenu = document.getElementById('nav-links');
-                    if (navMenu.classList.contains('active')) {
-                        document.getElementById('menu-toggle').click();
-                    }
-                });
-            });
-            
-            // 頁面載入時檢查URL片段
-            const pageId = window.location.hash.substring(1) || 'home';
-            switchPage(pageId);
-        });
-        
-        // 展開/收合公告
-        function toggleAnnouncements(button) {
-            const announcements = document.querySelectorAll('#announcements .announcement.hidden-item');
-            announcements.forEach(item => item.classList.toggle('show'));
-            button.textContent = button.textContent === 'Show More' ? 'Show Less' : 'Show More';
-        }
+		// DOM 載入完成後執行
+		document.addEventListener('DOMContentLoaded', function() {
+			// 獲取所有導航連結
+			const navLinks = document.querySelectorAll('.nav-links a');
+			
+			// 為每個連結添加點擊事件
+			navLinks.forEach(link => {
+				link.addEventListener('click', function(e) {
+					e.preventDefault();
+					const pageId = this.getAttribute('href').substring(1);
+					switchPage(pageId);
+					
+					// 如果導航菜單是開啟的，關閉它（對移動端）
+					const navMenu = document.getElementById('nav-links');
+					if (navMenu.classList.contains('active')) {
+						document.getElementById('menu-toggle').click();
+					}
+				});
+			});
+			
+			// 頁面載入時檢查URL片段
+			const pageId = window.location.hash.substring(1) || 'home';
+			switchPage(pageId);
+			
+			// 設置漢堡選單功能
+			setupMobileMenu();
+		});
 
-        // 展開/收合論文
-        function togglePublications(button) {
-            const publications = button.parentElement.querySelectorAll('.publication-item.hidden-item');
-            publications.forEach(item => item.classList.toggle('show'));
-            button.textContent = button.textContent === 'Show More' ? 'Show Less' : 'Show More';
-        }
+		// 展開/收合功能
+		function toggleAnnouncements(button) {
+			const announcements = document.querySelectorAll('#announcements .announcement.hidden-item');
+			toggleItems(announcements, button);
+		}
 
-        // 展開/收合所有論文
-        function toggleAllPublications(button) {
-            const publications = document.querySelectorAll('#publications .publication-year-section.hidden-item');
-            publications.forEach(item => item.classList.toggle('show'));
-            button.textContent = button.textContent === 'Show More' ? 'Show Less' : 'Show More';
-        }
+		function togglePublications(button) {
+			const publications = button.parentElement.querySelectorAll('.publication-item.hidden-item');
+			toggleItems(publications, button);
+		}
 
-        // 篩選論文
-        function filterPublications(type) {
-            // 更新按鈕狀態
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
+		function toggleAllPublications(button) {
+			const publications = document.querySelectorAll('#publications .publication-year-section.hidden-item');
+			toggleItems(publications, button);
+		}
 
-            // 過濾論文
-            const publications = document.querySelectorAll('.publication-entry');
-            publications.forEach(pub => {
-                if (type === 'all' || pub.dataset.type === type) {
-                    pub.style.display = 'block';
-                } else {
-                    pub.style.display = 'none';
-                }
-            });
-        }
-		
-		// 展開/收合課程
 		function toggleCourses(button) {
 			const coursesHidden = document.querySelector('#teaching .hidden-item');
-			coursesHidden.classList.toggle('show');
+			if (coursesHidden) {
+				coursesHidden.classList.toggle('show');
+				updateButtonText(button);
+			}
+		}
+
+		function toggleAlumni(button) {
+			const alumni = document.querySelectorAll('.alumni-section');
+			toggleItems(alumni, button, 'Show Alumni', 'Hide Alumni');
+		}
+
+		// 通用切換函數
+		function toggleItems(items, button, showText = 'Show More', hideText = 'Show Less') {
+			if (items.length === 0) return;
+			
+			const isShowing = items[0].classList.contains('show');
+			items.forEach(item => item.classList.toggle('show'));
+			
+			if (button) {
+				button.textContent = isShowing ? showText : hideText;
+			}
+		}
+
+		// 更新按鈕文字
+		function updateButtonText(button) {
+			if (!button) return;
 			button.textContent = button.textContent === 'Show More' ? 'Show Less' : 'Show More';
 		}
 
-		// 展開/收合校友
-		function toggleAlumni(button) {
-			const alumni = document.querySelectorAll('.alumni-section');
-			alumni.forEach(item => item.classList.toggle('show'));
-			button.textContent = button.textContent === 'Show Alumni' ? 'Hide Alumni' : 'Show Alumni';
+		// 篩選論文
+		function filterPublications(type) {
+			// 更新按鈕狀態
+			document.querySelectorAll('.filter-btn').forEach(btn => {
+				btn.classList.remove('active');
+			});
+			event.target.classList.add('active');
+
+			// 過濾論文
+			const publications = document.querySelectorAll('.publication-entry');
+			publications.forEach(pub => {
+				if (type === 'all' || pub.dataset.type === type) {
+					pub.style.display = 'block';
+				} else {
+					pub.style.display = 'none';
+				}
+			});
 		}
 
-        // 漢堡選單功能 - 新增
-        document.addEventListener('DOMContentLoaded', function() {
-            // 獲取元素
-            const menuToggle = document.getElementById('menu-toggle');
-            const navLinks = document.getElementById('nav-links');
-            const body = document.body;
-            
-            // 創建背景遮罩元素
-            const overlay = document.createElement('div');
-            overlay.className = 'menu-overlay';
-            body.appendChild(overlay);
-            
-            // 切換選單顯示
-            function toggleMenu() {
-                menuToggle.classList.toggle('active');
-                navLinks.classList.toggle('active');
-                overlay.classList.toggle('active');
-                body.classList.toggle('menu-open');
-            }
-            
-            // 點擊漢堡選單按鈕切換選單
-            menuToggle.addEventListener('click', toggleMenu);
-            
-            // 點擊遮罩關閉選單
-            overlay.addEventListener('click', toggleMenu);
-            
-            // 點擊導航連結時關閉選單
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (navLinks.classList.contains('active')) {
-                        toggleMenu();
-                    }
-                });
-            });
-            
-            // 觸控滑動關閉功能
-            let touchStartX = 0;
-            let touchEndX = 0;
-            
-            navLinks.addEventListener('touchstart', e => {
-                touchStartX = e.changedTouches[0].screenX;
-            }, false);
-            
-            navLinks.addEventListener('touchend', e => {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-            }, false);
-            
-            function handleSwipe() {
-                if (touchStartX - touchEndX > 50 && navLinks.classList.contains('active')) {
-                    toggleMenu();
-                }
-            }
-            
-            // 窗口大小變化時處理
-            window.addEventListener('resize', () => {
-                if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
-                    menuToggle.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    overlay.classList.remove('active');
-                    body.classList.remove('menu-open');
-                }
-            });
-        });
+		// 移動端導航設置 - 改為直接顯示所有導航項目
+		function setupMobileMenu() {
+			// 在手機版中，所有導航項目都直接顯示，不需要特殊處理
+			// 只需確保每個項目點擊正確響應
+
+			// 獲取所有導航連結
+			const navLinks = document.getElementById('nav-links');
+			
+			// 為導航項添加適當的樣式
+			if (window.innerWidth <= 768) {
+				navLinks.querySelectorAll('li').forEach(li => {
+					li.style.width = '100%';
+				});
+			}
+			
+			// 窗口大小變化時調整
+			window.addEventListener('resize', () => {
+				if (window.innerWidth <= 768) {
+					navLinks.querySelectorAll('li').forEach(li => {
+						li.style.width = '100%';
+					});
+				} else {
+					navLinks.querySelectorAll('li').forEach(li => {
+						li.style.width = 'auto';
+					});
+				}
+			});
+		}
     </script>
 </body>
 </html>
