@@ -1280,3 +1280,38 @@ body.menu-open {
     .undergrad-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
+}
+
+@media (max-width: 480px) {
+    /* 改善 PI 資訊區域在小螢幕上的顯示 */
+    .pi-contact {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .pi-contact-item {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .pi-academic-profiles {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    
+    .academic-profile-link {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .pi-info {
+        width: 100%;
+        word-break: break-word;
+    }
+    
+    .pi-contact-item span {
+        font-size: 0.85rem;
+        word-break: break-all;
+    }
+}
