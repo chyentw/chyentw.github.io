@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const pageId = this.getAttribute('href').substring(1);
             switchPage(pageId);
             
-            // 在手機模式下，點擊導航項後收起選單
+            // 在手機模式下,點擊導航項後收起選單
             if (window.innerWidth <= 768) {
                 const navMenu = document.getElementById('nav-links');
                 if (navMenu.classList.contains('active')) {
@@ -76,11 +76,6 @@ function toggleAnnouncements(button) {
 
 function togglePublications(button) {
     const publications = button.parentElement.querySelectorAll('.publication-item.hidden-item');
-    toggleItems(publications, button);
-}
-
-function toggleAllPublications(button) {
-    const publications = document.querySelectorAll('#publications .publication-year-section.hidden-item');
     toggleItems(publications, button);
 }
 
@@ -113,25 +108,6 @@ function toggleItems(items, button, showText = 'Show More', hideText = 'Show Les
 function updateButtonText(button) {
     if (!button) return;
     button.textContent = button.textContent === 'Show More' ? 'Show Less' : 'Show More';
-}
-
-// 篩選論文
-function filterPublications(type) {
-    // 更新按鈕狀態
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    event.target.classList.add('active');
-
-    // 過濾論文
-    const publications = document.querySelectorAll('.publication-entry');
-    publications.forEach(pub => {
-        if (type === 'all' || pub.dataset.type === type) {
-            pub.style.display = 'block';
-        } else {
-            pub.style.display = 'none';
-        }
-    });
 }
 
 // 漢堡選單功能設置 - 改為折疊式導航
