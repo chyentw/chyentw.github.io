@@ -371,12 +371,14 @@ body.menu-open {
     object-fit: contain;
 }
 
-/* 學歷區域 */
+/* 學歷區域 - 修正時間重疊問題 */
 .education-item {
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
     margin-bottom: 1.5rem;
     padding: 1.5rem;
+    padding-right: 1.5rem;
     background-color: var(--light-blue);
     border-radius: 8px;
     transition: var(--transition);
@@ -409,6 +411,8 @@ body.menu-open {
 
 .education-info {
     flex: 1;
+    min-width: 0;
+    padding-right: 150px;
 }
 
 .education-year {
@@ -425,6 +429,7 @@ body.menu-open {
     align-items: center;
     gap: 0.5rem;
     border: 1px solid rgba(26, 76, 124, 0.2);
+    white-space: nowrap;
 }
 
 .education-year:before {
@@ -434,6 +439,91 @@ body.menu-open {
     height: 10px;
     background-color: var(--accent-blue);
     border-radius: 50%;
+}
+
+/* 計畫區塊樣式 */
+.projects-container {
+    margin-top: 1.5rem;
+}
+
+.project-entry {
+    background-color: var(--light-blue);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    border-left: 4px solid var(--accent-blue);
+}
+
+.project-entry:hover {
+    transform: translateX(5px);
+    background-color: white;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.project-header {
+    margin-bottom: 1rem;
+}
+
+.project-title-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-number {
+    color: var(--primary-blue);
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.project-name {
+    color: var(--primary-blue);
+    font-weight: 600;
+    font-size: 1.05rem;
+    flex: 1;
+}
+
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.project-period {
+    background-color: rgba(26, 76, 124, 0.15);
+    color: var(--primary-blue);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.project-role {
+    background-color: rgba(80, 148, 212, 0.15);
+    color: var(--secondary-blue);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.project-details {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.project-details p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+.project-details strong {
+    color: var(--primary-blue);
 }
 
 /* 學術服務區塊 */
@@ -833,41 +923,27 @@ body.menu-open {
     margin-right: 0.5rem;
 }
 
-/* Publications 區塊 */
-.publications-filter {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
+/* Publications 區塊 - 新的學術格式 */
+.publications-section {
+    margin-bottom: 3rem;
 }
 
-.filter-btn {
-    padding: 0.5rem 1.5rem;
-    background-color: var(--light-blue);
+.publications-section h3 {
     color: var(--primary-blue);
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: var(--transition);
-    font-weight: 500;
-}
-
-.filter-btn:hover,
-.filter-btn.active {
-    background-color: var(--primary-blue);
-    color: white;
-    transform: translateY(-2px);
-}
-
-.publication-year-section {
-    margin-bottom: 2rem;
-}
-
-.publication-year-section h3 {
-    color: var(--primary-blue);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--accent-blue);
+    font-size: 1.5rem;
+}
+
+.publication-year-group {
+    margin-bottom: 2rem;
+}
+
+.publication-year-group h4 {
+    color: var(--secondary-blue);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
 }
 
 .publication-entry {
@@ -875,6 +951,7 @@ body.menu-open {
     margin-bottom: 1rem;
     background-color: var(--light-blue);
     border-radius: 8px;
+    border-left: 4px solid var(--accent-blue);
     transition: var(--transition);
 }
 
@@ -884,38 +961,29 @@ body.menu-open {
     box-shadow: var(--box-shadow);
 }
 
-.publication-title {
-    color: var(--primary-blue);
-    font-weight: 600;
+.publication-authors {
     margin-bottom: 0.5rem;
+    line-height: 1.6;
 }
 
-.publication-authors {
+.publication-authors strong {
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+.publication-title {
     font-style: italic;
     margin-bottom: 0.5rem;
+    line-height: 1.5;
 }
 
 .publication-venue {
-    color: #666;
-}
-
-.publication-tags {
-    margin-top: 0.5rem;
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-}
-
-.publication-tag {
-    padding: 0.25rem 0.75rem;
-    background-color: white;
-    border-radius: 15px;
-    font-size: 0.9em;
-    color: var(--primary-blue);
+    color: #555;
+    margin-bottom: 0.5rem;
 }
 
 .doi-link {
-    display: block;
+    display: inline-block;
     margin-top: 0.5rem;
     color: var(--accent-blue);
     text-decoration: none;
@@ -924,11 +992,6 @@ body.menu-open {
 
 .doi-link:hover {
     text-decoration: underline;
-}
-
-.publication-authors strong {
-    font-weight: 700;
-    color: var(--primary-blue);
 }
 
 /* 課程區塊 */
@@ -1034,6 +1097,17 @@ body.menu-open {
 .member-info h4 {
     color: var(--primary-blue);
     margin-bottom: 0.5rem;
+}
+
+.member-info p {
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+}
+
+.member-department {
+    color: #666;
+    font-size: 0.9rem;
+    font-style: italic;
 }
 
 /* Undergraduate Students */
@@ -1223,7 +1297,6 @@ body.menu-open {
         padding-bottom: 10px;
     }
 
-    /* 手機版導航列（可折疊式） */
     .menu-toggle {
         display: flex;
         position: absolute;
@@ -1240,7 +1313,6 @@ body.menu-open {
         background-color: white;
     }
 	
-	/* 選單顯示時的樣式 */
     .nav-links.active {
         display: flex !important;
     }
@@ -1282,27 +1354,30 @@ body.menu-open {
         text-align: center;
     }
 
+    /* 修正學歷時間在小螢幕的顯示 */
+    .education-item {
+        flex-direction: column;
+        text-align: center;
+        padding-right: 1.5rem;
+    }
+
+    .education-info {
+        padding-right: 0;
+        width: 100%;
+    }
+
     .education-year {
         position: static;
         margin-top: 1rem;
         display: inline-flex;
     }
     
-    .journal-list {
-        grid-template-columns: 1fr;
-    }
-
-    .education-item {
-        flex-direction: column;
-        text-align: center;
-    }
-
     .school-logo {
         margin: 0 auto 1rem;
     }
 
-    .publications-filter {
-        justify-content: center;
+    .journal-list {
+        grid-template-columns: 1fr;
     }
     
     .lab-history {
@@ -1417,7 +1492,6 @@ body.menu-open {
         padding: 1rem;
     }
     
-    /* PI 聯絡資訊的垂直排列 */
     .pi-contact {
         display: block;
         width: 100%;
@@ -1430,7 +1504,6 @@ body.menu-open {
         align-items: center;
     }
     
-    /* 學術檔案的垂直排列 */
     .pi-academic-profiles {
         display: block;
         width: 100%;
@@ -1443,12 +1516,10 @@ body.menu-open {
         align-items: center;
     }
     
-    /* 縮小內部間距節省空間 */
     .pi-profile {
         padding: 1rem;
     }
     
-    /* 確保內容不會溢出 */
     .pi-info {
         width: 100%;
         overflow-wrap: break-word;
@@ -1456,12 +1527,10 @@ body.menu-open {
         word-break: break-word;
     }
     
-    /* 調整聯絡資訊內文字大小 */
     .pi-contact-item span, .academic-profile-link span {
         font-size: 0.85rem;
     }
     
-    /* 確保圖標大小一致且對齊 */
     .academic-icon, .pi-contact-item img {
         width: 20px;
         height: 20px;
