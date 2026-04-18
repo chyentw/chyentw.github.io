@@ -1,9 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IDALab's Website</title>
+    <meta name="description" content="IDA Lab at National Taiwan Ocean University — research in Intelligent EDA, Hardware and AI Security, Biomedical AI, AI Computing and Hardware Design, and Algorithm Optimization. Led by Dr. Chia-Heng Yen.">
+    <title>IDA Lab — Intelligent Design and Application Laboratory, NTOU</title>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="IDA Lab — Intelligent Design and Application Laboratory, NTOU">
+    <meta property="og:description" content="Research lab at National Taiwan Ocean University spanning Intelligent EDA, Hardware and AI Security, Biomedical AI, AI Computing and Hardware Design, and Algorithm Optimization.">
+    <meta property="og:image" content="images/lab_logo.png">
+    <meta property="og:locale" content="zh_TW">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="IDA Lab — NTOU">
+    <meta name="twitter:description" content="Research in Intelligent EDA, Hardware and AI Security, Biomedical AI, AI Computing, and Algorithm Optimization.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="icon" href="images/lab_logo.png">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,7 +25,7 @@
         <div class="hero-overlay">
             <img src="images/lab_logo.png" alt="Lab Logo" class="hero-logo" loading="eager"/>
             <h1 class="lab-title">Intelligent Design and Application Laboratory <br>(IDA Lab)</h1>
-            <p class="lab-subtitle">Multi-domain Innovation with AI at the Core:<br>Intelligent Solutions for VLSI Design, Hardware Security, and Healthcare</p>
+            <p class="lab-subtitle">Multi-domain Innovation with AI at the Core:<br>Intelligent EDA, Hardware and AI Security, Biomedical AI, AI Computing, and Algorithm Optimization</p>
         </div>
     </section>
 
@@ -42,7 +54,7 @@
     </nav>
 
     <div class="container">
-        <section id="home" class="section fade-on-scroll page-section active">
+        <section id="home" class="section page-section active">
             <h2>Laboratory Overview</h2>
             <div class="lab-overview">
                 <div class="overview-container">
@@ -126,18 +138,18 @@
             </div>
         </section>
         
-        <section id="announcements" class="section fade-on-scroll page-section">
+        <section id="announcements" class="section page-section">
             <h2>Latest Announcements</h2>
             <div class="announcement">
                 <h3>Graduate Student Recruitment</h3>
-                <p>We are currently recruiting Master's students. If you are interested in Electronic Design Automation, Digital Design, Intelligent Application, and Intelligent Healthcare, please feel free to contact me.</p>
+                <p>We are currently recruiting Master's students. If you are interested in Intelligent EDA, Hardware and AI Security, Biomedical AI, AI Computing and Hardware Design, or Algorithm Design and Optimization, please feel free to contact Dr. Chia-Heng Yen.</p>
                 <small>2025/02/27</small>
             </div>
             
             <button class="show-more-btn" onclick="toggleAnnouncements(this)">Show More</button>
         </section>
 
-        <section id="pi" class="section fade-on-scroll page-section active">
+        <section id="pi" class="section page-section active">
             <h2>Principal Investigator</h2>
             <div class="pi-profile">
                 <div class="pi-photo">
@@ -168,15 +180,15 @@
                         </div>
                     </div>
                     <div class="pi-academic-profiles">
-                        <a href="https://orcid.org/0000-0002-6646-9253" target="_blank" class="academic-profile-link">
+                        <a href="https://orcid.org/0000-0002-6646-9253" target="_blank" class="academic-profile-link" aria-label="ORCID profile of Chia-Heng Yen">
                             <img src="images/orcid.png" alt="ORCID" class="academic-icon"/>
                             <span>ORCID</span>
                         </a>
-                        <a href="https://scholar.google.com/citations?user=ic2384wAAAAJ" target="_blank" class="academic-profile-link">
+                        <a href="https://scholar.google.com/citations?user=ic2384wAAAAJ" target="_blank" class="academic-profile-link" aria-label="Google Scholar profile of Chia-Heng Yen">
                             <img src="images/google_scholar.png" alt="Google Scholar" class="academic-icon"/>
                             <span>Google Scholar</span>
                         </a>
-                        <a href="https://scholargps.com/scholars/62250640406273/chia-heng-yen" target="_blank" class="academic-profile-link">
+                        <a href="https://scholargps.com/scholars/62250640406273/chia-heng-yen" target="_blank" class="academic-profile-link" aria-label="ScholarGPS profile of Chia-Heng Yen">
                             <img src="images/scholargps.png" alt="ScholarGPS" class="academic-icon"/>
                             <span>ScholarGPS</span>
                         </a>
@@ -323,7 +335,7 @@
             </div>
         </section>
 		
-		<section id="research" class="section fade-on-scroll page-section active">
+		<section id="research" class="section page-section active">
             <h2>Research Topics</h2>
 
             <!-- ══ 1. Intelligent EDA ══ -->
@@ -467,10 +479,11 @@
 
         </section>
 		
-		<section id="publications" class="section fade-on-scroll page-section active">
+		<section id="publications" class="section page-section active">
+			<p class="pub-loading">Loading publications...</p>
 		</section>
 
-		<section id="teaching" class="section fade-on-scroll page-section active">
+		<section id="teaching" class="section page-section active">
 			<h2>Teaching Courses</h2>
 
 			<div class="course-semester-note">
@@ -483,7 +496,7 @@
 			<div class="course-semester-group">
 				<div class="course-semester-label">Spring Semester</div>
 				<div class="course-grid">
-					<div class="course-card">
+					<div class="course-card" onclick="toggleCourseCard(this)">
 						<div class="course-card-header">
 							<div class="course-code">B5701R9E</div>
 							<span class="course-type-tag tag-required">Required</span>
@@ -500,7 +513,7 @@
 						<div class="course-offered-tags"><span class="tag-offered">1132</span><span class="tag-offered">1142</span><span class="tag-planned">1152</span></div>
 					</div>
 
-					<div class="course-card">
+					<div class="course-card" onclick="toggleCourseCard(this)">
 						<div class="course-card-header">
 							<div class="course-code">B5701R9F</div>
 							<span class="course-type-tag tag-required">Required</span>
@@ -522,7 +535,7 @@
 			<div class="course-semester-group">
 				<div class="course-semester-label">Fall Semester</div>
 				<div class="course-grid">
-					<div class="course-card course-inactive">
+					<div class="course-card course-inactive" onclick="toggleCourseCard(this)">
 						<div class="course-card-header">
 							<div class="course-code">B57022TS</div>
 							<span class="course-type-tag tag-elective">Elective</span>
@@ -539,7 +552,7 @@
 						<div class="course-offered-tags"><span class="tag-past">1141</span><span class="tag-past">1151</span></div>
 					</div>
 
-					<div class="course-card course-inactive">
+					<div class="course-card course-inactive" onclick="toggleCourseCard(this)">
 						<div class="course-card-header">
 							<div class="course-code">B5703660</div>
 							<span class="course-type-tag tag-required">Required</span>
@@ -556,7 +569,7 @@
 						<div class="course-offered-tags"><span class="tag-past">1141</span><span class="tag-past">1151</span></div>
 					</div>
 
-					<div class="course-card course-inactive">
+					<div class="course-card course-inactive" onclick="toggleCourseCard(this)">
 						<div class="course-card-header">
 							<div class="course-code">B570332J</div>
 							<span class="course-type-tag tag-elective">Elective</span>
@@ -581,7 +594,7 @@
 			<div class="course-semester-group">
 				<div class="course-semester-label">Spring Semester</div>
 				<div class="course-grid">
-					<div class="course-card">
+					<div class="course-card" onclick="toggleCourseCard(this)">
 						<div class="course-card-header">
 							<div class="course-code">M57015WQ</div>
 							<span class="course-type-tag tag-elective">Elective</span>
@@ -598,7 +611,7 @@
 						<div class="course-offered-tags"><span class="tag-offered">1142</span></div>
 					</div>
 
-					<div class="course-card course-inactive">
+					<div class="course-card course-inactive" onclick="toggleCourseCard(this)">
 						<div class="course-card-header">
 							<div class="course-code">M5701P9I</div>
 							<span class="course-type-tag tag-elective">Elective</span>
@@ -620,7 +633,7 @@
 			<div class="course-semester-group">
 				<div class="course-semester-label">Fall Semester</div>
 				<div class="course-grid">
-					<div class="course-card course-inactive">
+					<div class="course-card course-inactive" onclick="toggleCourseCard(this)">
 						<div class="course-card-header">
 							<div class="course-code">M57015RI</div>
 							<span class="course-type-tag tag-elective">Elective</span>
@@ -639,7 +652,7 @@
 
 		</section>
 
-		<section id="members" class="section fade-on-scroll page-section active">
+		<section id="members" class="section page-section active">
 			<h2>Lab Members</h2>
 			
 			<!--
@@ -1011,10 +1024,3 @@
 
 	<script src="script.js"></script>
 </body>		
-
-
-
-
-
-
-
