@@ -243,12 +243,18 @@ body.menu-open {
 }
 
 .hidden-item {
-    display: none;
+    display: none !important;
 }
 
 .hidden-item.show {
-    display: block;
+    display: block !important;
     animation: fadeIn 0.5s ease-out;
+}
+
+/* Flex elements need display:flex when shown, not block */
+.experience-item.hidden-item.show,
+.education-item.hidden-item.show {
+    display: flex !important;
 }
 
 /* 各區塊樣式 */
@@ -412,38 +418,34 @@ body.menu-open {
 .education-info {
     flex: 1;
     min-width: 0;
-    padding-right: 150px;
 }
 
 .education-year {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    background-color: rgba(26, 76, 124, 0.15);
-    color: var(--primary-blue);
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    font-weight: 600;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    border: 1px solid rgba(26, 76, 124, 0.2);
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 500;
     white-space: nowrap;
+    padding: 0.2rem 0;
+    align-self: flex-start;
+    margin-left: 1rem;
 }
 
 .education-year:before {
-    content: '';
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background-color: var(--accent-blue);
-    border-radius: 50%;
+    display: none;
+}
+
+.work-experience-block {
+    margin-bottom: 2rem;
+}
+
+.work-experience-block .show-more-btn {
+    margin-top: 0.5rem;
 }
 
 /* 計畫區塊樣式 */
 .projects-container {
-    margin-top: 1.5rem;
+    margin-top: 0.75rem;
 }
 
 .project-entry {
@@ -799,10 +801,92 @@ body.menu-open {
     margin-bottom: 0;
 }
 
-/* 特色區塊 */
+/* Research Highlights — accent-bar card list */
+.highlights-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.highlight-row {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    background: white;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    border-left: 4px solid transparent;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    transition: var(--transition);
+}
+
+.highlight-row:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.highlight-row-eda        { border-left-color: #4a7fb5; }
+.highlight-row-security   { border-left-color: #c0716a; }
+.highlight-row-biomedical { border-left-color: #5a9e7a; }
+.highlight-row-hardware   { border-left-color: #c49a3c; }
+.highlight-row-algo       { border-left-color: #7a6bb0; }
+
+.highlight-row-icon {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 9px;
+    padding: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.highlight-row-eda        .highlight-row-icon { background-color: #dce8f5; }
+.highlight-row-security   .highlight-row-icon { background-color: #f5e0de; }
+.highlight-row-biomedical .highlight-row-icon { background-color: #ddf0e7; }
+.highlight-row-hardware   .highlight-row-icon { background-color: #f5ecd5; }
+.highlight-row-algo       .highlight-row-icon { background-color: #e8e4f5; }
+
+.highlight-row-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.highlight-row-content { flex: 1; }
+
+.highlight-row-content h4 {
+    color: var(--primary-blue);
+    margin-bottom: 0.25rem;
+    font-size: 0.98rem;
+}
+
+.highlight-row-content p {
+    margin: 0;
+    font-size: 0.87rem;
+    color: #555;
+    line-height: 1.55;
+}
+
+@media (max-width: 480px) {
+    .highlight-row {
+        flex-direction: column;
+        text-align: center;
+        border-left: none;
+        border-top: 4px solid transparent;
+    }
+    .highlight-row-eda        { border-top-color: #4a7fb5; }
+    .highlight-row-security   { border-top-color: #c0716a; }
+    .highlight-row-biomedical { border-top-color: #5a9e7a; }
+    .highlight-row-hardware   { border-top-color: #c49a3c; }
+    .highlight-row-algo       { border-top-color: #7a6bb0; }
+}
+
+/* 研究主題 */
 .lab-highlights {
     margin-top: 2rem;
-    padding: 2rem;
+    padding: 1.5rem;
     background-color: var(--light-blue);
     border-radius: 12px;
     box-shadow: var(--box-shadow);
@@ -810,71 +894,15 @@ body.menu-open {
 }
 
 .lab-highlights:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    background-color: white;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+    background-color: #f0f7ff;
 }
 
 .lab-highlights h3 {
     color: var(--primary-blue);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--accent-blue);
-    text-align: center;
-}
-
-.highlights-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-}
-
-.highlight-item {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.highlight-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    background-color: var(--light-blue);
-}
-
-.highlight-icon {
-    width: 64px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-    background-color: rgba(26, 76, 124, 0.1);
-    border-radius: 50%;
-    padding: 12px;
-}
-
-.highlight-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.highlight-item h4 {
-    color: var(--primary-blue);
-    margin-bottom: 0.75rem;
-    font-size: 1.1rem;
-}
-
-.highlight-item p {
-    margin: 0;
-    font-size: 0.95rem;
-    color: #444;
 }
 
 /* 研究主題 */
@@ -1199,6 +1227,617 @@ body.menu-open {
     font-size: 0.95rem;
 }
 
+/* Alumni — three-format layout */
+.alumni-subhead {
+    color: var(--secondary-blue);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.75rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px dashed var(--accent-blue);
+}
+
+/* M.S. alumni cards */
+.alumni-ms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.alumni-ms-card {
+    background-color: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.25rem;
+    border-left: 4px solid var(--primary-blue);
+    transition: var(--transition);
+}
+
+.alumni-ms-card:hover {
+    background-color: white;
+    box-shadow: var(--box-shadow);
+    transform: translateY(-2px);
+}
+
+.alumni-ms-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.alumni-name {
+    font-weight: 700;
+    color: var(--primary-blue);
+    font-size: 1rem;
+}
+
+.alumni-cohort {
+    background-color: rgba(26,76,124,0.12);
+    color: var(--primary-blue);
+    padding: 0.15rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.alumni-thesis {
+    font-size: 0.9rem;
+    color: #444;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+.alumni-position {
+    font-size: 0.88rem;
+    color: #555;
+    margin-bottom: 0.3rem;
+}
+
+.alumni-awards {
+    font-size: 0.85rem;
+    color: #b07d00;
+    margin-top: 0.5rem;
+}
+
+/* Undergraduate project cards */
+.alumni-project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.alumni-project-card {
+    background-color: var(--light-blue);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    border-left: 4px solid var(--accent-blue);
+    transition: var(--transition);
+}
+
+.alumni-project-card:hover {
+    background-color: white;
+    box-shadow: var(--box-shadow);
+}
+
+.alumni-project-header {
+    margin-bottom: 0.4rem;
+}
+
+.alumni-project-title {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+}
+
+.alumni-project-members {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.alumni-member-chip {
+    background-color: white;
+    border: 1px solid var(--accent-blue);
+    color: var(--secondary-blue);
+    padding: 0.15rem 0.65rem;
+    border-radius: 12px;
+    font-size: 0.82rem;
+    font-weight: 500;
+}
+
+/* Other members list */
+.alumni-other-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.alumni-other-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    background-color: #f5f8fa;
+    flex-wrap: wrap;
+}
+
+.alumni-other-role {
+    font-size: 0.82rem;
+    color: #666;
+    background-color: #e0eaf5;
+    padding: 0.1rem 0.55rem;
+    border-radius: 10px;
+}
+
+.alumni-label {
+    display: inline-block;
+    background-color: var(--accent-blue);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.1rem 0.5rem;
+    border-radius: 8px;
+    margin-right: 0.35rem;
+    vertical-align: middle;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.alumni-role-badge {
+    display: inline-block;
+    background-color: #e0eaf5;
+    color: var(--secondary-blue);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.15rem 0.6rem;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+}
+
+/* Alumni — three-format layout END */
+
+/* Course semester subgroups */
+.course-semester-group {
+    margin-bottom: 1.5rem;
+}
+
+.course-semester-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: var(--secondary-blue);
+    color: white;
+    padding: 0.25rem 0.9rem;
+    border-radius: 15px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+    letter-spacing: 0.03em;
+}
+
+.course-semester-label::before {
+    content: '';
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background-color: #7dd3fc;
+    border-radius: 50%;
+}
+
+/* Course card header with required/elective tag */
+.course-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.4rem;
+}
+
+.course-type-tag {
+    display: inline-block;
+    padding: 0.15rem 0.65rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+.tag-required {
+    background-color: #dce8f5;
+    color: #2d5a8a;
+}
+
+.tag-elective {
+    background-color: #f1f5f9;
+    color: #64748b;
+}
+
+/* Strengthen current semester note */
+.course-semester-note strong {
+    color: var(--primary-blue);
+    font-size: 1.05rem;
+}
+
+/* Course section title */
+.course-section-title {
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--accent-blue);
+    font-size: 1.1rem;
+}
+
+.course-semester-note {
+    font-size: 0.9rem;
+    color: #666;
+    background-color: var(--light-blue);
+    border-left: 3px solid var(--accent-blue);
+    padding: 0.6rem 1rem;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 1.5rem;
+}
+
+/* Inactive (not offered this semester) course card */
+.course-card.course-inactive {
+    opacity: 0.55;
+    border: 2px dashed #aac4e0;
+    background-color: #f5f8fa;
+    box-shadow: none;
+}
+
+.course-card.course-inactive:hover {
+    opacity: 0.8;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Offered-semester tags */
+.course-offered-tags {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.tag-offered, .tag-past {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+.tag-planned {
+    background-color: #f1f5f9;
+    color: #94a3b8;
+    border: 1px dashed #94a3b8;
+    border-radius: 12px;
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+.tag-offered {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+.tag-past {
+    background-color: #dde8f5;
+    color: var(--secondary-blue);
+}
+
+/* Semester blocks (Teaching) */
+.semester-block {
+    margin-bottom: 2rem;
+}
+
+.semester-label {
+    display: inline-block;
+    background-color: var(--secondary-blue);
+    color: white;
+    padding: 0.3rem 1.1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+}
+
+.current-semester-label {
+    background-color: var(--primary-blue);
+    font-size: 1rem;
+}
+
+.past-courses-wrapper {
+    border-top: 1px solid var(--light-blue);
+    padding-top: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Research topic tags on member cards */
+.member-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+    justify-content: center;
+}
+
+.topic-tag {
+    display: inline-block;
+    padding: 0.2rem 0.7rem;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* Five research categories */
+.topic-eda        { background-color: #dce8f5; color: #2d5a8a; } /* 中藍  — Intelligent EDA */
+.topic-ai-security { background-color: #f5e0de; color: #8c3d38; } /* 磚玫瑰紅 — Hardware and AI Security */
+.topic-biomedical  { background-color: #ddf0e7; color: #2e6b4f; } /* 鼠尾草綠 — Biomedical AI */
+.topic-ai-hardware { background-color: #f5ecd5; color: #7a5a1a; } /* 暗金黃  — AI Computing & Hardware */
+.topic-algo        { background-color: #e8e4f5; color: #4a3d80; } /* 薰衣草紫 — Algorithm Optimization */
+.topic-none        { background-color: #f1f5f9; color: #94a3b8; } /* 灰  — 其他/跨領域/TBD */
+
+/* Collapsible research categories */
+.research-category {
+    border-radius: 12px;
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+.research-category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    background-color: var(--light-blue);
+    cursor: pointer;
+    transition: var(--transition);
+    user-select: none;
+}
+
+.research-category-header:hover {
+    background-color: #d4e9ff;
+}
+
+.research-category-header.open {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+.research-category-header.open h3,
+.research-category-header.open .research-cat-desc {
+    color: white;
+}
+
+.research-category-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.research-cat-icon {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 10px;
+    padding: 6px;
+    background-color: white;
+    align-self: center;
+}
+
+/* Research category icon border colors — matches five topic categories */
+.research-category.cat-eda      .research-cat-icon { border: 2px solid #4a7fb5; box-shadow: 0 0 0 3px #dce8f5; }
+.research-category.cat-security .research-cat-icon { border: 2px solid #c0716a; box-shadow: 0 0 0 3px #f5e0de; }
+.research-category.cat-bio      .research-cat-icon { border: 2px solid #5a9e7a; box-shadow: 0 0 0 3px #ddf0e7; }
+.research-category.cat-hardware .research-cat-icon { border: 2px solid #c49a3c; box-shadow: 0 0 0 3px #f5ecd5; }
+.research-category.cat-algo     .research-cat-icon { border: 2px solid #7a6bb0; box-shadow: 0 0 0 3px #e8e4f5; }
+
+/* Research Highlights icon color borders — removed, using original style */
+
+.research-category-header h3 {
+    color: var(--primary-blue);
+    margin: 0 0 0.25rem;
+    font-size: 1.15rem;
+    transition: var(--transition);
+}
+
+.research-cat-desc {
+    margin: 0;
+    font-size: 0.88rem;
+    color: #555;
+    line-height: 1.5;
+    transition: var(--transition);
+}
+
+.research-cat-toggle {
+    font-size: 0.85rem;
+    color: var(--primary-blue);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.research-category-header.open .research-cat-toggle {
+    color: white;
+    transform: rotate(180deg);
+}
+
+.research-category-body {
+    display: none;
+    padding: 1.5rem;
+    background-color: white;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.research-category-body.open {
+    display: block;
+}
+
+.research-category-body .research-topic {
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    background-color: var(--light-blue);
+    transition: var(--transition);
+}
+
+.research-category-body .research-topic:last-child {
+    margin-bottom: 0;
+}
+
+.research-category-body .research-topic:hover {
+    background-color: white;
+    box-shadow: var(--box-shadow);
+}
+
+.research-category-body .research-topic h4 {
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+/* View all publications link */
+.view-all-pubs-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--accent-blue);
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.view-all-pubs-link:hover {
+    color: var(--primary-blue);
+    text-decoration: underline;
+}
+
+/* Cohort groups (Lab Members) */
+.cohort-group {
+    margin-bottom: 2rem;
+}
+
+.cohort-label {
+    display: inline-block;
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+}
+
+.member-note {
+    color: #666;
+    font-style: italic;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--light-blue);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent-blue);
+}
+
+/* Project toggle button */
+.project-funder {
+    background-color: rgba(80, 148, 212, 0.12);
+    color: var(--primary-blue);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(80, 148, 212, 0.3);
+}
+
+.project-toggle-btn {
+    background-color: var(--light-blue);
+    color: var(--primary-blue);
+    border: 1px solid var(--accent-blue);
+    border-radius: 15px;
+    padding: 0.25rem 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.project-toggle-btn:hover {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+.project-details {
+    display: none;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    margin-top: 0.5rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.project-details.show {
+    display: block;
+}
+
+/* Professional Services role list */
+.service-role-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.service-role-item {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    border-left: 3px solid var(--accent-blue);
+    transition: var(--transition);
+}
+
+.service-role-item:hover {
+    transform: translateX(5px);
+}
+
+.service-role-title {
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 0.25rem;
+}
+
+.service-role-org {
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+}
+
+.service-role-period {
+    font-size: 0.85rem;
+    color: #888;
+}
+
 /* Footer */
 .footer {
     background: var(--gradient-blue);
@@ -1367,9 +2006,9 @@ body.menu-open {
     }
 
     .education-year {
-        position: static;
-        margin-top: 1rem;
-        display: inline-flex;
+        margin-left: 0;
+        margin-top: 0.5rem;
+        align-self: center;
     }
     
     .school-logo {
