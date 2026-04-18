@@ -9,19 +9,19 @@ const publications = [
     // ---- Journal Papers ----
     {
         type: 'journal', year: 2026,
-        authors: 'Jin-Tai Yan and <strong>Chia-Heng Yen</strong>',
-        title: 'Layer-Constrained GNR Area Routing with CNT-Via Insertion for Via Minimization',
-        venue: 'IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), vol. 45, no. 4, pp. 1677–1690, Apr. 2026.',
-        doi: 'https://doi.org/10.1109/TCAD.2025.3604646',
-        topics: ['eda']
-    },
-    {
-        type: 'journal', year: 2026,
         authors: 'Yi Ting Li, <strong>Chia-Heng Yen</strong>, Shu-Wen Li, Po-Yang Ke, Shuo-Wen Chang, Ying-Hua Chu, Mango Chia-Tso Chao, and Kai-Chiang Wu',
         title: 'An Improved Wafer-View GDBN Method Using MetaFormer Variant',
         venue: 'IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), 2026.',
         doi: 'https://doi.org/10.1109/TCAD.2026.3656320',
         topics: ['ic-testing']
+    },
+    {
+        type: 'journal', year: 2026,
+        authors: 'Jin-Tai Yan and <strong>Chia-Heng Yen</strong>',
+        title: 'Layer-Constrained GNR Area Routing with CNT-Via Insertion for Via Minimization',
+        venue: 'IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), vol. 45, no. 4, pp. 1677–1690, Apr. 2026.',
+        doi: 'https://doi.org/10.1109/TCAD.2025.3604646',
+        topics: ['eda']
     },
     {
         type: 'journal', year: 2026,
@@ -208,7 +208,6 @@ function renderPublicationsPage() {
         renderPubGroup('Journal Papers', journals) +
         renderPubGroup('Conference Papers', conferences);
 }
-
 function renderPubGroup(title, list) {
     const years = [...new Set(list.map(p => p.year))].sort((a, b) => b - a);
     let html = `<div class="publications-section"><h3>${title}</h3>`;
@@ -293,6 +292,12 @@ function switchPage(pageId) {
     if (activePage) {
         activePage.classList.add('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Re-trigger reveal for newly visible elements
+        setTimeout(() => {
+            activePage.querySelectorAll('.reveal:not(.visible)').forEach((el, i) => {
+                setTimeout(() => el.classList.add('visible'), i * 50);
+            });
+        }, 50);
     }
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.classList.remove('active');
@@ -307,13 +312,12 @@ function switchPage(pageId) {
 // DOM 載入完成後執行
 // ============================================================
 document.addEventListener('DOMContentLoaded', function() {
-    // Render dynamic sections — wrapped in try-catch so errors don't block navigation
+    // Render dynamic sections
     try { renderPublicationsPage(); } catch(e) { console.error('renderPublicationsPage:', e); }
     try { renderResearchPubs(); } catch(e) { console.error('renderResearchPubs:', e); }
 
-    // 綁定 nav 點擊
-    const navLinks = document.querySelectorAll('.nav-links a');
-    navLinks.forEach(link => {
+    // Nav click binding
+    document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const pageId = this.getAttribute('href').substring(1);
@@ -327,9 +331,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 初始頁面
+    // Initial page
     const pageId = window.location.hash.substring(1) || 'home';
     switchPage(pageId);
+
+    // Scroll reveal with IntersectionObserver
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, i * 60);
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    function attachReveal() {
+        document.querySelectorAll(
+            '.education-item, .experience-item, .publication-entry, ' +
+            '.member-card, .course-card, .highlight-row, .research-category, ' +
+            '.alumni-ms-card, .alumni-project-card, .project-entry, ' +
+            '.announcement, .journal-item, .timeline-item'
+        ).forEach(el => {
+            el.classList.add('reveal');
+            revealObserver.observe(el);
+        });
+    }
+    attachReveal();
 
     try { setupMobileMenu(); } catch(e) { console.error('setupMobileMenu:', e); }
 });
@@ -354,6 +383,10 @@ function togglePublications(button) {
 
 function toggleCourses(button) {
     // Reserved for future use
+}
+
+function toggleCourseCard(card) {
+    card.classList.toggle('open');
 }
 
 function toggleAlumni(button) {
