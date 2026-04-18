@@ -1,20 +1,6 @@
-// ============================================================
-// PUBLICATIONS DATA — edit here, renders in both Research & Publications
-// topics: 單一主要領域用單一 tag，跨領域研究可填多個 tag
-//   e.g. topics: ['ic-testing']          ← 單領域
-//        topics: ['ic-testing', 'eda']   ← 跨領域（兩個 tag 都會匹配，但去重邏輯確保只顯示一次）
-// Available tags: 'ic-testing' | 'eda' | 'ai-security' | 'biomedical' | 'ai-hardware' | 'algo'
-// ============================================================
+
 const publications = [
     // ---- Journal Papers ----
-    {
-        type: 'journal', year: 2026,
-        authors: 'Yi Ting Li, <strong>Chia-Heng Yen</strong>, Shu-Wen Li, Po-Yang Ke, Shuo-Wen Chang, Ying-Hua Chu, Mango Chia-Tso Chao, and Kai-Chiang Wu',
-        title: 'An Improved Wafer-View GDBN Method Using MetaFormer Variant',
-        venue: 'IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), 2026.',
-        doi: 'https://doi.org/10.1109/TCAD.2026.3656320',
-        topics: ['ic-testing']
-    },
     {
         type: 'journal', year: 2026,
         authors: 'Jin-Tai Yan and <strong>Chia-Heng Yen</strong>',
@@ -22,6 +8,14 @@ const publications = [
         venue: 'IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), vol. 45, no. 4, pp. 1677–1690, Apr. 2026.',
         doi: 'https://doi.org/10.1109/TCAD.2025.3604646',
         topics: ['eda']
+    },
+    {
+        type: 'journal', year: 2026,
+        authors: 'Yi Ting Li, <strong>Chia-Heng Yen</strong>, Shu-Wen Li, Po-Yang Ke, Shuo-Wen Chang, Ying-Hua Chu, Mango Chia-Tso Chao, and Kai-Chiang Wu',
+        title: 'An Improved Wafer-View GDBN Method Using MetaFormer Variant',
+        venue: 'IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), 2026.',
+        doi: 'https://doi.org/10.1109/TCAD.2026.3656320',
+        topics: ['ic-testing']
     },
     {
         type: 'journal', year: 2026,
