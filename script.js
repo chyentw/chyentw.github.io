@@ -44,7 +44,7 @@ const publications = [
         type: 'journal', year: 2024,
         authors: '<strong>Chia-Heng Yen</strong>, Ting-Rui Wang, Ching-Min Liu, Cheng-Hao Yang, Chun-Teng Chen, Ying-Yen Chen, Jih-Nung Lee, Shu-Yi Kao, Kai-Chiang Wu, and Mango Chia-Tso Chao',
         title: 'Identifying Good-Dice-in-Bad-Neighborhoods Using Artificial Neural Networks',
-        venue: 'IEEE Transactions on Semiconductor Manufacturing, vol. 37, no. 3, pp. 280–292, Aug. 2024.',
+        venue: 'IEEE Transactions on Semiconductor Manufacturing (TSM), vol. 37, no. 3, pp. 280–292, Aug. 2024.',
         doi: 'https://doi.org/10.1109/TSM.2024.3406395',
         topics: ['ic-testing']
     },
@@ -60,7 +60,7 @@ const publications = [
         type: 'journal', year: 2023,
         authors: '<strong>Chia-Heng Yen</strong>, Chun-Teng Chen, Cheng-Yen Wen, Ying-Yen Chen, Jih-Nung Lee, Shu-Yi Kao, Kai-Chiang Wu, and Mango Chia-Tso Chao',
         title: 'CNN-based Stochastic Regression for IDDQ Outlier Identification',
-        venue: 'IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems, vol. 42, no. 11, pp. 4282–4295, Nov. 2023.',
+        venue: 'IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), vol. 42, no. 11, pp. 4282–4295, Nov. 2023.',
         doi: 'https://doi.org/10.1109/TCAD.2023.3253043',
         topics: ['ic-testing']
     },
