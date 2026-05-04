@@ -15,7 +15,8 @@
     <meta name="twitter:description" content="Research in Intelligent EDA, Hardware and AI Security, Biomedical AI, AI Computing, and Algorithm Optimization.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"></noscript>
     <link rel="icon" href="images/lab_logo.png">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -47,6 +48,7 @@
                 <li><a href="#pi">Principal Investigator</a></li>
                 <li><a href="#research">Research</a></li>
                 <li><a href="#publications">Publications</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#teaching">Teaching</a></li>
                 <li><a href="#members">Lab Members</a></li>
             </ul>
@@ -56,6 +58,30 @@
     <div class="container">
         <section id="home" class="section page-section active">
             <h2>Laboratory Overview</h2>
+
+            <!-- Stats bar -->
+            <div class="lab-stats-bar">
+                <div class="stat-item">
+                    <span class="stat-number" id="stat-pubs">23</span>
+                    <span class="stat-label">Publications</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">11</span>
+                    <span class="stat-label">Lab Members</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Research Areas</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">2025</span>
+                    <span class="stat-label">Established</span>
+                </div>
+            </div>
+
             <div class="lab-overview">
                 <div class="overview-container">
                     <div class="overview-content">
@@ -153,7 +179,7 @@
             <h2>Principal Investigator</h2>
             <div class="pi-profile">
                 <div class="pi-photo">
-                    <img src="images/chyentw.jpg" alt="Professor Photo"/>
+                    <img src="images/chyentw.jpg" loading="lazy" decoding="async" alt="Professor Photo"/>
                 </div>
                 <div class="pi-info">
                     <h3>Dr. Chia-Heng Yen (顏家珩)</h3>
@@ -196,55 +222,59 @@
                 </div>
             </div>
 
-            <h3>Education</h3>
-            <div class="education-item">
-                <div class="school-logo">
-                    <img src="images/NYCU_logo.png" alt="NYCU Logo"/>
+            <h3 class="section-heading">Education</h3>
+            <div class="education-block">
+                <div class="education-item">
+                    <div class="school-logo">
+                        <img src="images/NYCU_logo.png" loading="lazy" decoding="async" alt="NYCU Logo"/>
+                    </div>
+                    <div class="education-info">
+                        <h4>Doctor of Philosophy (Ph.D.) in Computer Science and Engineering</h4>
+                        <p>National Yang Ming Chiao Tung University (NYCU)</p>
+                        <a href="https://people.cs.nycu.edu.tw/~kcw/" target="_blank" class="lab-link">
+                            <div class="lab-info">
+                                <p>Laboratory: Computer-Aided Design for G(reen)-RE(liable)-A(nd)-T(rustworthy) (GREAT) Systems Lab.</p>
+                            </div>
+                        </a>
+                        <p>Advisor: Prof. Kai-Chiang Wu</p>
+                        <p>Doctoral Dissertation: Machine Learning-Based IC Testing – Reliability and Security Perspectives</p>
+                    </div>
+                    <div class="education-year">2019.09 - 2024.07</div>
                 </div>
-                <div class="education-info">
-                    <h4>Doctor of Philosophy (Ph.D.) in Computer Science and Engineering</h4>
-                    <p>National Yang Ming Chiao Tung University (NYCU)</p>
-                    <a href="https://people.cs.nycu.edu.tw/~kcw/" target="_blank" class="lab-link">
-                        <div class="lab-info">
-                            <p>Laboratory: Computer-Aided Design for G(reen)-RE(liable)-A(nd)-T(rustworthy) (GREAT) Systems Lab.</p>
-                        </div>
-                    </a>
-                    <p>Advisor: Prof. Kai-Chiang Wu</p>
-                    <p>Doctoral Dissertation: Machine Learning-Based IC Testing – Reliability and Security Perspectives</p>
+                
+                <div class="education-item hidden-item">
+                    <div class="school-logo">
+                        <img src="images/NCTU_logo.png" loading="lazy" decoding="async" alt="NCTU Logo"/>
+                    </div>
+                    <div class="education-info">
+                        <h4>Master of Science (M.S.) in Bioinformatics and Systems Biology</h4>
+                        <p>National Chiao Tung University (NCTU) (currently National Yang Ming Chiao Tung University)</p>
+                        <a href="https://bioinfoic.lab.nycu.edu.tw/" target="_blank" class="lab-link">
+                            <div class="lab-info">
+                                <p>Laboratory: Intelligent Computing Lab.</p>
+                            </div>
+                        </a>
+                        <p>Advisor: Distinguished Prof. Shinn-Ying Ho</p>
+                        <p>Master's Thesis: Prediction of Recurrence Time after Therapeutic Surgery Using CT Images on Liver Tumor</p>
+                    </div>
+                    <div class="education-year">2017.09 - 2019.07</div>
                 </div>
-                <div class="education-year">2019.09 - 2024.07</div>
-            </div>
-            
-            <div class="education-item">
-                <div class="school-logo">
-                    <img src="images/NCTU_logo.png" alt="NCTU Logo"/>
+                
+                <div class="education-item hidden-item">
+                    <div class="school-logo">
+                        <img src="images/NTOU_logo.png" loading="lazy" decoding="async" alt="NTOU Logo"/>
+                    </div>
+                    <div class="education-info">
+                        <h4>Bachelor of Science (B.S.) in Computer Science and Engineering</h4>
+                        <p>National Taiwan Ocean University (NTOU)</p>
+                    </div>
+                    <div class="education-year">2013.09 - 2017.06</div>
                 </div>
-                <div class="education-info">
-                    <h4>Master of Science (M.S.) in Bioinformatics and Systems Biology</h4>
-                    <p>National Chiao Tung University (NCTU) (currently National Yang Ming Chiao Tung University)</p>
-                    <a href="https://bioinfoic.lab.nycu.edu.tw/" target="_blank" class="lab-link">
-                        <div class="lab-info">
-                            <p>Laboratory: Intelligent Computing Lab.</p>
-                        </div>
-                    </a>
-                    <p>Advisor: Distinguished Prof. Shinn-Ying Ho</p>
-                    <p>Master's Thesis: Prediction of Recurrence Time after Therapeutic Surgery Using CT Images on Liver Tumor</p>
-                </div>
-                <div class="education-year">2017.09 - 2019.07</div>
-            </div>
-            
-            <div class="education-item">
-                <div class="school-logo">
-                    <img src="images/NTOU_logo.png" alt="NTOU Logo"/>
-                </div>
-                <div class="education-info">
-                    <h4>Bachelor of Science (B.S.) in Computer Science and Engineering</h4>
-                    <p>National Taiwan Ocean University (NTOU)</p>
-                </div>
-                <div class="education-year">2013.09 - 2017.06</div>
+
+                <button class="show-more-btn" onclick="toggleEducation(this)">Show More</button>
             </div>
 
-            <h3>Work Experience</h3>
+            <h3 class="section-heading">Work Experience</h3>
             <div class="work-experience-block">
                 <div class="experience-item">
                     <div class="experience-dates">
@@ -280,30 +310,7 @@
                 <button class="show-more-btn" onclick="toggleExperience(this)">Show More</button>
             </div>
 
-			<h3>Research Projects</h3>
-            <div class="projects-container">
-                <div class="project-entry">
-                    <div class="project-header">
-                        <div class="project-title-line">
-                            <span class="project-number">114</span>
-                            <span class="project-name">用於識別群聚缺陷區域中跳脫晶片之圖神經網路架構為基底的測試工具開發</span>
-                        </div>
-                        <div class="project-meta">
-                            <span class="project-funder">NSTC</span>
-                            <span class="project-period">114/11/01 – 115/10/31</span>
-                            <span class="project-role">Principal Investigator</span>
-                            <button class="project-toggle-btn" onclick="toggleProjectDetails(this)">Show Details</button>
-                        </div>
-                    </div>
-                    <div class="project-details">
-                        <p><strong>Funding Agency:</strong> National Science and Technology Council, Taiwan (R.O.C)</p>
-                        <p><strong>Project ID:</strong> NSTC 114-2222-E-019-003</p>
-                        <p><strong>Description:</strong> 本研究針對晶圓測試資料，提出一種基於圖神經網路（GNN）的GDBN檢測方法。先將晶片轉為圖結構（節點含21維多模態特徵，邊表空間關聯），再透過多尺度圖卷積擷取局部缺陷、圖注意力建模全域關係，最後以輕量模型（約12K參數）輸出可疑度，實現測試跳脫檢測。</p>
-                    </div>
-                </div>
-            </div>
-
-            <h3>Professional Services</h3>
+            <h3 class="section-heading">Professional Services</h3>
             <div class="services-container">
                 <div class="service-category">
                     <h4>Board / Committee Membership</h4>
@@ -317,7 +324,7 @@
                 </div>
             </div>
 
-            <h3 class="academic-services">Academic Services</h3>
+            <h3 class="section-heading academic-services">Academic Services</h3>
             <div class="services-container">
                 <div class="service-category">
                     <h4>Journal Reviewer</h4>
@@ -483,6 +490,31 @@
 			<p class="pub-loading">Loading publications...</p>
 		</section>
 
+		<section id="projects" class="section page-section active">
+			<h2>Research Projects</h2>
+			<div class="projects-container">
+				<div class="project-entry">
+					<div class="project-header">
+						<div class="project-title-line">
+							<span class="project-number">114</span>
+							<span class="project-name">用於識別群聚缺陷區域中跳脫晶片之圖神經網路架構為基底的測試工具開發</span>
+						</div>
+						<div class="project-meta">
+							<span class="project-funder">NSTC</span>
+							<span class="project-period">114/11/01 – 115/10/31</span>
+							<span class="project-role">Principal Investigator</span>
+							<button class="project-toggle-btn" onclick="toggleProjectDetails(this)">Show Details</button>
+						</div>
+					</div>
+					<div class="project-details">
+						<p><strong>Funding Agency:</strong> National Science and Technology Council, Taiwan (R.O.C)</p>
+						<p><strong>Project ID:</strong> NSTC 114-2222-E-019-003</p>
+						<p><strong>Description:</strong> 本研究針對晶圓測試資料，提出一種基於圖神經網路（GNN）的GDBN檢測方法。先將晶片轉為圖結構（節點含21維多模態特徵，邊表空間關聯），再透過多尺度圖卷積擷取局部缺陷、圖注意力建模全域關係，最後以輕量模型（約12K參數）輸出可疑度，實現測試跳脫檢測。</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<section id="teaching" class="section page-section active">
 			<h2>Teaching Courses</h2>
 
@@ -532,61 +564,64 @@
 				</div>
 			</div>
 
-			<div class="course-semester-group">
-				<div class="course-semester-label">Fall Semester</div>
-				<div class="course-grid">
-					<div class="course-card course-inactive" onclick="toggleCourseCard(this)">
-						<div class="course-card-header">
-							<div class="course-code">B57022TS</div>
-							<span class="course-type-tag tag-elective">Elective</span>
+			<div class="hidden-item course-group-hidden" id="ug-fall-group">
+				<div class="course-semester-group">
+					<div class="course-semester-label">Fall Semester</div>
+					<div class="course-grid">
+						<div class="course-card course-inactive" onclick="toggleCourseCard(this)">
+							<div class="course-card-header">
+								<div class="course-code">B57022TS</div>
+								<span class="course-type-tag tag-elective">Elective</span>
+							</div>
+							<div class="course-title">Programming with Python</div>
+							<div class="course-info">
+								<span><strong>Time:</strong> Monday 13:10–16:00</span>
+								<span><strong>Location:</strong> INS 301</span>
+								<span><strong>Class:</strong> CSE Undergraduate 2A</span>
+							</div>
+							<div class="course-description">
+								<p>This course introduces the fundamentals and applications of Python. Topics progress from basic syntax to data structures, object-oriented programming, file handling, and commonly used libraries.</p>
+							</div>
+							<div class="course-offered-tags"><span class="tag-past">1141</span><span class="tag-past">1151</span></div>
 						</div>
-						<div class="course-title">Programming with Python</div>
-						<div class="course-info">
-							<span><strong>Time:</strong> Monday 13:10–16:00</span>
-							<span><strong>Location:</strong> INS 301</span>
-							<span><strong>Class:</strong> CSE Undergraduate 2A</span>
-						</div>
-						<div class="course-description">
-							<p>This course introduces the fundamentals and applications of Python. Topics progress from basic syntax to data structures, object-oriented programming, file handling, and commonly used libraries.</p>
-						</div>
-						<div class="course-offered-tags"><span class="tag-past">1141</span><span class="tag-past">1151</span></div>
-					</div>
 
-					<div class="course-card course-inactive" onclick="toggleCourseCard(this)">
-						<div class="course-card-header">
-							<div class="course-code">B5703660</div>
-							<span class="course-type-tag tag-required">Required</span>
+						<div class="course-card course-inactive" onclick="toggleCourseCard(this)">
+							<div class="course-card-header">
+								<div class="course-code">B5703660</div>
+								<span class="course-type-tag tag-required">Required</span>
+							</div>
+							<div class="course-title">Operating Systems</div>
+							<div class="course-info">
+								<span><strong>Time:</strong> Friday 09:20–12:05</span>
+								<span><strong>Location:</strong> ECG B107</span>
+								<span><strong>Class:</strong> CSE Undergraduate 3B</span>
+							</div>
+							<div class="course-description">
+								<p>This course explores the fundamental concepts, design principles, and implementation of modern operating systems, including process management, CPU scheduling, synchronization, deadlock avoidance, memory management, and file systems.</p>
+							</div>
+							<div class="course-offered-tags"><span class="tag-past">1141</span><span class="tag-past">1151</span></div>
 						</div>
-						<div class="course-title">Operating Systems</div>
-						<div class="course-info">
-							<span><strong>Time:</strong> Friday 09:20–12:05</span>
-							<span><strong>Location:</strong> ECG B107</span>
-							<span><strong>Class:</strong> CSE Undergraduate 3B</span>
-						</div>
-						<div class="course-description">
-							<p>This course explores the fundamental concepts, design principles, and implementation of modern operating systems, including process management, CPU scheduling, synchronization, deadlock avoidance, memory management, and file systems.</p>
-						</div>
-						<div class="course-offered-tags"><span class="tag-past">1141</span><span class="tag-past">1151</span></div>
-					</div>
 
-					<div class="course-card course-inactive" onclick="toggleCourseCard(this)">
-						<div class="course-card-header">
-							<div class="course-code">B570332J</div>
-							<span class="course-type-tag tag-elective">Elective</span>
+						<div class="course-card course-inactive" onclick="toggleCourseCard(this)">
+							<div class="course-card-header">
+								<div class="course-code">B570332J</div>
+								<span class="course-type-tag tag-elective">Elective</span>
+							</div>
+							<div class="course-title">Systems and Network Administration</div>
+							<div class="course-info">
+								<span><strong>Time:</strong> Monday 09:20–12:05</span>
+								<span><strong>Location:</strong> ECG 610</span>
+								<span><strong>Class:</strong> CSE Undergraduate 3A</span>
+							</div>
+							<div class="course-description">
+								<p>This course develops students' practical skills in managing modern Linux-based systems and network infrastructure, covering virtualization, enterprise network services, SSH security, system backup, and monitoring tools, with an emphasis on hands-on deployment and real-world system administration.</p>
+							</div>
+							<div class="course-offered-tags"><span class="tag-past">1151</span></div>
 						</div>
-						<div class="course-title">Systems and Network Administration</div>
-						<div class="course-info">
-							<span><strong>Time:</strong> Monday 09:20–12:05</span>
-							<span><strong>Location:</strong> ECG 610</span>
-							<span><strong>Class:</strong> CSE Undergraduate 3A</span>
-						</div>
-						<div class="course-description">
-							<p>This course develops students' practical skills in managing modern Linux-based systems and network infrastructure, covering virtualization, enterprise network services, SSH security, system backup, and monitoring tools, with an emphasis on hands-on deployment and real-world system administration.</p>
-						</div>
-						<div class="course-offered-tags"><span class="tag-past">1151</span></div>
 					</div>
 				</div>
 			</div>
+			<button class="show-more-btn" onclick="toggleCourseGroup('ug-fall-group', this)">Show More Courses</button>
 
 			<!-- ══ Graduate Courses ══ -->
 			<h3 class="course-section-title">Graduate Courses</h3>
@@ -611,7 +646,7 @@
 						<div class="course-offered-tags"><span class="tag-offered">1142</span></div>
 					</div>
 
-					<div class="course-card course-inactive" onclick="toggleCourseCard(this)">
+					<div class="course-card course-inactive hidden-item" id="grad-spring-extra" onclick="toggleCourseCard(this)">
 						<div class="course-card-header">
 							<div class="course-code">M5701P9I</div>
 							<span class="course-type-tag tag-elective">Elective</span>
@@ -630,25 +665,28 @@
 				</div>
 			</div>
 
-			<div class="course-semester-group">
-				<div class="course-semester-label">Fall Semester</div>
-				<div class="course-grid">
-					<div class="course-card course-inactive" onclick="toggleCourseCard(this)">
-						<div class="course-card-header">
-							<div class="course-code">M57015RI</div>
-							<span class="course-type-tag tag-elective">Elective</span>
+			<div class="hidden-item course-group-hidden" id="grad-other-group">
+				<div class="course-semester-group">
+					<div class="course-semester-label">Fall Semester</div>
+					<div class="course-grid">
+						<div class="course-card course-inactive" onclick="toggleCourseCard(this)">
+							<div class="course-card-header">
+								<div class="course-code">M57015RI</div>
+								<span class="course-type-tag tag-elective">Elective</span>
+							</div>
+							<div class="course-title">Introduction to Electronic Design Automation</div>
+							<div class="course-info">
+								<span><strong>Class:</strong> CSE Master's Program 1A</span>
+							</div>
+							<div class="course-description">
+								<p>This interdisciplinary course bridges computer science and electrical engineering, focusing on IC design processes and EDA. The course enhances understanding of chip technologies and algorithmic implementation skills.</p>
+							</div>
+							<div class="course-offered-tags"><span class="tag-past">1141</span></div>
 						</div>
-						<div class="course-title">Introduction to Electronic Design Automation</div>
-						<div class="course-info">
-							<span><strong>Class:</strong> CSE Master's Program 1A</span>
-						</div>
-						<div class="course-description">
-							<p>This interdisciplinary course bridges computer science and electrical engineering, focusing on IC design processes and EDA. The course enhances understanding of chip technologies and algorithmic implementation skills.</p>
-						</div>
-						<div class="course-offered-tags"><span class="tag-past">1141</span></div>
 					</div>
 				</div>
 			</div>
+			<button class="show-more-btn" onclick="toggleCourseGroup('grad-other-group', this); showEl('grad-spring-extra')">Show More Courses</button>
 
 		</section>
 
@@ -672,7 +710,7 @@
 					<div class="member-grid">
 						<div class="member-card">
 							<div class="member-photo">
-								<img src="images/P_bs.jpg" alt="Master Student Photo"/>
+								<img src="images/P_bs.jpg" loading="lazy" decoding="async" alt="Master Student Photo"/>
 							</div>
 							<div class="member-info">
 								<h4>許博瑄</h4>
@@ -683,7 +721,7 @@
 
 						<div class="member-card">
 							<div class="member-photo">
-								<img src="images/user.png" alt="Master Student Photo"/>
+								<img src="images/user.png" loading="lazy" decoding="async" alt="Master Student Photo"/>
 							</div>
 							<div class="member-info">
 								<h4>簡胤亘</h4>
@@ -700,7 +738,7 @@
 					<div class="member-grid">
 						<div class="member-card">
 							<div class="member-photo">
-								<img src="images/P_yt.jpg" alt="Master Student Photo"/>
+								<img src="images/P_yt.jpg" loading="lazy" decoding="async" alt="Master Student Photo"/>
 							</div>
 							<div class="member-info">
 								<h4>徐郁庭</h4>
@@ -711,7 +749,7 @@
 						
 						<div class="member-card">
 							<div class="member-photo">
-								<img src="images/P_ms.jpg" alt="Master Student Photo"/>
+								<img src="images/P_ms.jpg" loading="lazy" decoding="async" alt="Master Student Photo"/>
 							</div>
 							<div class="member-info">
 								<h4>沈牧宣</h4>
@@ -722,7 +760,7 @@
 						
 						<div class="member-card">
 							<div class="member-photo">
-								<img src="images/user.png" alt="Master Student Photo"/>
+								<img src="images/user.png" loading="lazy" decoding="async" alt="Master Student Photo"/>
 							</div>
 							<div class="member-info">
 								<h4>劉旭峰</h4>
@@ -733,7 +771,7 @@
 						
 						<div class="member-card">
 							<div class="member-photo">
-								<img src="images/P_bc.jpg" alt="Master Student Photo"/>
+								<img src="images/P_bc.jpg" loading="lazy" decoding="async" alt="Master Student Photo"/>
 							</div>
 							<div class="member-info">
 								<h4>陳秉新</h4>
@@ -744,7 +782,7 @@
 
 						<div class="member-card">
 							<div class="member-photo">
-								<img src="images/user.png" alt="Master Student Photo"/>
+								<img src="images/user.png" loading="lazy" decoding="async" alt="Master Student Photo"/>
 							</div>
 							<div class="member-info">
 								<h4>李泓勳</h4>
@@ -755,7 +793,7 @@
 
 						<div class="member-card">
 							<div class="member-photo">
-								<img src="images/P_jh.jpg" alt="Master Student Photo"/>
+								<img src="images/P_jh.jpg" loading="lazy" decoding="async" alt="Master Student Photo"/>
 							</div>
 							<div class="member-info">
 								<h4>林敬恆</h4>
@@ -772,7 +810,7 @@
 					<div class="member-grid">
 						<div class="member-card">
 							<div class="member-photo">
-								<img src="images/user.png" alt="Master Student Photo"/>
+								<img src="images/user.png" loading="lazy" decoding="async" alt="Master Student Photo"/>
 							</div>
 							<div class="member-info">
 								<h4>鄭至傑</h4>
@@ -783,7 +821,7 @@
 
 						<div class="member-card">
 							<div class="member-photo">
-								<img src="images/user.png" alt="Master Student Photo"/>
+								<img src="images/user.png" loading="lazy" decoding="async" alt="Master Student Photo"/>
 							</div>
 							<div class="member-info">
 								<h4>呂柚陞</h4>
@@ -794,7 +832,7 @@
 
 						<div class="member-card">
 							<div class="member-photo">
-								<img src="images/user.png" alt="Master Student Photo"/>
+								<img src="images/user.png" loading="lazy" decoding="async" alt="Master Student Photo"/>
 							</div>
 							<div class="member-info">
 								<h4>洪子懿</h4>
@@ -813,7 +851,7 @@
 					<div class="member-grid">
 						<div class="member-card">
 							<div class="member-photo">
-								<img src="images/user.png" alt="Master Student Photo"/>
+								<img src="images/user.png" loading="lazy" decoding="async" alt="Master Student Photo"/>
 							</div>
 							<div class="member-info">
 								<h4>吳允佑</h4>
@@ -824,7 +862,7 @@
 						
 						<div class="member-card">
 							<div class="member-photo">
-								<img src="images/user.png" alt="Master Student Photo"/>
+								<img src="images/user.png" loading="lazy" decoding="async" alt="Master Student Photo"/>
 							</div>
 							<div class="member-info">
 								<h4>吳東謙</h4>
@@ -835,7 +873,7 @@
 
 						<div class="member-card">
 							<div class="member-photo">
-								<img src="images/user.png" alt="Master Student Photo"/>
+								<img src="images/user.png" loading="lazy" decoding="async" alt="Master Student Photo"/>
 							</div>
 							<div class="member-info">
 								<h4>陳威任</h4>
@@ -882,9 +920,9 @@
 
 			<div class="member-category">
 				<h3>Undergraduate Researchers</h3>
-				<p class="member-note">Undergraduate students who voluntarily participate in research projects outside of formal capstone programs.</p>
 				<!-- 填入非專題自願研究生，範例如下 -->
 				<!--
+				<p class="member-note">Undergraduate students who voluntarily participate in research projects outside of formal capstone programs.</p>
 				<div class="cohort-group">
 					<div class="cohort-label">Academic Year 113</div>
 					<div class="undergrad-grid">
