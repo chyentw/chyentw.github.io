@@ -1,3 +1,6 @@
+// ============================================================
+// Publications Data
+// ============================================================
 const publications = [
     // ---- Journal Papers ----
     {
@@ -187,51 +190,122 @@ const publications = [
     }
 ];
 
+// ── Topic label map ──
+const TOPIC_LABELS = {
+    'ic-testing':  'IC Testing',
+    'eda':         'EDA',
+    'ai-security': 'Hardware Security',
+    'biomedical':  'Biomedical AI',
+    'ai-hardware': 'AI Hardware'
+};
+
+// ── Active filter state ──
+let activePubFilter = 'all';
+
 // ============================================================
-// RENDER: Publications page (grouped by type → year)
+// RENDER: Publications page
 // ============================================================
 function renderPublicationsPage() {
-    const journals = publications.filter(p => p.type === 'journal');
-    const conferences = publications.filter(p => p.type === 'conference');
-
     const pubSection = document.getElementById('publications');
     if (!pubSection) return;
 
-    pubSection.innerHTML = '<h2>Publications</h2>' +
-        renderPubGroup('Journal Papers', journals) +
-        renderPubGroup('Conference Papers', conferences);
+    const journals     = publications.filter(p => p.type === 'journal');
+    const conferences  = publications.filter(p => p.type === 'conference');
+    const totalJ = journals.length;
+    const totalC = conferences.length;
+
+    // Filter bar topics (only those actually used)
+    const usedTopics = [...new Set(publications.flatMap(p => p.topics))];
+
+    let filterHtml = `<div class="pub-filter-bar">
+        <label>Filter:</label>
+        <button class="pub-filter-btn active" data-filter="all" onclick="setPubFilter(this,'all')">All (${publications.length})</button>`;
+
+    usedTopics.forEach(t => {
+        const count = publications.filter(p => p.topics.includes(t)).length;
+        filterHtml += `<button class="pub-filter-btn" data-filter="${t}" onclick="setPubFilter(this,'${t}')">${TOPIC_LABELS[t] || t} (${count})</button>`;
+    });
+
+    filterHtml += `</div>`;
+
+    pubSection.innerHTML = '<h2>Publications</h2>' + filterHtml +
+        `<div id="pub-journal-section">${renderPubGroup('Journal Papers', journals, totalJ)}</div>` +
+        `<div id="pub-conference-section">${renderPubGroup('Conference Papers', conferences, totalC)}</div>`;
 }
-function renderPubGroup(title, list) {
+
+function setPubFilter(btn, topic) {
+    activePubFilter = topic;
+
+    // Update button states
+    document.querySelectorAll('.pub-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Show/hide entries
+    document.querySelectorAll('.publication-entry').forEach(entry => {
+        const topics = entry.dataset.topics ? entry.dataset.topics.split(',') : [];
+        const match = topic === 'all' || topics.includes(topic);
+        entry.style.display = match ? '' : 'none';
+    });
+
+    // Show/hide year groups if all empty
+    document.querySelectorAll('.publication-year-group').forEach(group => {
+        const visible = [...group.querySelectorAll('.publication-entry')].some(e => e.style.display !== 'none');
+        group.style.display = visible ? '' : 'none';
+    });
+
+    // Show/hide section headers if all empty
+    ['pub-journal-section', 'pub-conference-section'].forEach(id => {
+        const sec = document.getElementById(id);
+        if (!sec) return;
+        const visible = [...sec.querySelectorAll('.publication-entry')].some(e => e.style.display !== 'none');
+        sec.style.display = visible ? '' : 'none';
+    });
+}
+
+function renderPubGroup(title, list, total) {
     const years = [...new Set(list.map(p => p.year))].sort((a, b) => b - a);
-    let html = `<div class="publications-section"><h3>${title}</h3>`;
+    let html = `<div class="publications-section">
+        <h3>${title} <span class="pub-count-badge">${total}</span></h3>`;
+
     years.forEach(year => {
         html += `<div class="publication-year-group"><h4>${year}</h4>`;
-        list.filter(p => p.year === year).forEach(p => {
-            html += renderPubEntry(p);
-        });
-        html += '</div>';
+        list.filter(p => p.year === year).forEach(p => { html += renderPubEntry(p); });
+        html += `</div>`;
     });
-    html += '</div>';
+
+    html += `</div>`;
     return html;
 }
 
 function renderPubEntry(p) {
     const doiHtml = p.doi
-        ? `<a href="${p.doi}" target="_blank" class="doi-link">${p.doi}</a>`
+        ? `<a href="${p.doi}" target="_blank" rel="noopener" class="doi-link">🔗 ${p.doi}</a>`
         : `<span class="doi-link" style="color:#aaa;font-style:italic;">DOI pending</span>`;
-    return `<div class="publication-entry">
+
+    const topicsAttr = p.topics.join(',');
+
+    // Topic pills
+    let pillsHtml = '';
+    if (p.topics && p.topics.length) {
+        pillsHtml = `<div class="pub-topic-tags">` +
+            p.topics.map(t => `<span class="pub-topic-pill pill-${t}">${TOPIC_LABELS[t] || t}</span>`).join('') +
+            `</div>`;
+    }
+
+    return `<div class="publication-entry" data-topics="${topicsAttr}">
         <div class="publication-authors">${p.authors}</div>
         <div class="publication-title">"${p.title},"</div>
         <div class="publication-venue">${p.venue}</div>
+        ${pillsHtml}
         ${doiHtml}
     </div>`;
 }
 
 // ============================================================
-// RENDER: Research topic publication lists (by topic tag)
+// RENDER: Research page inline publications
 // ============================================================
 function renderResearchPubs() {
-    const shownTitles = new Set(); // resets each render
+    const shownTitles = new Set();
 
     document.querySelectorAll('[data-pub-topic]').forEach(container => {
         const topic = container.dataset.pubTopic;
@@ -242,7 +316,7 @@ function renderResearchPubs() {
 
         topicPubs.forEach(p => shownTitles.add(p.title));
 
-        const shown = topicPubs.slice(0, limit);
+        const shown  = topicPubs.slice(0, limit);
         const hidden = topicPubs.slice(limit);
 
         let html = '<h4>Related Publications</h4>';
@@ -252,6 +326,7 @@ function renderResearchPubs() {
                 <span>${p.authors}, "${p.title}," <em>${p.venue}</em></span>
             </div>`;
         });
+
         if (hidden.length > 0) {
             hidden.forEach(p => {
                 html += `<div class="publication-item hidden-item">
@@ -261,57 +336,91 @@ function renderResearchPubs() {
             });
             html += `<button class="show-more-btn" onclick="togglePublications(this)">Show More</button>`;
         }
+
         container.innerHTML = html;
     });
 }
 
-// ============================================================
-// 監聽視窗大小變化
-// ============================================================
-window.addEventListener('resize', function() {
-    const nav = document.querySelector('.nav');
-    if (nav) document.documentElement.style.setProperty('--nav-height', nav.offsetHeight + 'px');
-});
+// ── Debounced resize handler ──
+let _resizeTimer;
+window.addEventListener('resize', function () {
+    clearTimeout(_resizeTimer);
+    _resizeTimer = setTimeout(function () {
+        const nav = document.querySelector('.nav');
+        if (nav) document.documentElement.style.setProperty('--nav-height', nav.offsetHeight + 'px');
+    }, 100);
+}, { passive: true });
 window.dispatchEvent(new Event('resize'));
 
+// ── Animated counter for stats ──
+function animateCounter(el, target, duration) {
+    const start = performance.now();
+    const startVal = 0;
+    const update = (now) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // ease-out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(startVal + (target - startVal) * eased);
+        if (progress < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+}
+
+function initStats() {
+    const statsBar = document.querySelector('.lab-stats-bar');
+    if (!statsBar) return;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                statsBar.querySelectorAll('.stat-number').forEach(el => {
+                    const val = parseInt(el.textContent, 10);
+                    if (!isNaN(val)) animateCounter(el, val, 900);
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    observer.observe(statsBar);
+}
+
 // ============================================================
-// 頁面切換功能
+// Page switching
 // ============================================================
 function switchPage(pageId) {
-    document.querySelectorAll('.page-section').forEach(page => {
-        page.classList.remove('active');
-    });
+    document.querySelectorAll('.page-section').forEach(page => page.classList.remove('active'));
+
     const activePage = document.getElementById(pageId);
     if (activePage) {
         activePage.classList.add('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        // Re-trigger reveal for newly visible elements
+        // Re-trigger scroll reveal for newly visible elements
         setTimeout(() => {
             activePage.querySelectorAll('.reveal:not(.visible)').forEach((el, i) => {
-                setTimeout(() => el.classList.add('visible'), i * 50);
+                setTimeout(() => el.classList.add('visible'), i * 45);
             });
         }, 50);
     }
+
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + pageId) {
-            link.classList.add('active');
-        }
+        if (link.getAttribute('href') === '#' + pageId) link.classList.add('active');
     });
+
     history.pushState(null, null, '#' + pageId);
 }
 
 // ============================================================
-// DOM 載入完成後執行
+// DOM Ready
 // ============================================================
-document.addEventListener('DOMContentLoaded', function() {
-    // Render dynamic sections
-    try { renderPublicationsPage(); } catch(e) { console.error('renderPublicationsPage:', e); }
-    try { renderResearchPubs(); } catch(e) { console.error('renderResearchPubs:', e); }
+document.addEventListener('DOMContentLoaded', function () {
+    try { renderPublicationsPage(); } catch (e) { console.error('renderPublicationsPage:', e); }
+    try { renderResearchPubs(); }     catch (e) { console.error('renderResearchPubs:', e); }
+    try { initStats(); }              catch (e) { console.error('initStats:', e); }
 
-    // Nav click binding
+    // Nav link binding
     document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             e.preventDefault();
             const pageId = this.getAttribute('href').substring(1);
             switchPage(pageId);
@@ -324,58 +433,80 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Initial page
+    // Initial page from hash
     const pageId = window.location.hash.substring(1) || 'home';
     switchPage(pageId);
 
-    // Scroll reveal with IntersectionObserver
+    // Scroll reveal via IntersectionObserver
+    const REVEAL_SELECTOR =
+        '.education-item, .experience-item, .publication-entry, ' +
+        '.member-card, .course-card, .highlight-row, .research-category, ' +
+        '.alumni-ms-card, .alumni-project-card, .project-entry, ' +
+        '.announcement, .journal-item, .timeline-item, .service-role-item, ' +
+        '.lab-stats-bar';
+
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, i) => {
             if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, i * 60);
+                // stagger using index within batch
+                const delay = Math.min(i * 45, 300);
+                setTimeout(() => entry.target.classList.add('visible'), delay);
                 revealObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
 
     function attachReveal() {
-        document.querySelectorAll(
-            '.education-item, .experience-item, .publication-entry, ' +
-            '.member-card, .course-card, .highlight-row, .research-category, ' +
-            '.alumni-ms-card, .alumni-project-card, .project-entry, ' +
-            '.announcement, .journal-item, .timeline-item'
-        ).forEach(el => {
-            el.classList.add('reveal');
-            revealObserver.observe(el);
+        document.querySelectorAll(REVEAL_SELECTOR).forEach(el => {
+            if (!el.classList.contains('reveal')) {
+                el.classList.add('reveal');
+                revealObserver.observe(el);
+            }
         });
     }
+
     attachReveal();
 
-    try { setupMobileMenu(); } catch(e) { console.error('setupMobileMenu:', e); }
+    // Re-observe after dynamic rendering
+    setTimeout(attachReveal, 300);
+
+    try { setupMobileMenu(); } catch (e) { console.error('setupMobileMenu:', e); }
 });
 
 // ============================================================
-// 展開/收合功能
+// Toggle helpers
 // ============================================================
+function toggleEducation(button) {
+    const items = button.closest('.education-block').querySelectorAll('.education-item.hidden-item');
+    toggleItems(items, button);
+}
+
 function toggleExperience(button) {
     const items = button.closest('.work-experience-block').querySelectorAll('.experience-item.hidden-item');
     toggleItems(items, button);
 }
 
 function toggleAnnouncements(button) {
-    const announcements = document.querySelectorAll('#announcements .announcement.hidden-item');
-    toggleItems(announcements, button);
+    const items = document.querySelectorAll('#announcements .announcement.hidden-item');
+    toggleItems(items, button);
 }
 
 function togglePublications(button) {
-    const publications = button.parentElement.querySelectorAll('.publication-item.hidden-item');
-    toggleItems(publications, button);
+    const items = button.parentElement.querySelectorAll('.publication-item.hidden-item');
+    toggleItems(items, button);
 }
 
-function toggleCourses(button) {
-    // Reserved for future use
+function toggleCourseGroup(id, button) {
+    const group = document.getElementById(id);
+    const isShowing = group.classList.contains('show');
+    group.classList.toggle('show');
+    button.textContent = isShowing ? 'Show More Courses' : 'Show Less Courses';
+}
+
+function showEl(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.toggle('show');
 }
 
 function toggleCourseCard(card) {
@@ -388,24 +519,17 @@ function toggleAlumni(button) {
 }
 
 function toggleItems(items, button, showText = 'Show More', hideText = 'Show Less') {
-    if (items.length === 0) return;
+    if (!items.length) return;
     const isShowing = items[0].classList.contains('show');
     items.forEach(item => item.classList.toggle('show'));
-    if (button) {
-        button.textContent = isShowing ? showText : hideText;
-    }
-}
-
-function updateButtonText(button) {
-    if (!button) return;
-    button.textContent = button.textContent === 'Show More' ? 'Show Less' : 'Show More';
+    if (button) button.textContent = isShowing ? showText : hideText;
 }
 
 // ============================================================
-// Research category toggle
+// Research category accordion
 // ============================================================
 function toggleResearchCategory(header) {
-    const body = header.nextElementSibling;
+    const body   = header.nextElementSibling;
     const isOpen = header.classList.contains('open');
     header.classList.toggle('open', !isOpen);
     body.classList.toggle('open', !isOpen);
@@ -416,23 +540,19 @@ function toggleResearchCategory(header) {
 // ============================================================
 function toggleProjectDetails(btn) {
     const details = btn.closest('.project-entry').querySelector('.project-details');
-    const isOpen = details.classList.contains('show');
+    const isOpen  = details.classList.contains('show');
     details.classList.toggle('show', !isOpen);
     btn.textContent = isOpen ? 'Show Details' : 'Hide Details';
 }
 
 // ============================================================
-// 漢堡選單
+// Mobile hamburger menu
 // ============================================================
 function setupMobileMenu() {
     const menuToggle = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
+    const navLinks   = document.getElementById('nav-links');
 
-    if (window.innerWidth <= 768) {
-        navLinks.style.display = 'none';
-    } else {
-        navLinks.style.display = 'flex';
-    }
+    navLinks.style.display = window.innerWidth <= 768 ? 'none' : 'flex';
 
     function toggleMenu() {
         menuToggle.classList.toggle('active');
@@ -447,14 +567,8 @@ function setupMobileMenu() {
             navLinks.style.display = 'flex';
             navLinks.classList.remove('active');
             menuToggle.classList.remove('active');
-        } else {
-            if (!navLinks.classList.contains('active')) {
-                navLinks.style.display = 'none';
-            }
+        } else if (!navLinks.classList.contains('active')) {
+            navLinks.style.display = 'none';
         }
-    });
-
-    if (window.innerWidth <= 768) {
-        navLinks.style.display = 'none';
-    }
+    }, { passive: true });
 }
