@@ -9,36 +9,119 @@
     <meta property="og:url" content="https://chyentw.github.io/">
     <meta property="og:title" content="IDA Lab: Intelligent Design and Application Laboratory, NTOU">
     <meta property="og:description" content="Research lab at National Taiwan Ocean University spanning Intelligent EDA, Hardware &amp; AI Security, Biomedical AI, AI Computing &amp; Hardware Design, and Algorithm Design &amp; Optimization.">
-    <meta property="og:image" content="images/lab_logo.png">
+    <meta property="og:image" content="https://chyentw.github.io/images/lab_logo.png">
     <meta property="og:locale" content="zh_TW">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="IDA Lab, NTOU">
     <meta name="twitter:description" content="Research in Intelligent EDA, Hardware &amp; AI Security, Biomedical AI, AI Computing &amp; Hardware Design, and Algorithm Design &amp; Optimization.">
+    <meta name="twitter:image" content="https://chyentw.github.io/images/lab_logo.png">
+    <meta name="theme-color" content="#1a4c7c">
     <link rel="canonical" href="https://chyentw.github.io/">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ResearchOrganization",
+          "@id": "https://chyentw.github.io/#org",
+          "name": "Intelligent Design and Application Laboratory (IDA Lab)",
+          "url": "https://chyentw.github.io/",
+          "logo": "https://chyentw.github.io/images/lab_logo.png",
+          "parentOrganization": {
+            "@type": "CollegeOrUniversity",
+            "name": "National Taiwan Ocean University",
+            "address": { "@type": "PostalAddress", "addressLocality": "Keelung", "addressCountry": "TW" }
+          },
+          "knowsAbout": ["Electronic Design Automation", "Hardware Security", "AI Security", "Biomedical AI", "AI Accelerator Design", "Algorithm Design and Optimization"]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://chyentw.github.io/#pi",
+          "name": "Chia-Heng Yen",
+          "alternateName": "顏家珩",
+          "jobTitle": "Assistant Professor",
+          "worksFor": { "@id": "https://chyentw.github.io/#org" },
+          "affiliation": { "@type": "CollegeOrUniversity", "name": "National Taiwan Ocean University" },
+          "alumniOf": { "@type": "CollegeOrUniversity", "name": "National Yang Ming Chiao Tung University" },
+          "sameAs": [
+            "https://orcid.org/0000-0002-6646-9253",
+            "https://scholar.google.com/citations?user=ic2384wAAAAJ",
+            "https://scholargps.com/scholars/62250640406273/chia-heng-yen"
+          ]
+        }
+      ]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet"></noscript>
     <link rel="icon" href="images/lab_logo.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <a class="skip-link" href="#main-content" id="skip-link">Skip to main content</a>
     <section id="hero" class="hero-section">
-        <img src="images/back.jpg" alt="Marine Laboratory" class="hero-image" loading="eager"/>
+        <img src="images/back.jpg" alt="" class="hero-image" loading="eager" fetchpriority="high"/>
         <div class="hero-overlay">
             <img src="images/lab_logo.png" alt="Lab Logo" class="hero-logo" loading="eager"/>
             <h1 class="lab-title">Intelligent Design and Application Laboratory <br>(IDA Lab)</h1>
             <p class="lab-subtitle">Multi-Domain AI Research in Intelligent EDA, Hardware &amp; AI Security, Biomedical AI, AI Computing &amp; Hardware Design, and Algorithm Design &amp; Optimization</p>
         </div>
+        <svg class="hero-circuit" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+            <defs>
+                <pattern id="dieGrid" width="44" height="44" patternUnits="userSpaceOnUse">
+                    <path d="M44 0H0V44" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                </pattern>
+                <radialGradient id="edgeFade" cx="50%" cy="50%" r="72%">
+                    <stop offset="32%" stop-color="black"/>
+                    <stop offset="100%" stop-color="white"/>
+                </radialGradient>
+                <mask id="centerFade">
+                    <rect width="1200" height="520" fill="url(#edgeFade)"/>
+                </mask>
+            </defs>
+            <g mask="url(#centerFade)">
+                <rect width="1200" height="520" fill="url(#dieGrid)"/>
+                <!-- left routing traces -->
+                <path class="trace" d="M-20 84 H118 L156 122 V206 L128 234 H86"/>
+                <path class="trace" d="M-20 156 H58 L104 202 V318 L66 356 H-20"/>
+                <path class="trace" d="M36 -20 V58 L96 118 V246"/>
+                <path class="trace" d="M-20 432 H136 L186 382 V306"/>
+                <path class="trace" d="M-20 480 H90 L122 448"/>
+                <!-- right routing traces -->
+                <path class="trace" d="M1220 76 H1098 L1052 122 V232"/>
+                <path class="trace" d="M1158 -20 V92 L1102 148 V298 L1142 338 H1220"/>
+                <path class="trace" d="M1220 396 H1078 L1030 348 V268"/>
+                <path class="trace" d="M1220 468 H1116 L1058 410"/>
+                <!-- signal pulses (duplicated geometry, animated via CSS) -->
+                <path class="pulse pulse-1" d="M-20 84 H118 L156 122 V206 L128 234 H86"/>
+                <path class="pulse pulse-2" d="M36 -20 V58 L96 118 V246"/>
+                <path class="pulse pulse-3" d="M-20 156 H58 L104 202 V318 L66 356 H-20"/>
+                <path class="pulse pulse-4" d="M1220 76 H1098 L1052 122 V232"/>
+                <path class="pulse pulse-5" d="M1158 -20 V92 L1102 148 V298 L1142 338 H1220"/>
+                <path class="pulse pulse-6" d="M1220 396 H1078 L1030 348 V268"/>
+                <!-- pads / vias at trace endpoints -->
+                <g class="pads">
+                    <circle class="pad" cx="86"   cy="234" r="5"/><circle class="pad-core pad-glow" cx="86"   cy="234" r="2"/>
+                    <circle class="pad" cx="96"   cy="246" r="5"/><circle class="pad-core" cx="96"   cy="246" r="2"/>
+                    <circle class="pad" cx="186"  cy="306" r="5"/><circle class="pad-core pad-glow" cx="186"  cy="306" r="2"/>
+                    <circle class="pad" cx="122"  cy="448" r="5"/><circle class="pad-core" cx="122"  cy="448" r="2"/>
+                    <circle class="pad" cx="1052" cy="232" r="5"/><circle class="pad-core pad-glow" cx="1052" cy="232" r="2"/>
+                    <circle class="pad" cx="1030" cy="268" r="5"/><circle class="pad-core" cx="1030" cy="268" r="2"/>
+                    <circle class="pad" cx="1058" cy="410" r="5"/><circle class="pad-core pad-glow" cx="1058" cy="410" r="2"/>
+                </g>
+            </g>
+        </svg>
     </section>
 
     <nav class="nav">
         <div class="nav-container">
-            <div class="menu-toggle" id="menu-toggle">
+            <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
-            </div>
+            </button>
             
             <div class="nav-logo">
                 <img src="images/lab_logo.png" alt="IDA Lab Logo" width="40">
@@ -58,7 +141,7 @@
         </div>
     </nav>
 
-    <div class="container">
+    <main id="main-content" class="container" tabindex="-1">
         <section id="home" class="section page-section active">
             <h2>Laboratory Overview</h2>
 
@@ -75,12 +158,12 @@
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-item">
-                    <span class="stat-number">5</span>
+                    <span class="stat-number" id="stat-areas">5</span>
                     <span class="stat-label">Research Areas</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-item">
-                    <span class="stat-number">2025</span>
+                    <span class="stat-number stat-static">2025</span>
                     <span class="stat-label">Established</span>
                 </div>
             </div>
@@ -1309,7 +1392,7 @@
 
 			</div>
 		</section>
-	</div>
+	</main>
 
 	<footer class="footer">
 		<div class="footer-content">
@@ -1330,3 +1413,4 @@
 	<script src="script.js"></script>
 </body>
 
+</html>
