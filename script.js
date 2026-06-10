@@ -402,25 +402,42 @@ function updateDynamicStats() {
         pubStatEl.textContent = publications.length;
     }
 
-    // Auto-count lab members:
-    // Count .member-card elements that are NOT inside .alumni-section
-    // and NOT inside a cohort-label containing "Incoming"
-    let memberCount = 0;
-    document.querySelectorAll('.member-card').forEach(card => {
-        // Skip if inside alumni section
-        if (card.closest('.alumni-section')) return;
-        // Skip if inside an "Incoming" cohort group
-        const cohortGroup = card.closest('.cohort-group');
-        if (cohortGroup) {
-            const label = cohortGroup.querySelector('.cohort-label');
-            if (label && label.textContent.includes('Incoming')) return;
-        }
-        memberCount++;
-    });
+    // Auto-count research areas (L1 categories on the Research page)
+    const areaStatEl = document.getElementById('stat-areas');
+    if (areaStatEl) {
+        const areaCount = document.querySelectorAll('#research .research-category').length;
+        if (areaCount > 0) areaStatEl.textContent = areaCount;
+    }
+
+    // Auto-count lab members across ALL member structures:
+    //   .member-card h4        → graduate / part-time students
+    //   .alumni-member-chip    → undergraduate capstone students
+    //   .undergrad-name        → undergraduate researchers
+    // Names are deduplicated (a student may appear in multiple lists).
+    // Excludes: alumni section, "Incoming" cohorts, and TBD placeholders.
+    // Set to true if "Incoming" cohorts should count toward the member total
+    const COUNT_INCOMING_MEMBERS = false;
+
+    const names = new Set();
+    const collectNames = (selector) => {
+        document.querySelectorAll(selector).forEach(el => {
+            if (el.closest('.alumni-section')) return;
+            const cohortGroup = el.closest('.cohort-group');
+            if (cohortGroup && !COUNT_INCOMING_MEMBERS) {
+                const label = cohortGroup.querySelector('.cohort-label');
+                if (label && label.textContent.includes('Incoming')) return;
+            }
+            const name = el.textContent.trim();
+            if (name && name !== 'TBD') names.add(name);
+        });
+    };
+    collectNames('#members .member-card .member-info h4');
+    collectNames('#members .alumni-member-chip');
+    collectNames('#members .undergrad-name');
 
     const memberStatEl = document.getElementById('stat-members');
     if (memberStatEl) {
-        memberStatEl.textContent = memberCount;
+        memberStatEl.textContent = names.size;
     }
 }
 
@@ -432,7 +449,7 @@ function initStats() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                statsBar.querySelectorAll('.stat-number').forEach(el => {
+                statsBar.querySelectorAll('.stat-number:not(.stat-static)').forEach(el => {
                     const val = parseInt(el.textContent, 10);
                     if (!isNaN(val)) animateCounter(el, val, 900);
                 });
@@ -459,19 +476,20 @@ const PAGE_TITLES = {
 };
 
 function switchPage(pageId, pushState = true) {
+    const activePage = document.getElementById(pageId);
+    // Guard: ignore hashes that don't map to a page section (e.g. #main-content)
+    if (!activePage || !activePage.classList.contains('page-section')) return;
+
     document.querySelectorAll('.page-section').forEach(page => page.classList.remove('active'));
 
-    const activePage = document.getElementById(pageId);
-    if (activePage) {
-        activePage.classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        // Re-trigger scroll reveal for newly visible elements
-        setTimeout(() => {
-            activePage.querySelectorAll('.reveal:not(.visible)').forEach((el, i) => {
-                setTimeout(() => el.classList.add('visible'), i * 45);
-            });
-        }, 50);
-    }
+    activePage.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Re-trigger scroll reveal for newly visible elements
+    setTimeout(() => {
+        activePage.querySelectorAll('.reveal:not(.visible)').forEach((el, i) => {
+            setTimeout(() => el.classList.add('visible'), i * 45);
+        });
+    }, 50);
 
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.classList.remove('active');
@@ -561,7 +579,79 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(attachReveal, 300);
 
     try { setupMobileMenu(); } catch (e) { console.error('setupMobileMenu:', e); }
+    try { setupA11yEnhancements(); } catch (e) { console.error('setupA11yEnhancements:', e); }
+    try { setupBackToTop(); } catch (e) { console.error('setupBackToTop:', e); }
 });
+
+// ============================================================
+// Accessibility & UX enhancements
+// ============================================================
+function setupA11yEnhancements() {
+    // Skip link: focus main content without polluting the page-routing hash
+    const skipLink = document.getElementById('skip-link');
+    const mainEl   = document.getElementById('main-content');
+    if (skipLink && mainEl) {
+        skipLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            mainEl.focus({ preventScroll: false });
+            mainEl.scrollIntoView();
+        });
+    }
+
+    // Make click-only accordions keyboard operable
+    const activate = (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            e.currentTarget.click();
+        }
+    };
+    document.querySelectorAll('.research-category-header').forEach(h => {
+        h.setAttribute('role', 'button');
+        h.setAttribute('tabindex', '0');
+        h.setAttribute('aria-expanded', 'false');
+        h.addEventListener('keydown', activate);
+    });
+    document.querySelectorAll('.course-card').forEach(c => {
+        c.setAttribute('role', 'button');
+        c.setAttribute('tabindex', '0');
+        c.setAttribute('aria-expanded', 'false');
+        c.addEventListener('keydown', activate);
+    });
+
+    // Harden all external links (dynamic publications included)
+    document.querySelectorAll('a[target="_blank"]').forEach(a => {
+        a.setAttribute('rel', 'noopener noreferrer');
+    });
+
+    // Hide "Show More" buttons that currently have nothing to reveal
+    const annBtn = document.querySelector('#announcements .show-more-btn');
+    if (annBtn && !document.querySelector('#announcements .announcement.hidden-item')) {
+        annBtn.style.display = 'none';
+    }
+}
+
+// ============================================================
+// Back to top
+// ============================================================
+function setupBackToTop() {
+    const btn = document.createElement('button');
+    btn.className = 'back-to-top';
+    btn.type = 'button';
+    btn.setAttribute('aria-label', 'Back to top');
+    btn.innerHTML = '↑';
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    document.body.appendChild(btn);
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+            btn.classList.toggle('show', window.scrollY > 600);
+            ticking = false;
+        });
+    }, { passive: true });
+}
 
 // ============================================================
 // Toggle helpers
@@ -601,6 +691,7 @@ function showEl(id) {
 
 function toggleCourseCard(card) {
     card.classList.toggle('open');
+    card.setAttribute('aria-expanded', String(card.classList.contains('open')));
 }
 
 function toggleAlumni(button) {
@@ -623,6 +714,7 @@ function toggleResearchCategory(header) {
     const isOpen = header.classList.contains('open');
     header.classList.toggle('open', !isOpen);
     body.classList.toggle('open', !isOpen);
+    header.setAttribute('aria-expanded', String(!isOpen));
 }
 
 // ============================================================
@@ -647,7 +739,9 @@ function setupMobileMenu() {
     function toggleMenu() {
         menuToggle.classList.toggle('active');
         navLinks.classList.toggle('active');
-        navLinks.style.display = navLinks.classList.contains('active') ? 'flex' : 'none';
+        const open = navLinks.classList.contains('active');
+        navLinks.style.display = open ? 'flex' : 'none';
+        menuToggle.setAttribute('aria-expanded', String(open));
     }
 
     menuToggle.addEventListener('click', toggleMenu);
@@ -657,6 +751,7 @@ function setupMobileMenu() {
             navLinks.style.display = 'flex';
             navLinks.classList.remove('active');
             menuToggle.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
         } else if (!navLinks.classList.contains('active')) {
             navLinks.style.display = 'none';
         }
