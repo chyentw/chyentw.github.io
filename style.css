@@ -1527,7 +1527,7 @@ button.menu-toggle { background: none; border: none; padding: 0; }
 .back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
 .back-to-top:hover { box-shadow: 0 6px 20px rgba(26,76,124,0.4); }
 
-/* ── REDUCED MOTION ── */
+/* ── REDUCED MOTION (consolidated) ── */
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after {
@@ -1538,6 +1538,11 @@ button.menu-toggle { background: none; border: none; padding: 0; }
     .reveal { opacity: 1; transform: none; }
     .hero-image { transform: none; transition: none; }
     .hero-section:hover .hero-image { transform: none; }
+    .hero-circuit { transition: none; }
+    .hero-circuit .pulse { animation: none; opacity: 0; }
+    .hero-circuit .pad-glow { animation: none; }
+    .footer::after { animation: none; background-position: 50% 0; opacity: 0.35; }
+    .scroll-progress { box-shadow: none; }
 }
 
 /* ============================================================
@@ -1697,12 +1702,6 @@ button.menu-toggle { background: none; border: none; padding: 0; }
 html { scrollbar-color: var(--secondary-blue) #e8eef6; scrollbar-width: thin; }
 
 /* ── REDUCED MOTION: silence the signals ── */
-@media (prefers-reduced-motion: reduce) {
-    .hero-circuit .pulse { animation: none; opacity: 0; }
-    .hero-circuit .pad-glow { animation: none; }
-    .footer::after { animation: none; background-position: 50% 0; opacity: 0.35; }
-}
-
 /* ============================================================
    SECTION BACKGROUND PASS — blueprint canvas & five-domain encoding
    ============================================================ */
@@ -1742,13 +1741,13 @@ body {
 }
 
 /* ── SECTION CARDS: corner circuit watermark ──
-   An orderly escape-routing fanout: three traces enter from the card's
-   right edge and terminate on a clean row of pads. */
+   Asymmetric 135° routing: a line descending from the card's top edge,
+   one terminating trace, and a clock-tree Y fork. */
 .section::after {
     content: '';
     position: absolute; top: 12px; right: 0;
     width: 150px; height: 110px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 120'%3E%3Cg fill='none' stroke='%231a4c7c' stroke-opacity='0.13' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M160 22 H76 L62 36 V84'/%3E%3Cpath d='M160 46 H90 V84'/%3E%3Cpath d='M160 70 H118 V84'/%3E%3Ccircle cx='62' cy='90' r='5'/%3E%3Ccircle cx='90' cy='90' r='5'/%3E%3Ccircle cx='118' cy='90' r='5'/%3E%3C/g%3E%3Cg fill='%231a4c7c' fill-opacity='0.16'%3E%3Ccircle cx='62' cy='90' r='2'/%3E%3Ccircle cx='90' cy='90' r='2'/%3E%3Ccircle cx='118' cy='90' r='2'/%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 120'%3E%3Cg fill='none' stroke='%231a4c7c' stroke-opacity='0.15' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M40 0 V42 L62 64 V88'/%3E%3Cpath d='M160 34 H104 L82 56 V72'/%3E%3Cpath d='M160 100 H124 L106 82'/%3E%3Cpath d='M124 100 L110 114'/%3E%3Ccircle cx='62' cy='94' r='4.5'/%3E%3Ccircle cx='82' cy='78' r='4.5'/%3E%3Ccircle cx='106' cy='82' r='4.5'/%3E%3Ccircle cx='110' cy='114' r='4'/%3E%3C/g%3E%3Cg fill='%231a4c7c' fill-opacity='0.15'%3E%3Ccircle cx='62' cy='94' r='1.8'/%3E%3Ccircle cx='82' cy='78' r='1.8'/%3E%3Ccircle cx='106' cy='82' r='1.8'/%3E%3Ccircle cx='110' cy='114' r='1.8'/%3E%3C/g%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: top right;
     background-size: contain;
@@ -1771,4 +1770,65 @@ body {
 
 @media (max-width: 480px) {
     .section::after { display: none; }
+}
+
+/* ============================================================
+   REFINEMENT PASS — progress signal, parallax, hover power, print
+   ============================================================ */
+
+/* ── READING PROGRESS: signal line across the top ── */
+.scroll-progress {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--secondary-blue), var(--tech-cyan));
+    box-shadow: 0 0 8px rgba(88,214,255,0.45);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    z-index: 3000;
+    pointer-events: none;
+}
+
+/* ── HERO PARALLAX: circuit layer drifts gently with the cursor ── */
+.hero-circuit {
+    transition: transform 0.3s ease-out;
+    will-change: transform;
+}
+
+/* ── SECTION HOVER: the five-domain bus powers up ── */
+.section::before { transition: opacity 0.3s ease, box-shadow 0.3s ease; }
+.section:hover::before {
+    opacity: 1;
+    box-shadow: 0 0 12px rgba(88,214,255,0.3);
+}
+
+/* ── BACK TO TOP: cyan signal ring ── */
+.back-to-top {
+    border: 1px solid rgba(88,214,255,0.45);
+    font-family: var(--font-mono);
+}
+
+/* ── PRINT: strip the chrome, keep the content ── */
+@media print {
+    .nav, .hero-circuit, .back-to-top, .scroll-progress,
+    .menu-toggle, .show-more-btn, .skip-link { display: none !important; }
+    body { background: white; }
+    .section { box-shadow: none; border: 1px solid #ddd; }
+    .section::after, .footer::after { display: none; }
+    .hero-section { min-height: auto; }
+}
+
+/* ── PCB DETAIL ELEMENTS: vias & SMD pads on the hero circuit ── */
+.hero-circuit .via {
+    fill: none;
+    stroke: rgba(140,205,255,0.5);
+    stroke-width: 1.5;
+}
+
+/* ── INNER-LAYER TRACES: faint horizontals crossing beneath the top layer ── */
+.hero-circuit .trace-soft {
+    fill: none;
+    stroke: rgba(140,205,255,0.18);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
