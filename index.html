@@ -83,34 +83,39 @@
             </defs>
             <g mask="url(#centerFade)">
                 <rect width="1200" height="520" fill="url(#dieGrid)"/>
-                <!-- left routing traces -->
-                <path class="trace" d="M-20 84 H118 L156 122 V206 L128 234 H86"/>
-                <path class="trace" d="M-20 156 H58 L104 202 V318 L66 356 H-20"/>
-                <path class="trace" d="M36 -20 V58 L96 118 V246"/>
-                <path class="trace" d="M-20 432 H136 L186 382 V306"/>
-                <path class="trace" d="M-20 480 H90 L122 448"/>
-                <!-- right routing traces -->
-                <path class="trace" d="M1220 76 H1098 L1052 122 V232"/>
-                <path class="trace" d="M1158 -20 V92 L1102 148 V298 L1142 338 H1220"/>
-                <path class="trace" d="M1220 396 H1078 L1030 348 V268"/>
-                <path class="trace" d="M1220 468 H1116 L1058 410"/>
-                <!-- signal pulses (duplicated geometry, animated via CSS) -->
-                <path class="pulse pulse-1" d="M-20 84 H118 L156 122 V206 L128 234 H86"/>
-                <path class="pulse pulse-2" d="M36 -20 V58 L96 118 V246"/>
-                <path class="pulse pulse-3" d="M-20 156 H58 L104 202 V318 L66 356 H-20"/>
-                <path class="pulse pulse-4" d="M1220 76 H1098 L1052 122 V232"/>
-                <path class="pulse pulse-5" d="M1158 -20 V92 L1102 148 V298 L1142 338 H1220"/>
-                <path class="pulse pulse-6" d="M1220 396 H1078 L1030 348 V268"/>
-                <!-- pads / vias at trace endpoints -->
+                <!-- inner layer: single full-width horizontal, jog anchored right -->
+                <path class="trace-soft" d="M-20 44 H800 L836 80 H1220"/>
+                <!-- left: a busy pair of full-height through-lines (2 jogs vs 3, interleaved) -->
+                <path class="trace" d="M70 -20 V120 L96 146 V340 L70 366 V540"/>
+                <path class="trace" d="M94 -20 V70 L120 96 V180 L146 206 V300 L120 326 V540"/>
+                <!-- right: one calm through-line plus a half-length companion -->
+                <path class="trace" d="M1130 -20 V200 L1104 226 V540"/>
+                <path class="trace" d="M1156 -20 V148 L1178 170 V214"/>
+                <!-- center-right: staircase descent (three same-direction jogs) -->
+                <path class="trace" d="M860 -20 V96 L886 122 V250 L912 276 V420 L938 446 V540"/>
+                <!-- terminating stubs: one left, one right -->
+                <path class="trace" d="M-20 330 H40 L66 304"/>
+                <path class="trace" d="M1220 388 H1172 L1150 366"/>
+                <!-- bottom-right: clock-tree Y fork -->
+                <path class="trace" d="M1010 540 V474 L984 448"/>
+                <path class="trace" d="M1010 474 L1036 448"/>
+                <!-- signal pulses -->
+                <path class="pulse pulse-1" d="M94 -20 V70 L120 96 V180 L146 206 V300 L120 326 V540"/>
+                <path class="pulse pulse-2" d="M860 -20 V96 L886 122 V250 L912 276 V420 L938 446 V540"/>
+                <path class="pulse pulse-3" d="M-20 44 H800 L836 80 H1220"/>
+                <path class="pulse pulse-4" d="M1130 -20 V200 L1104 226 V540"/>
+                <path class="pulse pulse-5" d="M70 -20 V120 L96 146 V340 L70 366 V540"/>
+                <path class="pulse pulse-6" d="M1010 540 V474 L984 448"/>
+                <!-- pads -->
                 <g class="pads">
-                    <circle class="pad" cx="86"   cy="234" r="5"/><circle class="pad-core pad-glow" cx="86"   cy="234" r="2"/>
-                    <circle class="pad" cx="96"   cy="246" r="5"/><circle class="pad-core" cx="96"   cy="246" r="2"/>
-                    <circle class="pad" cx="186"  cy="306" r="5"/><circle class="pad-core pad-glow" cx="186"  cy="306" r="2"/>
-                    <circle class="pad" cx="122"  cy="448" r="5"/><circle class="pad-core" cx="122"  cy="448" r="2"/>
-                    <circle class="pad" cx="1052" cy="232" r="5"/><circle class="pad-core pad-glow" cx="1052" cy="232" r="2"/>
-                    <circle class="pad" cx="1030" cy="268" r="5"/><circle class="pad-core" cx="1030" cy="268" r="2"/>
-                    <circle class="pad" cx="1058" cy="410" r="5"/><circle class="pad-core pad-glow" cx="1058" cy="410" r="2"/>
+                    <circle class="pad" cx="66"   cy="304" r="5"/><circle class="pad-core pad-glow" cx="66"   cy="304" r="2"/>
+                    <circle class="pad" cx="1178" cy="220" r="5"/><circle class="pad-core" cx="1178" cy="220" r="2"/>
+                    <circle class="pad" cx="1150" cy="366" r="5"/><circle class="pad-core pad-glow" cx="1150" cy="366" r="2"/>
+                    <circle class="pad" cx="984"  cy="448" r="5"/><circle class="pad-core pad-glow" cx="984"  cy="448" r="2"/>
+                    <circle class="pad" cx="1036" cy="448" r="5"/><circle class="pad-core" cx="1036" cy="448" r="2"/>
                 </g>
+                <!-- layer-change via at the inner-layer jog -->
+                <circle class="via" cx="836" cy="80" r="3.5"/>
             </g>
         </svg>
     </section>
