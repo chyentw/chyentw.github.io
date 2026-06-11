@@ -493,7 +493,11 @@ function switchPage(pageId, pushState = true) {
 
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + pageId) link.classList.add('active');
+        link.removeAttribute('aria-current');
+        if (link.getAttribute('href') === '#' + pageId) {
+            link.classList.add('active');
+            link.setAttribute('aria-current', 'page');
+        }
     });
 
     // Update browser tab title
@@ -581,7 +585,67 @@ document.addEventListener('DOMContentLoaded', function () {
     try { setupMobileMenu(); } catch (e) { console.error('setupMobileMenu:', e); }
     try { setupA11yEnhancements(); } catch (e) { console.error('setupA11yEnhancements:', e); }
     try { setupBackToTop(); } catch (e) { console.error('setupBackToTop:', e); }
+    try { setupScrollProgress(); } catch (e) { console.error('setupScrollProgress:', e); }
+    try { setupHeroParallax(); } catch (e) { console.error('setupHeroParallax:', e); }
 });
+
+// ============================================================
+// Shared scroll dispatcher: one passive listener + one rAF
+// feeds every scroll-driven feature (progress bar, back-to-top)
+// ============================================================
+const scrollSubscribers = [];
+function onScroll(callback) {
+    scrollSubscribers.push(callback);
+    if (scrollSubscribers.length === 1) {
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(() => {
+                const y = window.scrollY;
+                scrollSubscribers.forEach(fn => fn(y));
+                ticking = false;
+            });
+        }, { passive: true });
+    }
+    callback(window.scrollY); // run once for initial state
+}
+
+// ============================================================
+// Reading progress bar (thin signal line under the nav)
+// ============================================================
+function setupScrollProgress() {
+    const bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bar);
+
+    onScroll((y) => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const p = max > 0 ? Math.min(y / max, 1) : 0;
+        bar.style.transform = `scaleX(${p})`;
+    });
+}
+
+// ============================================================
+// Hero circuit parallax (desktop pointers only, motion-safe)
+// ============================================================
+function setupHeroParallax() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+    const hero = document.querySelector('.hero-section');
+    const circuit = document.querySelector('.hero-circuit');
+    if (!hero || !circuit) return;
+
+    hero.addEventListener('mousemove', (e) => {
+        const r = hero.getBoundingClientRect();
+        const dx = (e.clientX - r.left) / r.width - 0.5;
+        const dy = (e.clientY - r.top) / r.height - 0.5;
+        circuit.style.transform = `translate(${(dx * -12).toFixed(1)}px, ${(dy * -8).toFixed(1)}px)`;
+    }, { passive: true });
+    hero.addEventListener('mouseleave', () => { circuit.style.transform = ''; });
+}
 
 // ============================================================
 // Accessibility & UX enhancements
@@ -642,15 +706,7 @@ function setupBackToTop() {
     btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     document.body.appendChild(btn);
 
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => {
-            btn.classList.toggle('show', window.scrollY > 600);
-            ticking = false;
-        });
-    }, { passive: true });
+    onScroll((y) => btn.classList.toggle('show', y > 600));
 }
 
 // ============================================================
@@ -743,6 +799,13 @@ function setupMobileMenu() {
         navLinks.style.display = open ? 'flex' : 'none';
         menuToggle.setAttribute('aria-expanded', String(open));
     }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navLinks.classList.contains('active') && window.innerWidth <= 768) {
+            toggleMenu();
+            menuToggle.focus();
+        }
+    });
 
     menuToggle.addEventListener('click', toggleMenu);
 
