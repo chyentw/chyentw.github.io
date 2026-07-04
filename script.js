@@ -848,4 +848,3 @@ function setupMobileMenu() {
         }
     }, { passive: true });
 }
-
