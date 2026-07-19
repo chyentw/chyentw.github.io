@@ -85,7 +85,7 @@ const publications = [
     },
     {
         type: 'conference', year: 2026,
-        authors: 'Jin-Tai Yan, <strong>Chia-Heng Yen</strong>, and Chia-Hsun Yen',
+        authors: 'Jin-Tai Yan, Chia-Hsun Yen, and <strong>Chia-Heng Yen</strong>',
         title: 'Delay-Driven GNR Routing Tree with CNT-Vias for Nano-Scale Interconnects',
         venue: 'IEEE Asia Pacific Conference on Circuits and Systems (APCCAS), to appear, Oct. 2026.',
         topics: ['physical-design']
