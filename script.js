@@ -86,7 +86,7 @@ const publications = [
     {
         type: 'conference', year: 2026,
         authors: 'Ching-Heng Lin and <strong>Chia-Heng Yen</strong>',
-        title: 'Multi-Annotator Knowledge Distillation for Uncertainty-Aware Carotid IMT Estimation via Mixture Density Networks',
+        title: 'Multi-Annotator Learning for Uncertainty-Aware Carotid IMT Estimation via Mixture Density Networks',
         venue: 'IEEE Biomedical Circuits and Systems Conference (BioCAS), to appear, Oct. 2026.',
         topics: ['biomedical']
     },
