@@ -5,6 +5,13 @@ const publications = [
     // ---- Journal Papers ----
     {
         type: 'journal', year: 2026,
+        authors: 'Yao-Feng Hu, <strong>Chia-Heng Yen</strong>, Yen-Cheng Lin, Ting-Yu Chen and Shinn-Ying Ho',
+        title: 'Prediction of eGFR and uACR Using Evolutionary Learning for Identifying High-Risk Individuals in Renal Disease Prevention',
+        venue: 'Journal of Clinical Laboratory Analysis, 2026.',
+        topics: ['biomed-data']
+    },
+    {
+        type: 'journal', year: 2026,
         authors: 'Jin-Tai Yan and <strong>Chia-Heng Yen</strong>',
         title: 'Layer-Constrained GNR Area Routing with CNT-Via Insertion for Via Minimization',
         venue: 'IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), vol. 45, no. 4, pp. 1677–1690, Apr. 2026.',
