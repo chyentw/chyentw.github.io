@@ -12,19 +12,19 @@ const publications = [
     },
     {
         type: 'journal', year: 2026,
+        authors: 'Yi Ting Li, <strong>Chia-Heng Yen</strong>, Shu-Wen Li, Po-Yang Ke, Shuo-Wen Chang, Ying-Hua Chu, Mango Chia-Tso Chao, and Kai-Chiang Wu',
+        title: 'An Improved Wafer-View GDBN Method Using MetaFormer Variant',
+        venue: 'IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), vol. 45, no. 10, pp. 4954–4967, Oct. 2026.',
+        doi: 'https://doi.org/10.1109/TCAD.2026.3656320',
+        topics: ['ic-testing']
+    },
+    {
+        type: 'journal', year: 2026,
         authors: 'Jin-Tai Yan and <strong>Chia-Heng Yen</strong>',
         title: 'Layer-Constrained GNR Area Routing with CNT-Via Insertion for Via Minimization',
         venue: 'IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), vol. 45, no. 4, pp. 1677–1690, Apr. 2026.',
         doi: 'https://doi.org/10.1109/TCAD.2025.3604646',
         topics: ['physical-design']
-    },
-    {
-        type: 'journal', year: 2026,
-        authors: 'Yi Ting Li, <strong>Chia-Heng Yen</strong>, Shu-Wen Li, Po-Yang Ke, Shuo-Wen Chang, Ying-Hua Chu, Mango Chia-Tso Chao, and Kai-Chiang Wu',
-        title: 'An Improved Wafer-View GDBN Method Using MetaFormer Variant',
-        venue: 'IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), 2026.',
-        doi: 'https://doi.org/10.1109/TCAD.2026.3656320',
-        topics: ['ic-testing']
     },
     {
         type: 'journal', year: 2026,
