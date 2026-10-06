@@ -8,6 +8,7 @@ const publications = [
         authors: 'Yao-Feng Hu, <strong>Chia-Heng Yen</strong>, Yen-Cheng Lin, Ting-Yu Chen, and Shinn-Ying Ho',
         title: 'Prediction of eGFR and uACR Using Evolutionary Learning for Identifying High-Risk Individuals in Renal Disease Prevention',
         venue: 'Journal of Clinical Laboratory Analysis, 2026.',
+        doi: 'https://doi.org/10.1002/jcla.70371',
         topics: ['biomed-data']
     },
     {
