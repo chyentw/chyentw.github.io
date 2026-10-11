@@ -325,7 +325,7 @@ function renderPublicationsPage() {
     filterHtml += `</div>`;
 
     pubSection.innerHTML = '<h2>Publications</h2>' + filterHtml +
-        `<div id="pub-journal-section">${renderPubGroup('Journal Papers', journals, totalJ)}</div>` +
+        `<div id="pub-journal-section">${renderPubGroup('Journal Articles', journals, totalJ)}</div>` +
         `<div id="pub-conference-section">${renderPubGroup('Conference Papers', conferences, totalC)}</div>` +
         (posters.length
             ? `<div id="pub-poster-section">${renderPubGroup('Posters & Non-Archival Presentations', posters, posters.length)}</div>`
