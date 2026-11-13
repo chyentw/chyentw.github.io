@@ -130,7 +130,7 @@ const publications = [
         type: 'conference', year: 2024,
         authors: 'Cheng-Che Lu, Chi-Chih Chang, <strong>Chia-Heng Yen</strong>, Shuo-Wen Chang, Ying-Hua Chu, Kai-Chiang Wu, and Mango Chia-Tso Chao',
         title: 'Transformer and Its Variants for Identifying Good Dice in Bad Neighborhoods',
-        venue: 'IEEE VLSI Test Symposium (VTS), pp. 1–7, Apr. 2024.',
+        venue: 'IEEE VLSI Test Symposium (VTS), pp. 1–7, Tempe, AZ, USA, Apr. 2024.',
         doi: 'https://doi.org/10.1109/VTS60656.2024.10538654',
         topics: ['ic-testing']
     },
@@ -138,7 +138,7 @@ const publications = [
         type: 'conference', year: 2024,
         authors: 'Yu-Chen Hsiao, <strong>Chia-Heng Yen</strong>, Bo-Yang Ke, and Kai-Chiang Wu',
         title: 'Synergizing GCN and GAT for Hardware Trojan Detection and Localization',
-        venue: 'IEEE/IFIP International Conference on Dependable Systems and Networks - Supplemental Volume (DSN-S), pp. 161–162, Jun. 2024.',
+        venue: 'IEEE/IFIP International Conference on Dependable Systems and Networks - Supplemental Volume (DSN-S), pp. 161–162, Brisbane, Australia, Jun. 2024.',
         doi: 'https://doi.org/10.1109/DSN-S60304.2024.00047',
         topics: ['hw-security']
     },
@@ -146,7 +146,7 @@ const publications = [
         type: 'conference', year: 2024,
         authors: 'Shu-Wen Li, <strong>Chia-Heng Yen</strong>, Shuo-Wen Chang, Ying-Hua Chu, Kai-Chiang Wu, and Mango Chia-Tso Chao',
         title: 'Wafer-View Defect-Pattern-Prominent GDBN Method Using MetaFormer Variant',
-        venue: 'IEEE International Test Conference (ITC), pp. 76–80, Oct. 2024.',
+        venue: 'IEEE International Test Conference (ITC), pp. 76–80, San Diego, CA, USA, Oct. 2024.',
         doi: 'https://doi.org/10.1109/ITC51657.2024.00023',
         topics: ['ic-testing']
     },
@@ -154,7 +154,7 @@ const publications = [
         type: 'conference', year: 2023,
         authors: '<strong>Chia-Heng Yen</strong>, Jung-Che Tsai, and Kai-Chiang Wu',
         title: 'Using Path Features for Hardware Trojan Detection Based on Machine Learning Techniques',
-        venue: 'International Symposium on Quality Electronic Design (ISQED), pp. 1–8, Apr. 2023.',
+        venue: 'International Symposium on Quality Electronic Design (ISQED), pp. 1–8, San Francisco, CA, USA, Apr. 2023.',
         doi: 'https://doi.org/10.1109/ISQED57927.2023.10129300',
         topics: ['hw-security']
     },
@@ -162,7 +162,7 @@ const publications = [
         type: 'conference', year: 2023,
         authors: 'Ching-Min Liu, <strong>Chia-Heng Yen</strong>, Shu-Wen Lee, Kai-Chiang Wu, and Mango Chia-Tso Chao',
         title: 'Enhancing Good-Die-in-Bad-Neighborhood Methodology with Wafer-Level Defect Pattern Information',
-        venue: 'IEEE International Test Conference (ITC), pp. 357–366, Oct. 2023.',
+        venue: 'IEEE International Test Conference (ITC), pp. 357–366, Anaheim, CA, USA, Oct. 2023.',
         doi: 'https://doi.org/10.1109/ITC51656.2023.00053',
         topics: ['ic-testing']
     },
@@ -170,7 +170,7 @@ const publications = [
         type: 'conference', year: 2023,
         authors: '<strong>Chia-Heng Yen</strong> and Jin-Tai Yan',
         title: 'Layer-Minimization-Oriented GNR Area Routing',
-        venue: 'IEEE International Conference on Electronics, Circuits and Systems (ICECS), pp. 1–4, Dec. 2023.',
+        venue: 'IEEE International Conference on Electronics, Circuits and Systems (ICECS), pp. 1–4, Istanbul, Turkey, Dec. 2023.',
         doi: 'https://doi.org/10.1109/ICECS58634.2023.10382834',
         topics: ['physical-design']
     },
@@ -178,7 +178,7 @@ const publications = [
         type: 'conference', year: 2021,
         authors: 'Cheng-Hao Yang, <strong>Chia-Heng Yen</strong>, Ting-Rui Wang, Chun-Teng Chen, Mason Chern, Ying-Yen Chen, Jih-Nung Lee, Shu-Yi Kao, Kai-Chiang Wu, and Mango Chia-Tso Chao',
         title: 'Identifying Good-Dice-in-Bad-Neighborhoods Using Artificial Neural Networks',
-        venue: 'IEEE VLSI Test Symposium (VTS), pp. 1–6, Apr. 2021.',
+        venue: 'IEEE VLSI Test Symposium (VTS), pp. 1–6, San Diego, CA, USA (Virtual), Apr. 2021.',
         doi: 'https://doi.org/10.1109/VTS50974.2021.9441055',
         topics: ['ic-testing']
     },
@@ -186,7 +186,7 @@ const publications = [
         type: 'conference', year: 2020,
         authors: 'Chun-Teng Chen, <strong>Chia-Heng Yen</strong>, Cheng-Hao Yang, Kai-Chiang Wu, Mason Chern, Ying-Yen Chen, Chun-Yi Kuo, Jih-Nung Lee, Shu-Yi Kao, and Mango Chia-Tso Chao',
         title: 'CNN-Based Stochastic Regression for IDDQ Outlier Identification',
-        venue: 'IEEE VLSI Test Symposium (VTS), pp. 1–6, Apr. 2020.',
+        venue: 'IEEE VLSI Test Symposium (VTS), pp. 1–6, San Diego, CA, USA (Virtual), Apr. 2020.',
         doi: 'https://doi.org/10.1109/VTS48691.2020.9107570',
         topics: ['ic-testing']
     },
@@ -194,7 +194,7 @@ const publications = [
         type: 'conference', year: 2019,
         authors: 'Jin-Tai Yan and <strong>Chia-Heng Yen</strong>',
         title: 'Construction of Delay-Driven GNR Routing Tree',
-        venue: 'IEEE International New Circuits and Systems Conference (NEWCAS), pp. 1–4, Jun. 2019.',
+        venue: 'IEEE International New Circuits and Systems Conference (NEWCAS), pp. 1–4, Munich, Germany, Jun. 2019.',
         doi: 'https://doi.org/10.1109/NEWCAS44328.2019.8961288',
         topics: ['physical-design']
     },
@@ -202,7 +202,7 @@ const publications = [
         type: 'conference', year: 2018,
         authors: 'Jin-Tai Yan and <strong>Chia-Heng Yen</strong>',
         title: 'Feasible Assignment of Micro-Bumps in 3D ICs',
-        venue: 'IEEE International New Circuits and Systems Conference (NEWCAS), pp. 296–299, Jun. 2018.',
+        venue: 'IEEE International New Circuits and Systems Conference (NEWCAS), pp. 296–299, Montréal, QC, Canada, Jun. 2018.',
         doi: 'https://doi.org/10.1109/NEWCAS.2018.8585566',
         topics: ['physical-design']
     },
@@ -210,7 +210,7 @@ const publications = [
         type: 'conference', year: 2018,
         authors: 'Tzu-Yun Lo, Pei-Yin Wei, <strong>Chia-Heng Yen</strong>, Jiing-Feng Lirng, Muh-Hwa Yang, Pen-Yuan Chu, and Shinn-Ying Ho',
         title: 'Prediction of Metastasis in Head and Neck Cancer from Computed Tomography Images',
-        venue: 'International Conference on Robotics and Artificial Intelligence (ICRAI), pp. 18–23, Nov. 2018.',
+        venue: 'International Conference on Robotics and Artificial Intelligence (ICRAI), pp. 18–23, Guangzhou, China, Nov. 2018.',
         doi: 'https://doi.org/10.1145/3297097.3297108',
         topics: ['medical-image']
     },
@@ -218,7 +218,7 @@ const publications = [
         type: 'conference', year: 2016,
         authors: 'Jin-Tai Yan, Meng-Tian Chen, and <strong>Chia-Heng Yen</strong>',
         title: 'Cell-Aware MBFF Utilization for Clock Power Reduction',
-        venue: 'IEEE International Conference on Electronics, Circuits and Systems (ICECS), pp. 648–651, Dec. 2016.',
+        venue: 'IEEE International Conference on Electronics, Circuits and Systems (ICECS), pp. 648–651, Monte Carlo, Monaco, Dec. 2016.',
         doi: 'https://doi.org/10.1109/ICECS.2016.7841285',
         topics: ['physical-design']
     },
@@ -226,7 +226,7 @@ const publications = [
         type: 'conference', year: 2014,
         authors: 'Jin-Tai Yan, Yu-Jen Tseng, and <strong>Chia-Heng Yen</strong>',
         title: 'Feasible Region Assignment of Routing Nets in Single-Layer Routing',
-        venue: 'IEEE International Symposium on Circuits and Systems (ISCAS), pp. 393–396, Jun. 2014.',
+        venue: 'IEEE International Symposium on Circuits and Systems (ISCAS), pp. 393–396, Melbourne, VIC, Australia, Jun. 2014.',
         doi: 'https://doi.org/10.1109/ISCAS.2014.6865148',
         topics: ['physical-design']
     },
@@ -234,7 +234,7 @@ const publications = [
         type: 'conference', year: 2014,
         authors: 'Jin-Tai Yan, Yu-Jen Tseng, and <strong>Chia-Heng Yen</strong>',
         title: 'Efficient Micro-Bump Assignment for RDL Routing in 3DICs',
-        venue: 'IEEE International Conference on Electronics, Circuits and Systems (ICECS), pp. 195–198, Dec. 2014.',
+        venue: 'IEEE International Conference on Electronics, Circuits and Systems (ICECS), pp. 195–198, Marseille, France, Dec. 2014.',
         doi: 'https://doi.org/10.1109/ICECS.2014.7049955',
         topics: ['physical-design']
     },
